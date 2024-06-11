@@ -18,6 +18,11 @@ public class NavBarController implements Initializable {
         addListener();
     }
     private void addListener () {
+        navFridge.setStyle("-fx-background-color: #C8AB81;" +
+                "-fx-background-radius: 15px 15px 0 0;");
+        navList.setStyle("-fx-background-color: transparent;");
+        navRecipe.setStyle("-fx-background-color: transparent;");
+        navReport.setStyle("-fx-background-color: transparent;");
         navFridge.setOnMouseClicked(mouseEvent -> onFridge());
         navList.setOnMouseClicked(mouseEvent -> onShopList());
         navRecipe.setOnMouseClicked(mouseEvent -> onFavRecipe());
@@ -25,15 +30,33 @@ public class NavBarController implements Initializable {
     }
 
     private void onFridge () {
+        navFridge.setStyle("-fx-background-color: #C8AB81;" +
+                "-fx-background-radius: 15px 15px 0 0;");
+        navList.setStyle("-fx-background-color: transparent;");
+        navRecipe.setStyle("-fx-background-color: transparent;");
+        navReport.setStyle("-fx-background-color: transparent;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("Fridge");
     }
     private void onShopList () {
+        navFridge.setStyle("-fx-background-color: transparent;");
+        navList.setStyle("-fx-background-color: #C8AB81;");
+        navRecipe.setStyle("-fx-background-color: transparent;");
+        navReport.setStyle("-fx-background-color: transparent;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("ShopList");
     }
     private void onFavRecipe () {
+        navFridge.setStyle("-fx-background-color: transparent;");
+        navList.setStyle("-fx-background-color: transparent;");;
+        navRecipe.setStyle("-fx-background-color: #C8AB81;");
+        navReport.setStyle("-fx-background-color: transparent;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("FavRecipe");
     }
     private void onReport () {
+        navFridge.setStyle("-fx-background-color: transparent;");
+        navList.setStyle("-fx-background-color: transparent;");;
+        navRecipe.setStyle("-fx-background-color: transparent;");
+        navReport.setStyle("-fx-background-color: #C8AB81;" +
+                "-fx-background-radius: 0 0 15px 15px;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("Report");
     }
 }
