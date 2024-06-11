@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.List;
+
 public class Dish {
     private int dishID;
     private String name;
@@ -7,6 +9,15 @@ public class Dish {
     private String forDate;
     private String username;
     private String fridgeID;
+
+    private List<DishIngredient> ingredients;
+
+    public List<DishIngredient> getIngredients() {
+        return this.ingredients;
+    }
+    public void setIngredients(List<DishIngredient> ingredients){
+        this.ingredients = ingredients;
+    }
 
     public int getDishID() {
         return dishID;

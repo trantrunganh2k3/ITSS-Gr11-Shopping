@@ -1,7 +1,8 @@
 package Controller.Fridge;
 
 import Model.Model;
-//import Model.Ingredient;
+import Model.Ingredient;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,7 +15,6 @@ import java.util.ResourceBundle;
 
 public class FridgeItem implements Initializable {
     public VBox itemsVbox;
-    //public ObservableList<Ingredient> fridgeItems;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -25,6 +25,14 @@ public class FridgeItem implements Initializable {
     }
 
     private void test () throws IOException {
+
+        for (Ingredient ingredient: Model.getInstance().getIngredients()) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/fridge/fridgeIngredient.fxml"));
+            FridgeIngredient controller = new FridgeIngredient(ingredient);
+            loader.setController(controller);
+            itemsVbox.getChildren().add(loader.load());
+        }
+
        /* Ingredient ingredient1 = new Ingredient();
         ingredient1.setName("Do an");
         ingredient1.setCategory("Food");
