@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="575.0" prefWidth="928.0" styleClass="container"
+            stylesheets="@../../../resource/styles/fridgeItem.css" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1">
+   <HBox alignment="CENTER_LEFT" layoutX="36.0" layoutY="31.0" prefHeight="51.0" prefWidth="760.0" spacing="100.0"
+         styleClass="HBox" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="25.0">
+      <padding>
+         <Insets left="30.0"/>
+      </padding>
+      <Label styleClass="title" text="Name"/>
+      <Label styleClass="title" text="ID"/>
+      <Label styleClass="title" text="xxx"/>
+      <Label styleClass="title" text="xxx"/>
+   </HBox>
+   <ScrollPane layoutX="20.0" layoutY="94.0" prefHeight="433.0" prefWidth="888.0">
+      <padding>
+         <Insets left="15.0" right="10.0"/>
+      </padding>
+      <VBox prefHeight="486.0" prefWidth="847.0" styleClass="vbox"/>
+   </ScrollPane>
+</AnchorPane>

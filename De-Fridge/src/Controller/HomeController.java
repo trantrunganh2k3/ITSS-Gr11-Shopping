@@ -17,6 +17,7 @@ public class HomeController implements Initializable {
                 case "ShopList" -> homeView.setCenter(Model.getInstance().getViewFactory().getShopListView());
                 case "FavRecipe"-> homeView.setCenter(Model.getInstance().getViewFactory().getFavoriteRecipeView());
                 case "Report" -> homeView.setCenter(Model.getInstance().getViewFactory().getReportView());
+                case "Group" -> homeView.setCenter(Model.getInstance().getViewFactory().getGroupView());
                 default -> homeView.setCenter(Model.getInstance().getViewFactory().getFridgeView());
             }
         });

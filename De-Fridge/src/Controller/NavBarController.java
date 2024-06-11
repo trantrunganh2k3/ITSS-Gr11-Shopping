@@ -12,6 +12,7 @@ public class NavBarController implements Initializable {
     public AnchorPane navList;
     public AnchorPane navRecipe;
     public AnchorPane navReport;
+    public AnchorPane navGroup;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -27,6 +28,7 @@ public class NavBarController implements Initializable {
         navList.setOnMouseClicked(mouseEvent -> onShopList());
         navRecipe.setOnMouseClicked(mouseEvent -> onFavRecipe());
         navReport.setOnMouseClicked(mouseEvent -> onReport());
+        navGroup.setOnMouseClicked(mouseEvent -> onGroup());
     }
 
     private void onFridge () {
@@ -58,5 +60,8 @@ public class NavBarController implements Initializable {
         navReport.setStyle("-fx-background-color: #C8AB81;" +
                 "-fx-background-radius: 0 0 15px 15px;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("Report");
+    }
+    private void onGroup () {
+        Model.getInstance().getViewFactory().getHomeSelectView().set("Group");
     }
 }
