@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/Merriweather-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/Merriweather-Bold.ttf');
+}
+
+.title {
+    -fx-text-fill: #7D694D;
+    -fx-font-family: "Merriweather";
+    -fx-font-size: 36px;
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-line-height: normal;
+}
+
+.input-title {
+    -fx-font-size: 18px;
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-line-height: normal;
+}
+
+.input {
+    -fx-border-radius: 5px;
+    -fx-background-color: #FFF;
+    -fx-background-insets: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-font-size: 16px;
+}
+
+.login-button {
+    -fx-border-radius: 5px;
+    -fx-background-color: #38686A;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-text-fill: #F3F3F3;
+    -fx-font-family: Inter;
+    -fx-font-size: 18px;
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-line-height: normal;
+}
+
+.forgot-password {
+    -fx-font-size: 14px;
+}
+
+.sub-signup{
+    -fx-font-size: 14px;
+}
+
+.signup {
+    -fx-font-size: 14px;
+    -fx-text-fill: #7D694D;
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-line-height: normal;
+}
+
+.error-label {
+    -fx-text-fill: #F35757;
+    -fx-font-size: 14px;
+}
+

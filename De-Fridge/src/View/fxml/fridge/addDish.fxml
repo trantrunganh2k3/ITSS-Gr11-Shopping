@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="474.0" prefWidth="600.0" styleClass="container" stylesheets="@../../../resource/styles/recipeDetail.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+    <VBox layoutX="23.0" layoutY="26.0" prefHeight="394.0" prefWidth="560.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+        <Label styleClass="input-title" text="Name" />
+        <TextField styleClass="input" />
+      <HBox alignment="BOTTOM_LEFT" fillHeight="false" prefHeight="26.0" prefWidth="560.0" spacing="400.0">
+         <children>
+              <Label styleClass="input-title" text="Ingredients" />
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resource/icons/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+        <ListView prefHeight="235.0" prefWidth="560.0" styleClass="input" />
+        <Label prefHeight="27.0" prefWidth="60.0" styleClass="input-title" text="Section">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin></Label>
+        <ChoiceBox prefWidth="150.0" styleClass="input" />
+    </VBox>
+    <Button layoutX="502.0" layoutY="414.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="Save" AnchorPane.bottomAnchor="20.0" />
+    <Button layoutX="404.0" layoutY="414.0" mnemonicParsing="false" prefWidth="78.0" styleClass="cancel-button" text="Cancel" AnchorPane.bottomAnchor="20.0" />
+</AnchorPane>

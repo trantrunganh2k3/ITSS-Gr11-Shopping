@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #F8EDDD;" styleClass="container" stylesheets="@../../resource/styles/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignupController">
+   <padding>
+      <Insets bottom="50.0" left="60.0" right="60.0" top="50.0" />
+   </padding>
+   <Label prefHeight="123.0" prefWidth="226.0" styleClass="title" text="Sign in" />
+   <HBox prefHeight="62.0" prefWidth="380.0">
+      <children>
+         <VBox prefHeight="62.0" prefWidth="253.0">
+            <children>
+               <Label prefHeight="27.0" prefWidth="98.0" styleClass="input-title" text="Username" />
+               <TextField styleClass="input" />
+            </children>
+            <padding>
+               <Insets right="20.0" />
+            </padding>
+         </VBox>
+         <VBox prefHeight="62.0" prefWidth="129.0">
+            <children>
+               <Label prefHeight="27.0" prefWidth="72.0" styleClass="input-title" text="Gender" />
+               <ChoiceBox prefWidth="150.0" styleClass="input" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+   <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="66.0" styleClass="input-title" text="Email" />
+   <TextField styleClass="input" />
+   <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="92.0" styleClass="input-title" text="Password" />
+   <PasswordField prefHeight="40.0" prefWidth="380.0" styleClass="input" />
+   <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="226.0" styleClass="input-title" text="Password confirmation" />
+   <PasswordField prefHeight="40.0" prefWidth="380.0" styleClass="input" />
+   <AnchorPane prefHeight="57.0" prefWidth="380.0">
+      <children>
+         <Label layoutY="7.0" prefHeight="27.0" prefWidth="308.0" styleClass="error-label" text="Error:" />
+      </children>
+   </AnchorPane>
+   <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="380.0" styleClass="login-button" text="Sign up" />
+   <HBox prefHeight="63.0" prefWidth="380.0">
+      <children>
+         <Label prefHeight="18.0" prefWidth="154.0" styleClass="sub-signup" text="Have a account already?" />
+         <Label fx:id="loginLbl" styleClass="signup" text="Login">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Label>
+      </children>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <padding>
+         <Insets left="90.0" top="40.0" />
+      </padding>
+   </HBox>
+</VBox>

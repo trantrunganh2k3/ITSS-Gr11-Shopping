@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+
+
+.title {
+    -fx-font-family: 'Montserrat';
+    -fx-font-weight: 500;
+    -fx-font-size: 20px;
+    -fx-font-color: #575454;
+}
+
+.button {
+    -fx-background-color: #38686A;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: white;
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 14px;
+}
+
+.delete-button {
+    -fx-background-color: #EF3E3E;
+}
+
+.container {
+    -fx-background-color: #EFDBBD;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 5px;
+    -fx-border-color: #7D694D;
+}

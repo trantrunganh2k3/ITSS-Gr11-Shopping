@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="50.0" prefWidth="847.0"
+            styleClass="container" stylesheets="@../../../resource/styles/fridgeIngredient.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+>
+   <Label fx:id="nameLbl" layoutX="21.0" layoutY="11.0" prefHeight="27.0" prefWidth="122.0" styleClass="name"
+          text="Label" AnchorPane.leftAnchor="21.0"/>
+   <Label fx:id="quantityLbl" layoutX="177.0" layoutY="11.0" prefHeight="26.0" prefWidth="116.0" styleClass="quantity"
+          text="Label"/>
+   <Label fx:id="categoryLbl" layoutX="362.0" layoutY="11.0" prefHeight="27.0" prefWidth="122.0" styleClass="category"
+          text="Label"/>
+   <Label fx:id="expirydateLbl" layoutX="558.0" layoutY="11.0" prefHeight="27.0" prefWidth="103.0"
+          styleClass="expiry-date" text="Label"/>
+</AnchorPane>

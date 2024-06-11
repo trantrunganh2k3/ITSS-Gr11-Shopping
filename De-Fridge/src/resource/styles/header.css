@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/Merriweather-Regular.ttf');
+}
+
+.logo {
+   -fx-font-size: 24px;
+   -fx-font-family: "Merriweather";
+   -fx-text-fill: #7D694D;
+}
+
+.container {
+    -fx-border-width: 0 0 2px 0;                                /* Border width only on the bottom */
+    -fx-border-style: solid;
+    -fx-border-color: #7D694D;
+}

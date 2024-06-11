@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="262.0" spacing="20.0" stylesheets="@../../resource/styles/navBar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NavBarController">
+   <padding>
+      <Insets bottom="20.0" left="25.0" right="25.0" top="35.0" />
+   </padding>
+   <VBox prefHeight="302.0" prefWidth="250.0" styleClass="top-nav">
+      <AnchorPane fx:id="navFridge" prefHeight="75.0" prefWidth="201.0">
+         <Label layoutX="14.0" layoutY="27.0" styleClass="nav-label" text="Fridge" />
+         <ImageView fitHeight="34.0" fitWidth="28.0" layoutX="171.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0">
+            <Image url="@../../resource/icons/fridge.png" />
+         </ImageView>
+      </AnchorPane>
+      <AnchorPane fx:id="navList" prefHeight="75.0" prefWidth="201.0">
+         <Label layoutX="14.0" layoutY="27.0" styleClass="nav-label" text="Shopping list" />
+         <ImageView fitHeight="26.0" fitWidth="35.0" layoutX="166.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0">
+            <Image url="@../../resource/icons/shoppingList.png" />
+         </ImageView>
+      </AnchorPane>
+      <AnchorPane fx:id="navRecipe" prefHeight="75.0" prefWidth="201.0">
+         <Label layoutX="14.0" layoutY="26.0" styleClass="nav-label" text="Recipe" />
+         <ImageView fitHeight="26.0" fitWidth="42.0" layoutX="154.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="7.0">
+            <Image url="@../../resource/icons/recipe.png" />
+         </ImageView>
+      </AnchorPane>
+      <AnchorPane fx:id="navReport" prefHeight="75.0" prefWidth="201.0">
+         <Label layoutX="14.0" layoutY="27.0" styleClass="nav-label" text="Report/Statistics" />
+         <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="167.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.741177368164074">
+            <Image url="@../../resource/icons/statistics.png" />
+         </ImageView>
+      </AnchorPane>
+   </VBox>
+   <VBox prefHeight="176.0" prefWidth="213.0" styleClass="bot-nav">
+      <AnchorPane prefHeight="61.0" prefWidth="200.0">
+         <Label layoutX="14.0" layoutY="20.0" styleClass="nav-label" text="My group" />
+         <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="169.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0">
+            <Image url="@../../resource/icons/group.png" />
+         </ImageView>
+      </AnchorPane>
+      <AnchorPane prefHeight="62.0" prefWidth="213.0">
+         <Label layoutX="14.0" layoutY="18.0" styleClass="nav-label" text="My account" />
+         <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="166.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="20.80000000000001">
+            <Image url="@../../resource/icons/personal.png" />
+         </ImageView>
+      </AnchorPane>
+      <AnchorPane prefHeight="61.0" prefWidth="213.0">
+         <Label layoutX="14.0" layoutY="13.0" styleClass="nav-label" text="Logout" />
+         <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="173.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../resource/icons/logout.png" />
+         </ImageView>
+      </AnchorPane>
+   </VBox>
+</VBox>

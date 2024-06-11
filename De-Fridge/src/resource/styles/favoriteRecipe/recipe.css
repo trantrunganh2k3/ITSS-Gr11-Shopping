@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../fonts/Montserrat-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../fonts/Roboto-Regular.ttf');
+}
+
+.container {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.recipe-info {
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-border-color: #7D694D;
+    -fx-background-color: #EFDBBD;
+    -fx-background-radius: 10px;
+}
+
+
+
+.button {
+    -fx-font-family: 'Roboto';
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 10px;
+    -fx-background-color: #38686A;
+}
+
+.recipe-title {
+    -fx-font-family: 'Montserrat';
+    -fx-text-fill: #575454;
+    -fx-font-size: 14px;
+}
+
+
+.recipe-desp {
+    -fx-font-family: 'Inter';
+    -fx-text-fill: #575454;
+    -fx-font-size: 10px;
+}
