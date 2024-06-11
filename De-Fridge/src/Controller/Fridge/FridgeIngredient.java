@@ -1,6 +1,7 @@
 package Controller.Fridge;
 
 //import Model.Ingredient;
+import Model.Ingredient;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,19 +14,22 @@ public class FridgeIngredient implements Initializable {
     public Label nameLbl;
     public Label quantityLbl;
     public Label categoryLbl;
-    public Label expirydateLbl;
+    public Label expiryDateLbl;
 
-   // private final Ingredient ingredient;
+    public Label unitLbl;
 
-    /*public FridgeIngredient(Ingredient ingredient) {
+   private final Ingredient ingredient;
+
+    public FridgeIngredient(Ingredient ingredient) {
         this.ingredient = ingredient;
-    }*/
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*nameLbl.setText(ingredient.getName());
+        nameLbl.setText(ingredient.getName());
         quantityLbl.setText(String.valueOf(ingredient.getQuantity()));
         categoryLbl.setText(ingredient.getCategory());
-        expirydateLbl.setText(ingredient.getExpiryDay());*/
+        expiryDateLbl.setText(ingredient.getExpiryDay());
+        unitLbl.setText(ingredient.getUnit());
     }
 
 }

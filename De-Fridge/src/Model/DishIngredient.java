@@ -3,8 +3,18 @@ package Model;
 public class DishIngredient {
     private int dishID;
     private String ingredientName;
-    private int quantity;
+    private double quantity = 0;
     private String unit;
+
+    private int ingredientId;
+
+    public void setIngredientId (int ingredientId) {
+        this.ingredientId = ingredientId;
+    }
+
+    public int getIngredientId () {
+        return this.ingredientId;
+    }
 
     public int getDishID() {
         return dishID;
@@ -22,11 +32,11 @@ public class DishIngredient {
         this.ingredientName = ingredientName;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 

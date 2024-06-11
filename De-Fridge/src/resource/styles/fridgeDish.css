@@ -80,8 +80,8 @@
 }
 
 .scroll-bar:vertical .thumb {
-    -fx-background-color: #38686A;   /* Dark gray background for the thumb */
-    -fx-background-insets: 2px;      /* Add some inset around the thumb */
+    -fx-background-color: #38686A;
+    -fx-background-insets: 2px;
 }
 
 .scroll-bar:horizontal {

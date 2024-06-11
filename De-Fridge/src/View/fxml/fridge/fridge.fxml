@@ -8,15 +8,15 @@
 
 <BorderPane fx:id="fridgeView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="928.0" styleClass="container" stylesheets="@../../../resource/styles/fridge.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Fridge.FridgeController">
    <top>
-      <AnchorPane prefHeight="67.0" prefWidth="928.0" BorderPane.alignment="CENTER">
-         <Button fx:id="fridgeItemBtn" layoutX="22.0" layoutY="22.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="81.0">
+      <AnchorPane prefHeight="84.0" prefWidth="928.0" BorderPane.alignment="CENTER">
+         <Button fx:id="fridgeItemBtn" layoutX="26.0" layoutY="32.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="35.0">
             <graphic>
-               <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../../../resource/icons/fridge-white.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button fx:id="fridgeDishBtn" layoutX="123.0" layoutY="23.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="90.0">
+         <Button fx:id="fridgeDishBtn" layoutX="122.0" layoutY="32.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" AnchorPane.topAnchor="35.0">
             <graphic>
                <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../../../resource/icons/dish.png" />

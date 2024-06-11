@@ -11,7 +11,7 @@
    <padding>
       <Insets bottom="20.0" left="25.0" right="25.0" top="35.0" />
    </padding>
-   <VBox prefHeight="302.0" prefWidth="250.0" styleClass="top-nav">
+   <VBox prefHeight="298.0" prefWidth="213.0" styleClass="top-nav">
       <AnchorPane fx:id="navFridge" prefHeight="75.0" prefWidth="201.0">
          <Label layoutX="14.0" layoutY="27.0" styleClass="nav-label" text="Fridge" />
          <ImageView fitHeight="34.0" fitWidth="28.0" layoutX="171.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0">
@@ -30,7 +30,7 @@
             <Image url="@../../resource/icons/recipe.png" />
          </ImageView>
       </AnchorPane>
-      <AnchorPane fx:id="navReport" prefHeight="75.0" prefWidth="201.0">
+      <AnchorPane fx:id="navReport" prefHeight="75.0" prefWidth="213.0">
          <Label layoutX="14.0" layoutY="27.0" styleClass="nav-label" text="Report/Statistics" />
          <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="167.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.741177368164074">
             <Image url="@../../resource/icons/statistics.png" />
@@ -38,7 +38,7 @@
       </AnchorPane>
    </VBox>
    <VBox prefHeight="176.0" prefWidth="213.0" styleClass="bot-nav">
-      <AnchorPane prefHeight="61.0" prefWidth="200.0">
+      <AnchorPane fx:id="navGroup" prefHeight="61.0" prefWidth="200.0">
          <Label layoutX="14.0" layoutY="20.0" styleClass="nav-label" text="My group" />
          <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="169.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0">
             <Image url="@../../resource/icons/group.png" />

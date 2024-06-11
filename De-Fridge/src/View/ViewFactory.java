@@ -1,7 +1,7 @@
 package View;
 
-import Controller.AddDishController;
-import Controller.DishDetailController;
+import Controller.Fridge.AddDishController;
+import Controller.Fridge.DishDetailController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +24,8 @@ public class ViewFactory {
     private AnchorPane fridgeDishView;
     private AnchorPane dishDetailView;
     private FXMLLoader fridgeItem;
+    private BorderPane groupView;
+    private AnchorPane groupMemberView;
 
     private final StringProperty homeSelectView;
 
@@ -97,33 +99,13 @@ public class ViewFactory {
     public void showAddDishView(AddDishController controller){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/fridge/addDish.fxml"));
         loader.setController(controller);
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.setTitle("De-fridge");
-        stage.show();
+        createStage(loader);
     }
 
     public void showDishDetailView(DishDetailController controller){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/fridge/dishDetail.fxml"));
         loader.setController(controller);
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.setTitle("De-fridge");
-        stage.show();
+        createStage(loader);
     }
 
     public VBox getSignupView() {
@@ -177,7 +159,26 @@ public class ViewFactory {
         }
         return this.reportView;
     }
-
+    public BorderPane getGroupView () {
+        if (groupView == null) {
+            try {
+                groupView = new FXMLLoader(getClass().getResource("fxml/group/group.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return this.groupView;
+    }
+    public AnchorPane getGroupMemberView() {
+        if (groupMemberView == null) {
+            try {
+                groupMemberView = new FXMLLoader(getClass().getResource("fxml/group/groupMember.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return groupMemberView;
+    }
 
 
 
