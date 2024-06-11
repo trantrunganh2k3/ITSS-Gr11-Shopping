@@ -24,6 +24,8 @@ public class ViewFactory {
     private AnchorPane fridgeDishView;
     private AnchorPane dishDetailView;
     private FXMLLoader fridgeItem;
+    private BorderPane groupView;
+    private AnchorPane groupMemberView;
 
     private final StringProperty homeSelectView;
 
@@ -177,7 +179,26 @@ public class ViewFactory {
         }
         return this.reportView;
     }
-
+    public BorderPane getGroupView () {
+        if (groupView == null) {
+            try {
+                groupView = new FXMLLoader(getClass().getResource("fxml/group/group.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return this.groupView;
+    }
+    public AnchorPane getGroupMemberView() {
+        if (groupMemberView == null) {
+            try {
+                groupMemberView = new FXMLLoader(getClass().getResource("fxml/group/groupMember.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return groupMemberView;
+    }
 
 
 
