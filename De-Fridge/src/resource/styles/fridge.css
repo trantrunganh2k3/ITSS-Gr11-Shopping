@@ -1,0 +1,23 @@
+.button {
+    -fx-background-color: #38686A;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+
+.container {
+    -fx-background-color: #ffffff;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/Merriweather-Regular.ttf');
+}
+
+.button-title {
+    -fx-background-color: #38686A;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-font-family: 'Merriweather';
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}

@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/Merriweather-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/Merriweather-Bold.ttf');
+}
+
+.title {
+    -fx-font-family: 'Merriweather';
+    -fx-font-size: 36px;
+    -fx-text-fill: #FFF6E9;
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+}
+
+.sub-title {
+    -fx-font-family: 'Merriweather';
+    -fx-font-size: 28px;
+    -fx-text-fill: #FFF6E9;
+}
+

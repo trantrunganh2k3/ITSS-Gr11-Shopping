@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+
+
+.container {
+    -fx-background-color: white;
+}
+
+.meal-title {
+    -fx-background-color: #38686A;
+    -fx-background-radius: 10px ;
+    -fx-border-radius: 10px ;
+    -fx-max-height: 76px;
+}
+
+.title {
+    -fx-font-family: 'Roboto';
+    -fx-text-fill: white;
+    -fx-font-size: 19px;
+
+}
+
+
+
+.date-picker > .arrow-button {
+
+    -fx-padding: 5px;     /* Add padding for visual width increase */
+    -fx-background-color: #38686A; /* Maintain transparency for default look */
+    -fx-text-fill: white;
+    -fx-font-size: 40px;
+}
+
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-radius: 10px;
+    -fx-font-size: 18px;
+}
+
+.date-picker:selected {
+    -fx-background-color: white;
+    -fx-border-radius: 0;}
+
+.date-picker .arrow {
+    -fx-background-color: white;
+}
+
+.date-picker-popup {
+    -fx-background-color: #ffffff;
+}
+
+.month-year-pane .label {
+    -fx-text-fill: white;
+}
+
+.month-year-pane {
+    -fx-background-color: #38686A;
+    -fx-text-fill: white;
+}
+
+
+.date-picker-popup  .calendar-view  .day-cell:selected {
+    -fx-background-color: #38686A;
+}
+
+
+.scroll-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 15px 15px;
+    -fx-border-radius:  0 0 15px 15px;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: white;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #38686A;   /* Dark gray background for the thumb */
+    -fx-background-insets: 2px;      /* Add some inset around the thumb */
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #38686A;   /* Dark gray background for the thumb */
+    -fx-background-insets: 2px;      /* Add some inset around the thumb */
+}

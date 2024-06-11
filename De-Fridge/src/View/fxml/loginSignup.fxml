@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="loginSignupView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../resource/styles/loginSignupContainer.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginSignupController">
+   <left>
+      <AnchorPane prefHeight="700.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <ImageView fitHeight="700.0" fitWidth="502.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Image url="@../../resource/Images/loginSignupBackground.png" />
+         </ImageView>
+         <Circle fill="#f8eddd" layoutX="93.0" layoutY="223.0" radius="44.0" stroke="#b7a488" strokeType="INSIDE" />
+         <Label layoutX="158.0" layoutY="210.0" prefHeight="39.0" prefWidth="216.0" styleClass="title" text="De - fridge">
+            <font>
+               <Font size="1.0" />
+            </font>
+         </Label>
+         <Label layoutX="54.0" layoutY="281.0" prefHeight="39.0" prefWidth="423.0" styleClass="sub-title" text="A &quot;cool&quot; digital fridge for you" />
+      </AnchorPane>
+   </left>
+   <center>
+      <fx:include source="login.fxml" />
+   </center>
+</BorderPane>
