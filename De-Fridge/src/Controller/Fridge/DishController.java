@@ -2,7 +2,6 @@ package Controller.Fridge;
 
 import Model.Dish;
 import Model.Model;
-import com.sun.webkit.Timer;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

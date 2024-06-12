@@ -9,17 +9,17 @@
 <BorderPane fx:id="groupView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="928.0" styleClass="container" stylesheets="@../../../resource/styles/fridge.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Group.GroupController">
    <top>
       <AnchorPane prefHeight="67.0" prefWidth="928.0" BorderPane.alignment="CENTER">
-         <Button fx:id="groupMember" layoutX="22.0" layoutY="22.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="81.0">
+         <Button fx:id="groupMemberBtn" layoutX="22.0" layoutY="22.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="81.0">
             <graphic>
                <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../../../resource/icons/fridge-white.png" />
+                  <Image url="@../../resource/icons/group.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button fx:id="fridgeDishBtn" layoutX="123.0" layoutY="23.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="90.0">
+         <Button fx:id="groupReportBtn" layoutX="123.0" layoutY="23.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0">
             <graphic>
-               <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../../../resource/icons/dish.png" />
+               <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../../resource/icons/group.png" />
                </ImageView>
             </graphic>
          </Button>
