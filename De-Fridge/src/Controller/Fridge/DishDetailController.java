@@ -22,7 +22,7 @@ public class DishDetailController implements Initializable {
     public Button editBtn;
     public Button cancelBtn;
 
-    private final Dish dish;
+    private Dish dish;
     public ObservableList<DishIngredient> ingredients;
     private final DishController controller;
 
@@ -57,7 +57,49 @@ public class DishDetailController implements Initializable {
         nameLbl.setText(this.dish.getName());
         sectionCB.getItems().addAll("Breakfast","Lunch","Dinner");
         sectionCB.setValue(this.dish.getMeal());
-        ingredients = FXCollections.observableArrayList(dish.getIngredients());
+        ingredients = FXCollections.observableArrayList();
+        for (DishIngredient ingredient: dish.getIngredients()){
+            DishIngredient dishIngredient = new DishIngredient();
+            dishIngredient.setQuantity(ingredient.getQuantity());
+            dishIngredient.setIngredientId(ingredient.getIngredientId());
+            dishIngredient.setUnit(ingredient.getUnit());
+            dishIngredient.setDishID(ingredient.getDishID());
+            dishIngredient.setIngredientName(ingredient.getIngredientName());
+            ingredients.add(dishIngredient);
+        }
+        ingredientLV.setItems(ingredients);
+        ingredientLV.setCellFactory(lv -> new ListCell<DishIngredient>() {
+
+            @Override
+            protected void updateItem(DishIngredient item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/fridge/dishIngredient.fxml"));
+                    DishIngredientController controller = new DishIngredientController(DishDetailController.this, item);
+                    loader.setController(controller);
+                    setText(null);
+                    try {
+                        setGraphic(loader.load());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    setDisable(true);
+                }
+            }
+        });
+        ingredientLV.setEditable(false);
+        nameLbl.setEditable(false);
+        addIngredientBtn.setVisible(false);
+        cancelBtn.setVisible(false);
+        saveBtn.setVisible(false);
+        sectionCB.setDisable(true);
+        editBtn.setVisible(true);
+    }
+
+    private void edit () {
         ingredientLV.setItems(ingredients);
         ingredientLV.setCellFactory(lv -> new ListCell<DishIngredient>() {
 
@@ -80,17 +122,6 @@ public class DishDetailController implements Initializable {
                 }
             }
         });
-        ingredientLV.refresh();
-        ingredientLV.setEditable(false);
-        nameLbl.setEditable(false);
-        addIngredientBtn.setVisible(false);
-        cancelBtn.setVisible(false);
-        saveBtn.setVisible(false);
-        sectionCB.setDisable(true);
-        editBtn.setVisible(true);
-    }
-
-    private void edit () {
         ingredientLV.setEditable(true);
         nameLbl.setEditable(true);
         addIngredientBtn.setVisible(true);
