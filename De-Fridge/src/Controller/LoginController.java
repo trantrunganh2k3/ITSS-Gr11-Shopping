@@ -20,7 +20,7 @@ public class LoginController implements Initializable {
 
     private void addListener () {
         signupLbl.setOnMouseClicked(mouseEvent -> toSignup());
-        loginBtn.setOnAction(event -> toHome());
+        loginBtn.setOnAction(event -> toAdminHome());
     }
 
     private void toSignup () {
