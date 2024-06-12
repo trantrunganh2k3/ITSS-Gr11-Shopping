@@ -10,6 +10,8 @@ public class Dish {
     private String username;
     private String fridgeID;
 
+    public Dish(){}
+
     private List<DishIngredient> ingredients;
 
     public List<DishIngredient> getIngredients() {

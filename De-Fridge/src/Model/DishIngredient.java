@@ -5,8 +5,9 @@ public class DishIngredient {
     private String ingredientName;
     private double quantity = 0;
     private String unit;
-
     private int ingredientId;
+
+    public DishIngredient(){}
 
     public void setIngredientId (int ingredientId) {
         this.ingredientId = ingredientId;

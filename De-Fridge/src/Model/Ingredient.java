@@ -10,6 +10,19 @@ public class Ingredient {
     private String expiryDay;
     private int fridgeID;
 
+    public Ingredient(){}
+
+    public Ingredient(int ingredientID, String name, String category, double quantity, String unit, String purchaseDay, String expiryDay, int fridgeID){
+        this.ingredientID = ingredientID;
+        this.name = name;
+        this.category = category;
+        this.quantity = quantity;
+        this.unit = unit;
+        this.purchaseDay = purchaseDay;
+        this.expiryDay = expiryDay;
+        this.fridgeID = fridgeID;
+    }
+
     public int getIngredientID() {
         return ingredientID;
     }

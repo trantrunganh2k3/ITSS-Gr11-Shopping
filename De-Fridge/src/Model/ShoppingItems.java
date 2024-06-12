@@ -2,6 +2,7 @@ package Model;
 
 public class ShoppingItems {
     private int itemID;
+    private String itemName;
     private int quantity;
     private int subCost;
     private String boughtBy;
@@ -9,6 +10,18 @@ public class ShoppingItems {
     private String category;
     private String unit;
 
+    public ShoppingItems(){}
+
+    public ShoppingItems(int itemID, String itemName, int quantity, int subCost, String boughtBy, int listID, String category, String unit){
+        this.itemID = itemID;
+        this.itemName = itemName;
+        this.quantity = quantity;
+        this.subCost = subCost;
+        this.boughtBy = boughtBy;
+        this.listID = listID;
+        this.category = category;
+        this.unit = unit;
+    }
     public int getItemID() {
         return itemID;
     }
@@ -63,5 +76,13 @@ public class ShoppingItems {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 }
