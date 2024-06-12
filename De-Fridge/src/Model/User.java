@@ -30,6 +30,15 @@ public class User {
         this.email = email;
         this.status = "Active";
     }
+
+    public User(String username, String name, String gender, String email, String address, String status){
+        this.username = username;
+        this.name = name;
+        this.gender = gender;
+        this.email = email;
+        this.address = address;
+        this.status = status;
+    }
     public String getUsername() {
         return username;
     }
