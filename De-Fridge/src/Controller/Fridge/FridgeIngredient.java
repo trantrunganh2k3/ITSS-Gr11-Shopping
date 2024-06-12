@@ -2,7 +2,6 @@ package Controller.Fridge;
 
 //import Model.Ingredient;
 import Model.Ingredient;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 

@@ -61,7 +61,12 @@ public class DishIngredientController implements Initializable {
 
         });
         quantityInput.textProperty().addListener((observable, oldValue, newValue) -> {
-            this.ingredient.setQuantity(Double.valueOf(newValue));
+            try {
+                Double.parseDouble(newValue);
+                this.ingredient.setQuantity(Double.parseDouble(newValue));
+            } catch (NumberFormatException e) {
+                this.ingredient.setQuantity(0);
+            }
         });
     }
 
