@@ -8,7 +8,17 @@ public class Dish {
     private String meal;
     private String forDate;
     private String username;
-    private String fridgeID;
+    private int fridgeID;
+
+    public Dish(){}
+
+    public Dish(int dishID, String name, String meal, String username, int fridgeID){
+        this.dishID = dishID;
+        this.name = name;
+        this.meal = meal;
+        this.username = username;
+        this.fridgeID = fridgeID;
+    }
 
     private List<DishIngredient> ingredients;
 
@@ -59,11 +69,11 @@ public class Dish {
         this.username = username;
     }
 
-    public String getFridgeID() {
+    public int getFridgeID() {
         return fridgeID;
     }
 
-    public void setFridgeID(String fridgeID) {
+    public void setFridgeID(int fridgeID) {
         this.fridgeID = fridgeID;
     }
 }

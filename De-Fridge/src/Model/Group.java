@@ -6,6 +6,14 @@ public class Group {
     private String leaderUN;
     private String createDate;
 
+    public Group(){}
+
+    public Group(int groupID, String groupName, String leaderUN, String createDate){
+        this.groupID = groupID;
+        this.groupName = groupName;
+        this.leaderUN = leaderUN;
+        this.createDate = createDate;
+    }
     public int getGroupID() {
         return groupID;
     }

@@ -5,6 +5,13 @@ public class Fridge {
     private int groupID;
     private String username;
 
+    public Fridge(){}
+
+    public Fridge(int fridgeID, int groupID, String username){
+        this.fridgeID = fridgeID;
+        this.groupID = groupID;
+        this.username = username;
+    }
     public int getFridgeID() {
         return fridgeID;
     }

@@ -9,7 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="635.0" prefWidth="928.0" styleClass="container" stylesheets="@../../../resource/styles/userAccounts.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="635.0" prefWidth="928.0" styleClass="container" stylesheets="@../../../resource/styles/userAccounts.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="Controller.Admin.UserAccountController"
+>
    <children>
       <TextField fx:id="searchTf" layoutX="45.0" layoutY="26.0" prefHeight="48.0" prefWidth="510.0" styleClass="search-input" />
       <Button fx:id="searchBtn" layoutX="571.0" layoutY="25.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="68.0" styleClass="search-button">
@@ -28,9 +30,9 @@
       </ScrollPane>
       <AnchorPane layoutX="45.0" layoutY="104.0" prefHeight="50.0" prefWidth="826.0" styleClass="title-bar">
          <children>
-            <Label layoutX="26.0" layoutY="13.0" styleClass="title" text="Username" />
+            <Label layoutX="26.0" layoutY="13.0" styleClass="title" text="Username" AnchorPane.leftAnchor="26.0" />
             <Label layoutX="191.0" layoutY="13.0" styleClass="title" text="Email" />
-            <Label layoutX="466.0" layoutY="13.0" styleClass="title" text="Group" />
+            <Label layoutX="466.0" layoutY="13.0" styleClass="title" text="Name" />
             <Label layoutX="594.0" layoutY="13.0" styleClass="title" text="Status" />
          </children>
       </AnchorPane>

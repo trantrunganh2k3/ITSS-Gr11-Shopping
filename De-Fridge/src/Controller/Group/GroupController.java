@@ -1,29 +1,30 @@
 package Controller.Group;
 
 import Model.Model;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GroupController implements Initializable {
+    public Button groupMemberBtn;
+    public Button groupReportBtn;
     public BorderPane groupView;
-    public Button groupMember;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addListener();
     }
     private void addListener () {
-        groupMember.setOnAction(event -> onMember());
+        groupReportBtn.setOnAction(event -> onGroupReport());
+        groupMemberBtn.setOnAction(event -> onGroupMember());
     }
-    private void onMember () {
+    private void onGroupMember () {
         groupView.setCenter(Model.getInstance().getViewFactory().getGroupMemberView());
+    }
+    private void onGroupReport () {
+        groupView.setCenter(Model.getInstance().getViewFactory().getgroupReportView());
     }
 }

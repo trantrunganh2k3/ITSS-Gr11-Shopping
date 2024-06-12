@@ -2,17 +2,19 @@ package Model;
 
 public class FavoriteRecipe {
     private int recipeID;
+    private String name;
     private String description;
     private String ingredient;
     private String username;
 
-    private String name;
+    public FavoriteRecipe(){}
 
-    public void setName(String name) {
+    public FavoriteRecipe(int recipeID, String name, String description, String ingredient, String username){
+        this.recipeID = recipeID;
         this.name = name;
-    }
-    public String getName() {
-        return this.name;
+        this.description = description;
+        this.ingredient = ingredient;
+        this.username = username;
     }
 
     public int getRecipeID() {
@@ -45,5 +47,13 @@ public class FavoriteRecipe {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
