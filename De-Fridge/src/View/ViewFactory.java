@@ -215,7 +215,7 @@ public class ViewFactory {
     }
 
     public void showAdHome(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/admin/userAccounts.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/homeAd.fxml"));
         createStage(loader);
     }
     public void showLoginSignup () {
