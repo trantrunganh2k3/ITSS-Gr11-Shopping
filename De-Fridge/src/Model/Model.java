@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.FavoriteRecipe.FavoriteRecipeController;
 import View.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,8 @@ public class Model {
     private ObservableList<Ingredient> ingredients;
     private ObservableList<Dish> dishes;
 
+    private ObservableList<FavoriteRecipe> recipes;
+
     public Model() {
         this.viewFactory = new ViewFactory();
     }
@@ -27,6 +30,36 @@ public class Model {
 
     public ViewFactory getViewFactory() {
         return viewFactory;
+    }
+
+    public ObservableList<FavoriteRecipe> getRecipes() {
+        if (recipes == null) {
+            setRecipes();
+        }
+        return recipes;
+    }
+
+    public void setRecipes() {
+        recipes = FXCollections.observableArrayList();
+        FavoriteRecipe recipe1 = new FavoriteRecipe();
+        FavoriteRecipe recipe2 = new FavoriteRecipe();
+        FavoriteRecipe recipe3 = new FavoriteRecipe();
+
+        recipe1.setName("Pho bo");
+        recipe1.setDescription("Cach lam");
+        recipe1.setIngredient("Beef: 2,5kg\nOnion");
+
+        recipe2.setName("Pizza");
+        recipe2.setIngredient("Bough: 500g\nCheese: ...\nTomato source: 2 can");
+        recipe2.setDescription("Step by step");
+
+        recipe3.setName("Omelette");
+        recipe3.setIngredient("Egg: 2 eggs\nOil: 500ml.");
+        recipe3.setDescription("Simple but nutrition.");
+
+        recipes.add(recipe1);
+        recipes.add(recipe2);
+        recipes.add(recipe3);
     }
 
     public void setIngredients() {

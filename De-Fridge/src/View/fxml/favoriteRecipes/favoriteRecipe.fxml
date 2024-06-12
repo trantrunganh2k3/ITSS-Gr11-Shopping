@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane prefHeight="635.0" prefWidth="938.0" styleClass="container" stylesheets="@../../../resource/styles/favoriteRecipe.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FavoriteRecipeController">
+<AnchorPane prefHeight="635.0" prefWidth="938.0" styleClass="container" stylesheets="@../../../resource/styles/favoriteRecipe.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FavoriteRecipe.FavoriteRecipeController">
    <Button layoutX="592.0" layoutY="45.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="58.0" styleClass="search-button">
       <graphic>
          <ImageView fitHeight="33.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">

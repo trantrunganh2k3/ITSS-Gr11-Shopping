@@ -6,6 +6,15 @@ public class FavoriteRecipe {
     private String ingredient;
     private String username;
 
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return this.name;
+    }
+
     public int getRecipeID() {
         return recipeID;
     }

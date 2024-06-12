@@ -6,16 +6,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="230.0" prefWidth="200.0" styleClass="container" stylesheets="@../../../resource/styles/recipe.css"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller.RecipeController"
->
-    <ImageView fitHeight="157.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Image url="@../../../resource/Images/Pho.png" />
-    </ImageView>
-    <AnchorPane layoutX="-6.0" layoutY="53.0" prefHeight="107.0" prefWidth="200.0" styleClass="recipe-info" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <Label fx:id="lblTitle" layoutX="16.8" layoutY="12.0" prefHeight="18.0" prefWidth="149.0" styleClass="recipe-title" text="Pho" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
-        <Label fx:id="lblDes" alignment="TOP_LEFT" layoutX="27.2" layoutY="36.0" prefHeight="37.0" prefWidth="149.0" styleClass="recipe-desp" text="Label" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="25.0" />
-        <Button fx:id="btnDetail" layoutX="13.0" layoutY="74.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="174.0" text="See detail" AnchorPane.bottomAnchor="8.0" />
+<AnchorPane prefHeight="230.0" prefWidth="200.0" styleClass="container" stylesheets="@../../../resource/styles/recipe.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+    <AnchorPane layoutX="-6.0" layoutY="53.0" prefHeight="230.0" prefWidth="200.0" styleClass="recipe-info" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <Label fx:id="lblTitle" layoutX="17.6" layoutY="12.8" prefHeight="30.0" prefWidth="170.0" styleClass="recipe-title" text="Title" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="12.0" />
+        <Label fx:id="lblIngredient" alignment="TOP_LEFT" layoutX="16.8" layoutY="52.0" prefHeight="133.0" prefWidth="166.0" styleClass="recipe-desp" text="Ingredient" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="18.0" />
+        <Button fx:id="btnDetail" layoutX="13.0" layoutY="74.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="See detail" AnchorPane.bottomAnchor="12.0" />
+      <Button fx:id="cancelBtn" layoutX="138.0" layoutY="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="48.0" styleClass="delete-button" AnchorPane.bottomAnchor="13.0">
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resource/icons/bin.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </AnchorPane>
 </AnchorPane>

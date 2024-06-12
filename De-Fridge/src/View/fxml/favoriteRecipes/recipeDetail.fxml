@@ -6,21 +6,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="481.0" prefWidth="660.0" styleClass="container"
-            stylesheets="@../../../resource/styles/recipeDetail.css" xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RecipeDetailController">
-   <TextArea layoutX="46.0" layoutY="271.0" prefHeight="122.0" prefWidth="568.0" styleClass="input"
-             AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0"/>
-   <TextArea layoutX="46.0" layoutY="113.0" prefHeight="122.0" prefWidth="550.0" styleClass="input"
-             AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0"/>
-   <TextField layoutX="45.0" layoutY="43.0" prefHeight="26.0" prefWidth="549.0" styleClass="input"
-              AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="44.59999999999991"/>
-   <Button layoutX="414.0" layoutY="418.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Save"/>
-   <Button layoutX="526.0" layoutY="418.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Edit"/>
-   <Button layoutX="300.0" layoutY="418.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0"
-           styleClass="cancel-button" text="Cancel"/>
-   <Label layoutX="45.0" layoutY="14.0" styleClass="input-title" text="Name"/>
-   <Label layoutX="46.0" layoutY="87.0" styleClass="input-title" text="Ingredients"/>
-   <Label layoutX="46.0" layoutY="245.0" styleClass="input-title" text="Description"/>
+<AnchorPane prefHeight="481.0" prefWidth="660.0" styleClass="container" stylesheets="@../../../resource/styles/recipeDetail.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <TextArea fx:id="descriptionLbl" layoutX="46.0" layoutY="271.0" prefHeight="122.0" prefWidth="568.0" styleClass="input" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" />
+   <TextArea fx:id="ingredientLbl" layoutX="46.0" layoutY="113.0" prefHeight="122.0" prefWidth="550.0" styleClass="input" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" />
+   <TextField fx:id="nameLbl" layoutX="45.0" layoutY="43.0" prefHeight="26.0" prefWidth="549.0" styleClass="input" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="44.59999999999991" />
+   <Button fx:id="saveBtn" layoutX="414.0" layoutY="418.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="save-button" text="Save" />
+   <Button fx:id="editBtn" layoutX="526.0" layoutY="418.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="save-button" text="Edit" />
+   <Button fx:id="cancelBtn" layoutX="300.0" layoutY="418.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" styleClass="cancel-button" text="Cancel" />
+   <Label layoutX="45.0" layoutY="14.0" styleClass="input-title" text="Name" />
+   <Label layoutX="46.0" layoutY="87.0" styleClass="input-title" text="Ingredients" />
+   <Label layoutX="46.0" layoutY="245.0" styleClass="input-title" text="Description" />
 </AnchorPane>

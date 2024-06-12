@@ -1,5 +1,6 @@
 package View;
 
+import Controller.FavoriteRecipe.RecipeDetailController;
 import Controller.Fridge.AddDishController;
 import Controller.Fridge.DishDetailController;
 import javafx.beans.property.SimpleStringProperty;
@@ -93,6 +94,14 @@ public class ViewFactory {
             }
         }
         return fridgeItem;
+    }
+
+
+
+    public void showRecipeDetail (RecipeDetailController controller){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/favoriteRecipes/recipeDetail.fxml"));
+        loader.setController(controller);
+        createStage(loader);
     }
 
 
