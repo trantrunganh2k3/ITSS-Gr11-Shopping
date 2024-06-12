@@ -186,6 +186,11 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/home.fxml"));
         createStage(loader);
     }
+
+    public void showAdHome(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/admin/userAccounts.fxml"));
+        createStage(loader);
+    }
     public void showLoginSignup () {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/loginSignup.fxml"));
         createStage(loader);

@@ -9,6 +9,14 @@ public class DishIngredient {
 
     public DishIngredient(){}
 
+    public DishIngredient(int dishID, String ingredientName, double quantity, String unit, int ingredientId){
+        this.dishID = dishID;
+        this.ingredientId = ingredientId;
+        this.quantity = quantity;
+        this.ingredientName = ingredientName;
+        this.unit = unit;
+    }
+
     public void setIngredientId (int ingredientId) {
         this.ingredientId = ingredientId;
     }

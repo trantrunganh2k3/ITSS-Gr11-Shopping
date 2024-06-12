@@ -14,6 +14,8 @@ public class Model {
     private ObservableList<Ingredient> ingredients;
     private ObservableList<Dish> dishes;
 
+    private ObservableList<User> users;
+
     public Model() {
         this.viewFactory = new ViewFactory();
     }
@@ -97,5 +99,18 @@ public class Model {
         this.dishes.add(dish1);
         //this.dishes.add(dish2);
         //this.dishes.add(dish3);
+    }
+
+    public void setUser(){
+        users = FXCollections.observableArrayList();
+        User user1 = new User("admin", "admin", "Admin", "Male", "admin@gmail.com", "Ha Noi", 0, "Active");
+        User user2 = new User("trunganh", "123456", "Trung Anh", "Male", "trunganh@gmail.com", "Ha Noi", 0, "Active");
+        this.users.add(user1);
+        this.users.add(user2);
+    }
+
+    public ObservableList<User> getUsers(){
+        if (users == null) setUser();
+        return this.users;
     }
 }
