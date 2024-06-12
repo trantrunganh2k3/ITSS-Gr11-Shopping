@@ -31,4 +31,10 @@ public class LoginController implements Initializable {
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showHome();
     }
+
+    private void toAdminHome(){
+        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showAdHome();
+    }
 }
