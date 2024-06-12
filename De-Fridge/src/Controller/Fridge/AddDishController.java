@@ -3,7 +3,6 @@ package Controller.Fridge;
 import Model.Dish;
 import Model.DishIngredient;
 import Model.Model;
-import com.sun.webkit.Timer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;

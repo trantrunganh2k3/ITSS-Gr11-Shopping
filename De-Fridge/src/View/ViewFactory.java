@@ -2,6 +2,7 @@ package View;
 
 import Controller.Fridge.AddDishController;
 import Controller.Fridge.DishDetailController;
+import Controller.Group.AddMemberController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,7 @@ public class ViewFactory {
     private FXMLLoader fridgeItem;
     private BorderPane groupView;
     private AnchorPane groupMemberView;
+    private AnchorPane groupReportView;
 
     private final StringProperty homeSelectView;
 
@@ -178,6 +180,22 @@ public class ViewFactory {
             }
         }
         return groupMemberView;
+    }
+    public void showAddMemberView(AddMemberController controller){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/group/addMember.fxml"));
+        loader.setController(controller);
+        createStage(loader);
+    }
+    
+    public AnchorPane getgroupReportView () {
+        if (groupReportView == null) {
+            try {
+                groupReportView = new FXMLLoader(getClass().getResource("fxml/group/groupReport.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return this.groupReportView;
     }
 
 
