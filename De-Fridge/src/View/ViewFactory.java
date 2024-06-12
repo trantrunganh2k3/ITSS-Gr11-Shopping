@@ -30,6 +30,8 @@ public class ViewFactory {
     private AnchorPane groupMemberView;
     private AnchorPane groupReportView;
 
+    private AnchorPane listUserView;
+
     private final StringProperty homeSelectView;
 
 
@@ -244,4 +246,14 @@ public class ViewFactory {
         stage.close();
     }
 
+    public AnchorPane getListUserView() {
+        if (listUserView == null) {
+            try {
+                listUserView = new FXMLLoader(getClass().getResource("fxml/admin/userAccounts.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return this.listUserView;
+    }
 }

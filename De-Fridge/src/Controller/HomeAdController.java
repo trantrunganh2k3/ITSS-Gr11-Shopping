@@ -14,11 +14,7 @@ public class HomeAdController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Model.getInstance().getViewFactory().getHomeSelectView().addListener((observableValue, oldVal, newVal) -> {
             switch (newVal){
-                case "ShopList" -> homeAdView.setCenter(Model.getInstance().getViewFactory().getShopListView());
-                case "FavRecipe"-> homeAdView.setCenter(Model.getInstance().getViewFactory().getFavoriteRecipeView());
-                case "Report" -> homeAdView.setCenter(Model.getInstance().getViewFactory().getReportView());
-                case "Group" -> homeAdView.setCenter(Model.getInstance().getViewFactory().getGroupView());
-                default -> homeAdView.setCenter(Model.getInstance().getViewFactory().getFridgeView());
+                default -> homeAdView.setCenter(Model.getInstance().getViewFactory().getListUserView());
             }
         });
     }
