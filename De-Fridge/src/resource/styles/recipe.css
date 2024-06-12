@@ -43,3 +43,7 @@
     -fx-text-fill: #575454;
     -fx-font-size: 10px;
 }
+
+.delete-button {
+    -fx-background-color: #D25E5E;
+}
