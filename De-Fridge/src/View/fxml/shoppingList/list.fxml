@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="400.0" minWidth="866.0" prefHeight="400.0" prefWidth="866.0" styleClass="list-container" stylesheets="@../../../resource/styles/shoppingList/list.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+>
+   <Label fx:id="listTitleLbl" layoutX="29.0" layoutY="14.0" prefHeight="30.0" prefWidth="334.0" styleClass="title" text="Label" />
+   <Button fx:id="saveBtn" layoutX="684.0" layoutY="339.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" styleClass="add-button" text="Save" />
+   <Button fx:id="shareBtn" layoutX="761.0" layoutY="339.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" styleClass="add-button" text="Share" />
+   <ListView fx:id="itemsLV" layoutX="29.0" layoutY="58.0" prefHeight="268.0" prefWidth="803.0" />
+   <Button fx:id="addItemsBtn" layoutX="780.0" layoutY="12.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="47.0" styleClass="add-button">
+      <graphic>
+         <ImageView fitHeight="18.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../resource/icons/add.png" />
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button fx:id="cancelBtn" layoutX="606.0" layoutY="339.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" styleClass="delete-button" text="Cancel" />
+   <Button fx:id="deleteBtn" layoutX="606.0" layoutY="339.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" styleClass="delete-button" text="Delete" />
+   <Label fx:id="shareStatusLbl" layoutX="37.0" layoutY="343.0" styleClass="title" text="Shared" />
+</AnchorPane>

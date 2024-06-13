@@ -3,7 +3,7 @@ package Model;
 public class ShoppingItems {
     private int itemID;
     private String itemName;
-    private int quantity;
+    private double quantity = 0;
     private int subCost;
     private String boughtBy;
     private int listID;
@@ -30,11 +30,11 @@ public class ShoppingItems {
         this.itemID = itemID;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 

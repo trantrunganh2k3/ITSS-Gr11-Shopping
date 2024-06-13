@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../fonts/Montserrat-VariableFont_wght.ttf');
+}
+
+.list-container {
+    -fx-background-color: #F8EDDD;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.delete-button {
+     -fx-border-radius: 5px;
+     -fx-background-color: #D25E5E;
+     -fx-text-fill: white;
+     -fx-font-size: 16px;
+}
+
+.add-button {
+     -fx-border-radius: 5px;
+     -fx-background-color: #38686A;
+     -fx-text-fill: white;
+     -fx-font-size: 16px;
+}
+.title {
+    -fx-font-family: 'Montserrat';
+    -fx-text-fill: black;
+    -fx-font-size: 20px;
+}
+
+.list-view .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+    -fx-min-height: 0;
+}

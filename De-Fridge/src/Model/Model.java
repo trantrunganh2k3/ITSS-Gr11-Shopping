@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Model {
@@ -19,10 +20,15 @@ public class Model {
     private ObservableList<User> users;
 
     private ObservableList<FavoriteRecipe> recipes;
+    private ObservableList<ShoppingList> shoppingLists;
+
+    private ObservableList<Category> categories;
+
 
     public Model() {
         this.viewFactory = new ViewFactory();
     }
+
 
     public static synchronized Model getInstance() {
         if (model == null) {
@@ -33,6 +39,87 @@ public class Model {
 
     public ViewFactory getViewFactory() {
         return viewFactory;
+    }
+
+
+    public void setCategories() {
+        Category category1 = new Category();
+        Category category2 = new Category();
+        Category category3 = new Category();
+
+        Unit unit1 = new Unit();
+        Unit unit2 = new Unit();
+        Unit unit3 = new Unit();
+
+        unit1.setUnit("Kg");
+        unit2.setUnit("Gram");
+        unit3.setUnit("Litter");
+
+        category1.setCategory("Veggies");
+        category1.setUnits(Arrays.asList(unit1, unit2));
+
+        category2.setCategory("Meat");
+        category2.setUnits(List.of(unit2));
+
+        category3.setCategory("Liquid");
+        category3.setUnits(Arrays.asList(unit1,unit2,unit3));
+
+        categories = FXCollections.observableArrayList(category1,category2,category3);
+
+    }
+    public ObservableList<Category> getCategories(){
+        if (categories ==null) {
+            setCategories();
+        }
+        return this.categories;
+    }
+
+    public ObservableList<ShoppingList> getShoppingLists() {
+        if (this.shoppingLists == null ) {
+            setShoppingLists();
+        }
+        return this.shoppingLists;
+    }
+
+    public void setShoppingLists() {
+        ShoppingList shoppingList = new ShoppingList();
+
+        shoppingList.setListName("Today list");
+        //shoppingList.setDate();
+
+        ShoppingItems item1 = new ShoppingItems();
+        ShoppingItems item2 = new ShoppingItems();
+        ShoppingItems item3 = new ShoppingItems();
+
+        item1.setItemName("Rau");
+        item1.setCategory("Veggies");
+        item1.setQuantity(1);
+        item1.setUnit("Kg");
+        item1.setBoughtBy("Me");
+
+        item2.setItemName("Dua hau");
+        item2.setCategory("Fruit");
+        item2.setQuantity(2);
+        item2.setUnit("Qua");
+
+
+        item3.setItemName("Thit bo");
+        item3.setCategory("Meat");
+        item3.setQuantity(500);
+        item3.setUnit("gram");
+
+        ObservableList<ShoppingItems> items = FXCollections.observableArrayList();
+        items.add(item1);
+        items.add(item2);
+        items.add(item3);
+
+        shoppingList.setShoppingItems(items);
+        for (ShoppingItems item: shoppingList.getShoppingItems()){
+            System.out.println(item.getBoughtBy());
+        }
+        shoppingLists = FXCollections.observableArrayList();
+        shoppingLists.add(shoppingList);
+
     }
 
     public ObservableList<FavoriteRecipe> getRecipes() {

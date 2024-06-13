@@ -1,10 +1,16 @@
 package Model;
 
+import java.util.List;
+
 public class ShoppingList {
     private int listID;
     private String listName;
     private int totalCost;
     private String date;
+
+    private boolean shared = false;
+
+    private List<ShoppingItems> shoppingItems;
 
     public ShoppingList(){}
 
@@ -15,6 +21,21 @@ public class ShoppingList {
         this.date = date;
     }
 
+    public void setShoppingItems(List<ShoppingItems> list){
+        this.shoppingItems = list;
+    }
+
+    public boolean isShared(){
+        return shared;
+    }
+
+    public void share() {
+        this.shared = true;
+    }
+
+    public List<ShoppingItems> getShoppingItems() {
+        return shoppingItems;
+    }
     public int getListID() {
         return listID;
     }

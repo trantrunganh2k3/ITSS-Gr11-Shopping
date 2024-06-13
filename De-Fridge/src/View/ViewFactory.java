@@ -5,6 +5,7 @@ import Controller.FavoriteRecipe.RecipeDetailController;
 import Controller.Fridge.AddDishController;
 import Controller.Fridge.DishDetailController;
 import Controller.Group.AddMemberController;
+import Controller.ShoppingList.AddListController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,10 @@ public class ViewFactory {
     private BorderPane groupView;
     private AnchorPane groupMemberView;
     private AnchorPane groupReportView;
+
+    private AnchorPane myListView;
+
+    private AnchorPane sharedListView;
 
     private AnchorPane listUserView;
 
@@ -92,16 +97,30 @@ public class ViewFactory {
         return dishDetailView;
     }
 
-    public FXMLLoader getFridgeItem() {
-        if (fridgeItem == null) {
+    public AnchorPane getMyListView() {
+        if (myListView == null) {
             try {
-                fridgeItem = new FXMLLoader(getClass().getResource("fxml/fridge/fridgeIngredient.fxml"));
+                myListView = new FXMLLoader(getClass().getResource("fxml/shoppingList/myList.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return fridgeItem;
+        return myListView;
     }
+
+    public AnchorPane getSharedListView() {
+        if (sharedListView == null) {
+            try {
+                sharedListView = new FXMLLoader(getClass().getResource("fxml/shoppingList/sharedList.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return sharedListView;
+    }
+
+
+
 
     public void showUserAccDetail(UserDetailController controller){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/admin/userDetail.fxml"));
@@ -217,6 +236,13 @@ public class ViewFactory {
         }
         return this.groupReportView;
     }
+
+    public void showAddList(AddListController controller) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/shoppingList/addList.fxml"));
+        loader.setController(controller);
+        createStage(loader);
+    }
+
 
     public AnchorPane getAccInfoView(){
         if (accInfoView == null){

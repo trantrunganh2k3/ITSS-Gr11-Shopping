@@ -25,9 +25,8 @@
 
 
 .date-picker > .arrow-button {
-
-    -fx-padding: 5px;     /* Add padding for visual width increase */
-    -fx-background-color: #38686A; /* Maintain transparency for default look */
+    -fx-padding: 5px;
+    -fx-background-color: #38686A;
     -fx-text-fill: white;
     -fx-font-size: 40px;
 }
