@@ -4,13 +4,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="928.0" stylesheets="@../../../resource/styles/fridge.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="ShoppingList" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="928.0" stylesheets="@../../../resource/styles/fridge.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ShoppingList.ShoppingListController">
    <top>
       <AnchorPane prefHeight="90.0" prefWidth="928.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button layoutX="29.0" layoutY="37.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="button-title" text="My list" />
-            <Button layoutX="151.0" layoutY="37.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" styleClass="button-title" text="Shared list" />
-         </children>
+         <Button fx:id="myListBtn" layoutX="21.0" layoutY="37.0" mnemonicParsing="false" prefHeight="45.0"
+                 prefWidth="110.0" styleClass="button-title" text="My list"/>
+         <Button fx:id="sharedListBtn" layoutX="138.0" layoutY="37.0" mnemonicParsing="false" prefHeight="45.0"
+                 prefWidth="110.0" styleClass="button-title" text="Shared list"/>
       </AnchorPane>
    </top>
+   <center>
+      <fx:include source="myList.fxml" />
+   </center>
 </BorderPane>

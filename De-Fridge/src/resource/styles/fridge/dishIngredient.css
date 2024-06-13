@@ -15,7 +15,7 @@
     -fx-font-size: 12px;
 }
 
-.delete-button {
+.bin-button {
      -fx-border-radius: 5px;
      -fx-background-color: #D25E5E;
  }
@@ -25,3 +25,46 @@
     -fx-font-family: 'Roboto';
     -fx-font-size: 14px;
  }
+
+ .normal-button {
+    -fx-border-radius: 5px;
+    -fx-background-color: #38686A;
+}
+
+.date-picker-expire {
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #7D694D;
+    -fx-background-color: #FFF;
+    -fx-font-size: 12px;
+}
+
+.date-picker-expire > .arrow-button {
+    -fx-background-color: #EFDBBD;
+
+}
+
+.date-picker-expire:selected {
+    -fx-background-color: white;
+    -fx-border-radius: 0;}
+
+.date-picker-expire .arrow {
+    -fx-background-color: #7D694D;
+}
+
+.date-picker-popup {
+    -fx-background-color: #ffffff;
+}
+
+.month-year-pane .label {
+    -fx-text-fill: white;
+}
+
+.month-year-pane {
+    -fx-background-color: #38686A;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup  .calendar-view  .day-cell:selected {
+    -fx-background-color: #38686A;
+}

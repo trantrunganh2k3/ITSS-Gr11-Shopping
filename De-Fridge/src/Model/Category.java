@@ -1,8 +1,12 @@
 package Model;
 
+import java.util.List;
+
 public class Category {
     private int id;
     private String category;
+
+    private List<Unit> units;
 
     public Category(){}
 
@@ -10,6 +14,12 @@ public class Category {
         this.id = id;
         this.category = category;
     }
+
+    public void setUnits(List<Unit> units) {
+        this.units = units;
+    }
+
+    public List<Unit> getUnits() {return this.units;}
 
     public int getId() {
         return id;
