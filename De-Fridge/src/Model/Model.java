@@ -5,6 +5,7 @@ import View.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Model {
 
     private ObservableList<FavoriteRecipe> recipes;
     private ObservableList<ShoppingList> shoppingLists;
+    private ObservableList<ShoppingList> sharedShoppingLists;
 
     private ObservableList<Category> categories;
 
@@ -79,6 +81,53 @@ public class Model {
             setShoppingLists();
         }
         return this.shoppingLists;
+    }
+
+    public void setSharedShoppingLists() {
+        ShoppingList shoppingList = new ShoppingList();
+
+        shoppingList.setListName("Today list");
+        shoppingList.setDate(Date.valueOf("2024-06-15"));
+
+        ShoppingItems item1 = new ShoppingItems();
+        ShoppingItems item2 = new ShoppingItems();
+        ShoppingItems item3 = new ShoppingItems();
+
+        item1.setItemName("Rau");
+        item1.setCategory("Veggies");
+        item1.setQuantity(1);
+        item1.setUnit("Kg");
+        item1.setBoughtBy("Me");
+
+        item2.setItemName("Dua hau");
+        item2.setCategory("Fruit");
+        item2.setQuantity(2);
+        item2.setUnit("Qua");
+
+
+        item3.setItemName("Thit bo");
+        item3.setCategory("Meat");
+        item3.setQuantity(500);
+        item3.setUnit("gram");
+
+        ObservableList<ShoppingItems> items = FXCollections.observableArrayList();
+        items.add(item1);
+        items.add(item2);
+        items.add(item3);
+
+        shoppingList.setShoppingItems(items);
+        for (ShoppingItems item: shoppingList.getShoppingItems()){
+            System.out.println(item.getBoughtBy());
+        }
+        sharedShoppingLists = FXCollections.observableArrayList();
+        sharedShoppingLists.add(shoppingList);
+
+    }
+    public ObservableList<ShoppingList> getSharedShoppingLists() {
+        if (this.sharedShoppingLists == null ) {
+            setSharedShoppingLists();
+        }
+        return this.sharedShoppingLists;
     }
 
     public void setShoppingLists() {
@@ -159,14 +208,14 @@ public class Model {
         ingredient1.setIngredientID(1);
         ingredient1.setName("Banana");
         ingredient1.setQuantity(2);
-        //ingredient1.setExpiryDay("2024-06-15");
+        ingredient1.setExpiryDay(Date.valueOf("2024-06-15"));
         ingredient1.setUnit("kg");
         ingredient1.setCategory("Fruit");
 
         ingredient2.setIngredientID(2);
         ingredient2.setName("Lettuce");
         ingredient2.setQuantity(1);
-        //ingredient2.setExpiryDay("2024-06-15");
+        ingredient2.setExpiryDay(Date.valueOf("2024-06-15"));
         ingredient2.setUnit("kg");
         ingredient2.setCategory("Vegetable");
 
@@ -241,7 +290,7 @@ public class Model {
 
         dish1.setMeal("Breakfast");
         dish1.setName("Cereal");
-        //dish1.setForDate("2024-06-12");
+        dish1.setForDate(Date.valueOf("2024-06-12"));
         dish1.setIngredients(list);
 
         /*dish2.setMeal("Lunch");
