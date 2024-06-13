@@ -29,7 +29,7 @@ public class UserController {
 
     //Find user for login
     public static User findUserForLogin(String username, String password) throws ClassNotFoundException, SQLException{
-        String sql = "SELECT username, password, name, gender, email, address, groupID FROM public.\"user\" WHERE username = ?";
+        String sql = "SELECT username, password, name, gender, email, address, \"groupID\" FROM public.\"user\" WHERE username = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setObject(1, username);

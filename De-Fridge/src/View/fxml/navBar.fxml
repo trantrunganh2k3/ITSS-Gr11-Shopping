@@ -44,7 +44,7 @@
             <Image url="@../../resource/icons/group.png" />
          </ImageView>
       </AnchorPane>
-      <AnchorPane prefHeight="62.0" prefWidth="213.0">
+      <AnchorPane fx:id="navAccInfo" prefHeight="62.0" prefWidth="213.0">
          <Label layoutX="14.0" layoutY="18.0" styleClass="nav-label" text="My account" />
          <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="166.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="20.80000000000001">
             <Image url="@../../resource/icons/personal.png" />

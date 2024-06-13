@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Admin.UserDetailController;
 import Controller.FavoriteRecipe.RecipeDetailController;
 import Controller.Fridge.AddDishController;
 import Controller.Fridge.DishDetailController;
@@ -31,6 +32,8 @@ public class ViewFactory {
     private AnchorPane groupReportView;
 
     private AnchorPane listUserView;
+
+    private AnchorPane accInfoView;
 
     private final StringProperty homeSelectView;
 
@@ -98,6 +101,12 @@ public class ViewFactory {
             }
         }
         return fridgeItem;
+    }
+
+    public void showUserAccDetail(UserDetailController controller){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/admin/userDetail.fxml"));
+        loader.setController(controller);
+        createStage(loader);
     }
 
 
@@ -209,7 +218,16 @@ public class ViewFactory {
         return this.groupReportView;
     }
 
-
+    public AnchorPane getAccInfoView(){
+        if (accInfoView == null){
+            try{
+                accInfoView = new FXMLLoader(getClass().getResource("fxml/accInfo.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return this.accInfoView;
+    }
 
     public void showHome() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/home.fxml"));

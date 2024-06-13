@@ -1,7 +1,9 @@
 package Controller.Admin;
 
+import Model.Model;
 import Model.User;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.awt.*;
@@ -16,6 +18,7 @@ public class UserItemController implements Initializable {
     public Label emailLbl;
     public Label nameLbl;
     public Label statusLbl;
+    public Button viewBtn;
 
     public UserItemController(User user){
         this.user = user;
@@ -26,5 +29,15 @@ public class UserItemController implements Initializable {
         emailLbl.setText(user.getEmail());
         nameLbl.setText(user.getName());
         statusLbl.setText(user.getStatus());
+        addListener();
+    }
+
+    private void addListener(){
+        viewBtn.setOnAction(actionEvent -> onDetail());
+    }
+
+    private void onDetail(){
+        UserDetailController controller = new UserDetailController();
+        Model.getInstance().getViewFactory().showUserAccDetail(controller);
     }
 }
