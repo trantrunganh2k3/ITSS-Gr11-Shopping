@@ -13,6 +13,8 @@ public class NavBarController implements Initializable {
     public AnchorPane navRecipe;
     public AnchorPane navReport;
     public AnchorPane navGroup;
+    public AnchorPane navAccInfo;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -24,11 +26,14 @@ public class NavBarController implements Initializable {
         navList.setStyle("-fx-background-color: transparent;");
         navRecipe.setStyle("-fx-background-color: transparent;");
         navReport.setStyle("-fx-background-color: transparent;");
+        navGroup.setStyle("-fx-background-color: transparent;");
+        navAccInfo.setStyle("-fx-background-color: transparent;");
         navFridge.setOnMouseClicked(mouseEvent -> onFridge());
         navList.setOnMouseClicked(mouseEvent -> onShopList());
         navRecipe.setOnMouseClicked(mouseEvent -> onFavRecipe());
         navReport.setOnMouseClicked(mouseEvent -> onReport());
         navGroup.setOnMouseClicked(mouseEvent -> onGroup());
+        navAccInfo.setOnMouseClicked(mouseEvent -> onAccInfo());
     }
 
     private void onFridge () {
@@ -38,6 +43,7 @@ public class NavBarController implements Initializable {
         navRecipe.setStyle("-fx-background-color: transparent;");
         navReport.setStyle("-fx-background-color: transparent;");
         navGroup.setStyle("-fx-background-color: transparent;");
+        navAccInfo.setStyle("-fx-background-color: transparent;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("Fridge");
     }
     private void onShopList () {
@@ -46,6 +52,7 @@ public class NavBarController implements Initializable {
         navRecipe.setStyle("-fx-background-color: transparent;");
         navReport.setStyle("-fx-background-color: transparent;");
         navGroup.setStyle("-fx-background-color: transparent;");
+        navAccInfo.setStyle("-fx-background-color: transparent;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("ShopList");
     }
     private void onFavRecipe () {
@@ -54,6 +61,7 @@ public class NavBarController implements Initializable {
         navRecipe.setStyle("-fx-background-color: #C8AB81;");
         navReport.setStyle("-fx-background-color: transparent;");
         navGroup.setStyle("-fx-background-color: transparent;");
+        navAccInfo.setStyle("-fx-background-color: transparent;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("FavRecipe");
     }
     private void onReport () {
@@ -63,6 +71,7 @@ public class NavBarController implements Initializable {
         navReport.setStyle("-fx-background-color: #C8AB81;" +
                 "-fx-background-radius: 0 0 15px 15px;");
         navGroup.setStyle("-fx-background-color: transparent;");
+        navAccInfo.setStyle("-fx-background-color: transparent;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("Report");
     }
     private void onGroup () {
@@ -70,7 +79,19 @@ public class NavBarController implements Initializable {
         navList.setStyle("-fx-background-color: transparent;");
         navRecipe.setStyle("-fx-background-color: transparent;");
         navReport.setStyle("-fx-background-color: transparent;");
-        navGroup.setStyle("-fx-background-color: #C8AB81;");
+        navGroup.setStyle("-fx-background-color: #C8AB81;" +
+                "-fx-background-radius: 15px 15px 0 0;");
+        navAccInfo.setStyle("-fx-background-color: transparent;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("Group");
+    }
+
+    private void onAccInfo(){
+        navFridge.setStyle("-fx-background-color: transparent;");
+        navList.setStyle("-fx-background-color: transparent;");;
+        navRecipe.setStyle("-fx-background-color: transparent;");
+        navReport.setStyle("-fx-background-color: transparent;");
+        navGroup.setStyle("-fx-background-color: transparent;");
+        navAccInfo.setStyle("-fx-background-color: #C8AB81;");
+        Model.getInstance().getViewFactory().getHomeSelectView().set("AccInfo");
     }
 }

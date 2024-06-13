@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Admin.UserDetailController;
 import Controller.FavoriteRecipe.RecipeDetailController;
 import Controller.Fridge.AddDishController;
 import Controller.Fridge.DishDetailController;
@@ -34,6 +35,10 @@ public class ViewFactory {
     private AnchorPane myListView;
 
     private AnchorPane sharedListView;
+
+    private AnchorPane listUserView;
+
+    private AnchorPane accInfoView;
 
     private final StringProperty homeSelectView;
 
@@ -116,6 +121,12 @@ public class ViewFactory {
 
 
 
+
+    public void showUserAccDetail(UserDetailController controller){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/admin/userDetail.fxml"));
+        loader.setController(controller);
+        createStage(loader);
+    }
 
 
 
@@ -233,6 +244,16 @@ public class ViewFactory {
     }
 
 
+    public AnchorPane getAccInfoView(){
+        if (accInfoView == null){
+            try{
+                accInfoView = new FXMLLoader(getClass().getResource("fxml/accInfo.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return this.accInfoView;
+    }
 
     public void showHome() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/home.fxml"));
@@ -240,7 +261,7 @@ public class ViewFactory {
     }
 
     public void showAdHome(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/admin/userAccounts.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/homeAd.fxml"));
         createStage(loader);
     }
     public void showLoginSignup () {
@@ -269,4 +290,14 @@ public class ViewFactory {
         stage.close();
     }
 
+    public AnchorPane getListUserView() {
+        if (listUserView == null) {
+            try {
+                listUserView = new FXMLLoader(getClass().getResource("fxml/admin/userAccounts.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return this.listUserView;
+    }
 }

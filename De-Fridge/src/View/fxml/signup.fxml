@@ -22,7 +22,7 @@
          <VBox prefHeight="62.0" prefWidth="253.0">
             <children>
                <Label prefHeight="27.0" prefWidth="98.0" styleClass="input-title" text="Username" />
-               <TextField styleClass="input" />
+               <TextField fx:id="tfUsername" styleClass="input" />
             </children>
             <padding>
                <Insets right="20.0" />
@@ -31,23 +31,26 @@
          <VBox prefHeight="62.0" prefWidth="129.0">
             <children>
                <Label prefHeight="27.0" prefWidth="72.0" styleClass="input-title" text="Gender" />
-               <ChoiceBox prefWidth="150.0" styleClass="input" />
+               <ChoiceBox fx:id="cboxGender" prefWidth="150.0" styleClass="input" />
             </children>
          </VBox>
       </children>
    </HBox>
    <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="66.0" styleClass="input-title" text="Email" />
-   <TextField styleClass="input" />
+   <TextField fx:id="tfEmail" styleClass="input" />
    <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="92.0" styleClass="input-title" text="Password" />
-   <PasswordField prefHeight="40.0" prefWidth="380.0" styleClass="input" />
+   <PasswordField fx:id="tfPassword" prefHeight="40.0" prefWidth="380.0" styleClass="input" />
    <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="226.0" styleClass="input-title" text="Password confirmation" />
-   <PasswordField prefHeight="40.0" prefWidth="380.0" styleClass="input" />
+   <PasswordField fx:id="tfPassCf" prefHeight="40.0" prefWidth="380.0" styleClass="input" />
    <AnchorPane prefHeight="57.0" prefWidth="380.0">
       <children>
-         <Label layoutY="7.0" prefHeight="27.0" prefWidth="308.0" styleClass="error-label" text="Error:" />
+         <Label fx:id="errorLbl" layoutY="7.0" prefHeight="27.0" prefWidth="308.0" styleClass="error-label" text="Error:">
+            <padding>
+               <Insets top="10.0" />
+            </padding></Label>
       </children>
    </AnchorPane>
-   <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="380.0" styleClass="login-button" text="Sign up" />
+   <Button fx:id="signupBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="380.0" styleClass="login-button" text="Sign up" />
    <HBox prefHeight="63.0" prefWidth="380.0">
       <children>
          <Label prefHeight="18.0" prefWidth="154.0" styleClass="sub-signup" text="Have a account already?" />

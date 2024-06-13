@@ -17,13 +17,13 @@
    </padding>
    <Label prefHeight="127.0" prefWidth="226.0" styleClass="title" text="Login" />
    <Label alignment="BOTTOM_LEFT" prefHeight="52.0" prefWidth="92.0" styleClass="input-title" text="Username" />
-   <TextField prefHeight="40.0" prefWidth="380.0" styleClass="input">
+   <TextField fx:id="tfUsername" prefHeight="40.0" prefWidth="380.0" styleClass="input">
       <opaqueInsets>
          <Insets left="10.0" />
       </opaqueInsets>
    </TextField>
    <Label alignment="BOTTOM_LEFT" prefHeight="46.0" prefWidth="76.0" styleClass="input-title" text="Password" />
-   <PasswordField prefHeight="40.0" prefWidth="380.0" styleClass="input" />
+   <PasswordField fx:id="tfPassword" prefHeight="40.0" prefWidth="380.0" styleClass="input" />
    <AnchorPane prefHeight="80.0" prefWidth="380.0">
       <children>
          <Label alignment="CENTER_RIGHT" layoutX="209.0" layoutY="15.0" prefHeight="27.0" prefWidth="121.0" styleClass="forgot-password" text="Forgot password?" textAlignment="RIGHT" AnchorPane.rightAnchor="1.0">
@@ -31,7 +31,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </Label>
-         <Label layoutY="46.0" prefHeight="20.0" prefWidth="179.0" styleClass="error-label" text="Error:" />
+         <Label fx:id="errorLbl" layoutY="46.0" prefHeight="20.0" prefWidth="179.0" styleClass="error-label" text="Error:" />
       </children>
    </AnchorPane>
    <Button fx:id="loginBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="380.0" styleClass="login-button" text="Login" />
