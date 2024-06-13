@@ -146,7 +146,7 @@ public class ListItemController implements Initializable {
     private void onCheck () {
         //TODO: Add to fridge
         Ingredient newIngredient = new Ingredient();
-        newIngredient.setExpiryDay(expireDatePicker.getValue().toString());
+        //newIngredient.setExpiryDay(expireDatePicker.getValue().toString());
         newIngredient.setName(item.getItemName());
         newIngredient.setCategory(item.getCategory());
         newIngredient.setUnit(item.getUnit());

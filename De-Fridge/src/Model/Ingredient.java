@@ -1,18 +1,20 @@
 package Model;
 
+import java.sql.Date;
+
 public class Ingredient {
     private int ingredientID;
     private String name;
     private String category;
     private double quantity;
     private String unit;
-    private String purchaseDay;
-    private String expiryDay;
+    private Date purchaseDay;
+    private Date expiryDay;
     private int fridgeID;
 
     public Ingredient(){}
 
-    public Ingredient(int ingredientID, String name, String category, double quantity, String unit, String purchaseDay, String expiryDay, int fridgeID){
+    public Ingredient(int ingredientID, String name, String category, double quantity, String unit, Date purchaseDay, Date expiryDay, int fridgeID){
         this.ingredientID = ingredientID;
         this.name = name;
         this.category = category;
@@ -63,19 +65,19 @@ public class Ingredient {
         this.unit = unit;
     }
 
-    public String getPurchaseDay() {
+    public Date getPurchaseDay() {
         return purchaseDay;
     }
 
-    public void setPurchaseDay(String purchaseDay) {
+    public void setPurchaseDay(Date purchaseDay) {
         this.purchaseDay = purchaseDay;
     }
 
-    public String getExpiryDay() {
+    public Date getExpiryDay() {
         return expiryDay;
     }
 
-    public void setExpiryDay(String expiryDay) {
+    public void setExpiryDay(Date expiryDay) {
         this.expiryDay = expiryDay;
     }
 

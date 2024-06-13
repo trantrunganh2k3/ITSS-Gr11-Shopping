@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -45,7 +46,7 @@ public class AddListController implements Initializable {
         } else {
             ShoppingList list = new ShoppingList();
             list.setListName(listNameTf.getText());
-            list.setDate(controller.datePicker.getValue().toString());
+            list.setDate(Date.valueOf(controller.datePicker.getValue().toString()));
             list.setShoppingItems(new ArrayList<>());
             Model.getInstance().getShoppingLists().addFirst(list);
             controller.displayList();

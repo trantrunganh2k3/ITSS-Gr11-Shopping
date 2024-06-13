@@ -1,12 +1,13 @@
 package Model;
 
+import java.sql.Date;
 import java.util.List;
 
 public class Dish {
     private int dishID;
     private String name;
     private String meal;
-    private String forDate;
+    private Date forDate;
     private String username;
     private int fridgeID;
 
@@ -53,11 +54,11 @@ public class Dish {
         this.meal = meal;
     }
 
-    public String getForDate() {
+    public Date getForDate() {
         return forDate;
     }
 
-    public void setForDate(String forDate) {
+    public void setForDate(Date forDate) {
         this.forDate = forDate;
     }
 

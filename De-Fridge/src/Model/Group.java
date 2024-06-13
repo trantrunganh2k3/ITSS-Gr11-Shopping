@@ -1,14 +1,16 @@
 package Model;
 
+import java.sql.Date;
+
 public class Group {
     private int groupID;
     private String groupName;
     private String leaderUN;
-    private String createDate;
+    private Date createDate;
 
     public Group(){}
 
-    public Group(int groupID, String groupName, String leaderUN, String createDate){
+    public Group(int groupID, String groupName, String leaderUN, Date createDate){
         this.groupID = groupID;
         this.groupName = groupName;
         this.leaderUN = leaderUN;
@@ -38,11 +40,11 @@ public class Group {
         this.leaderUN = leaderUN;
     }
 
-    public String getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 }
