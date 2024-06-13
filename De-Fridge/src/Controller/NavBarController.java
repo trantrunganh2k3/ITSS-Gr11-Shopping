@@ -3,6 +3,7 @@ package Controller;
 import Model.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +15,7 @@ public class NavBarController implements Initializable {
     public AnchorPane navReport;
     public AnchorPane navGroup;
     public AnchorPane navAccInfo;
+    public AnchorPane navLogout;
 
 
     @Override
@@ -34,6 +36,7 @@ public class NavBarController implements Initializable {
         navReport.setOnMouseClicked(mouseEvent -> onReport());
         navGroup.setOnMouseClicked(mouseEvent -> onGroup());
         navAccInfo.setOnMouseClicked(mouseEvent -> onAccInfo());
+        navLogout.setOnMouseClicked(mouseEvent -> onLogout());
     }
 
     private void onFridge () {
@@ -93,5 +96,12 @@ public class NavBarController implements Initializable {
         navGroup.setStyle("-fx-background-color: transparent;");
         navAccInfo.setStyle("-fx-background-color: #C8AB81;");
         Model.getInstance().getViewFactory().getHomeSelectView().set("AccInfo");
+    }
+
+    private void onLogout(){
+        //Model.getInstance().getViewFactory().getHomeSelectView().set("Logout");
+        Stage stage = (Stage) navLogout.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showLoginSignup();
     }
 }
