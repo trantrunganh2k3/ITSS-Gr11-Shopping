@@ -27,7 +27,7 @@ public class FridgeIngredient implements Initializable {
         nameLbl.setText(ingredient.getName());
         quantityLbl.setText(String.valueOf(ingredient.getQuantity()));
         categoryLbl.setText(ingredient.getCategory());
-        expiryDateLbl.setText(ingredient.getExpiryDay());
+        //expiryDateLbl.setText(ingredient.getExpiryDay());
         unitLbl.setText(ingredient.getUnit());
     }
 

@@ -1,12 +1,13 @@
 package Model;
 
+import java.sql.Date;
 import java.util.List;
 
 public class ShoppingList {
     private int listID;
     private String listName;
     private int totalCost;
-    private String date;
+    private Date date;
 
     private boolean shared = false;
 
@@ -14,7 +15,7 @@ public class ShoppingList {
 
     public ShoppingList(){}
 
-    public ShoppingList(int listID, String listName, int totalCost, String date){
+    public ShoppingList(int listID, String listName, int totalCost, Date date){
         this.listID = listID;
         this.listName = listName;
         this.totalCost = totalCost;
@@ -52,11 +53,11 @@ public class ShoppingList {
         this.totalCost = totalCost;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
