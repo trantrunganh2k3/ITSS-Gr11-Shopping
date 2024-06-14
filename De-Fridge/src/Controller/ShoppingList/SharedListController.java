@@ -33,7 +33,7 @@ public class SharedListController implements Initializable {
 
     public SharedListController(ShoppingList list, SharedListViewController controller1) {
         this.list = list;
-        this.controller = controller1;
+        controller = controller1;
     }
 
     @Override
