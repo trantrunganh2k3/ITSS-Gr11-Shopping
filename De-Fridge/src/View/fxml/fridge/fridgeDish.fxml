@@ -13,16 +13,16 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="560.0" prefWidth="928.0" styleClass="container" stylesheets="@../../../resource/styles/fridgeDish.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Fridge.FridgeDishController">
-   <DatePicker fx:id="datePicker" layoutX="778.0" layoutY="7.0" prefHeight="42.0" prefWidth="124.0" AnchorPane.leftAnchor="778.0" />
-   <Button fx:id="addDishBtn" layoutX="670.0" layoutY="7.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" styleClass="meal-title">
+   <DatePicker fx:id="datePicker" layoutX="751.2" layoutY="7.2" prefHeight="42.0" prefWidth="151.0" AnchorPane.leftAnchor="751.0" AnchorPane.topAnchor="7.0" />
+   <Button fx:id="addDishBtn" layoutX="670.0" layoutY="7.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" styleClass="meal-title" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="6.0">
       <graphic>
          <ImageView fitHeight="25.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../../resource/icons/add.png" />
          </ImageView>
       </graphic>
    </Button>
-   <ScrollPane layoutX="25.0" layoutY="52.0" prefHeight="504.0" prefWidth="878.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
-      <VBox fillWidth="false" prefHeight="483.0" prefWidth="859.0" spacing="5.0">
+   <ScrollPane layoutX="25.0" layoutY="52.0" prefHeight="487.0" prefWidth="878.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+      <VBox fillWidth="false" prefHeight="478.0" prefWidth="859.0" spacing="5.0">
          <Pane fx:id="breakfastPane" prefHeight="40.0" prefWidth="130.0" styleClass="meal-title">
             <VBox.margin>
                <Insets />

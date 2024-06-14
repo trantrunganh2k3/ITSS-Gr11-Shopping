@@ -16,6 +16,8 @@ public class ShoppingListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addListener();
+        myListBtn.setStyle("-fx-background-color: #38686A");
+        sharedListBtn.setStyle("-fx-background-color: #578F91");
     }
 
     private void addListener () {
@@ -23,10 +25,14 @@ public class ShoppingListController implements Initializable {
         sharedListBtn.setOnAction(event -> toSharedList());
     }
     private void toMyList () {
+        myListBtn.setStyle("-fx-background-color: #38686A");
+        sharedListBtn.setStyle("-fx-background-color: #578F91");
         ShoppingList.setCenter(Model.getInstance().getViewFactory().getMyListView());
     }
 
     private void toSharedList (){
+        sharedListBtn.setStyle("-fx-background-color: #38686A");
+        myListBtn.setStyle("-fx-background-color: #578F91");
         ShoppingList.setCenter(Model.getInstance().getViewFactory().getSharedListView());
     }
 

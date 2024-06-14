@@ -16,15 +16,21 @@ public class FridgeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addListener();
+        fridgeItemBtn.setStyle("-fx-background-color: #38686A");
+        fridgeDishBtn.setStyle("-fx-background-color: #578F91");
     }
     private void addListener () {
         fridgeDishBtn.setOnAction(event -> onFridgeDish());
         fridgeItemBtn.setOnAction(event -> onFridgeItems());
     }
     private void onFridgeItems () {
+        fridgeItemBtn.setStyle("-fx-background-color: #38686A");
+        fridgeDishBtn.setStyle("-fx-background-color: #578F91");
         fridgeView.setCenter(Model.getInstance().getViewFactory().getFridgeItemsView());
     }
     private void onFridgeDish () {
+        fridgeItemBtn.setStyle("-fx-background-color: #578F91");
+        fridgeDishBtn.setStyle("-fx-background-color: #38686A");
         fridgeView.setCenter(Model.getInstance().getViewFactory().getFridgeDishView());
     }
 }

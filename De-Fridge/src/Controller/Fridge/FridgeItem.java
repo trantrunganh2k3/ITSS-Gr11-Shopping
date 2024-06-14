@@ -2,6 +2,7 @@ package Controller.Fridge;
 
 import Model.Model;
 import Model.Ingredient;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
@@ -15,14 +16,22 @@ public class FridgeItem implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            test();
+            displayIngredient();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        Model.getInstance().getIngredients().addListener((ListChangeListener.Change<? extends Ingredient> c) -> {
+                    try {
+                        displayIngredient();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+        );
     }
 
-    private void test () throws IOException {
-
+    private void displayIngredient() throws IOException {
+        itemsVbox.getChildren().clear();
         for (Ingredient ingredient: Model.getInstance().getIngredients()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/fridge/fridgeIngredient.fxml"));
             FridgeIngredient controller = new FridgeIngredient(ingredient);

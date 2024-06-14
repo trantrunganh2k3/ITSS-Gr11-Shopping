@@ -2,7 +2,6 @@ package Controller.ShoppingList;
 
 import Model.*;
 import Model.ShoppingItems;
-import Model.ShoppingList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -10,10 +9,11 @@ import javafx.scene.shape.Line;
 import javafx.util.converter.DoubleStringConverter;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
-public class ListItemController implements Initializable {
+public class MyListItemController implements Initializable {
     public AnchorPane listItem;
     public TextField nameTf;
     public ChoiceBox categoryCB;
@@ -26,9 +26,9 @@ public class ListItemController implements Initializable {
     public Line line;
     private ShoppingItems item;
     public TextField quantityTf;
-    private ListController controller;
+    private MyListController controller;
 
-    public ListItemController(ShoppingItems item, ListController controller) {
+    public MyListItemController(ShoppingItems item, MyListController controller) {
         this.item = item;
         this.controller = controller;
     }
@@ -146,7 +146,7 @@ public class ListItemController implements Initializable {
     private void onCheck () {
         //TODO: Add to fridge
         Ingredient newIngredient = new Ingredient();
-        //newIngredient.setExpiryDay(expireDatePicker.getValue().toString());
+        newIngredient.setExpiryDay(Date.valueOf(expireDatePicker.getValue()));
         newIngredient.setName(item.getItemName());
         newIngredient.setCategory(item.getCategory());
         newIngredient.setUnit(item.getUnit());

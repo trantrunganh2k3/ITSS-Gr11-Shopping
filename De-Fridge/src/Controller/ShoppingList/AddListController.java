@@ -17,8 +17,8 @@ public class AddListController implements Initializable {
     public Button cancelBtn;
     public Button saveBtn;
 
-    private final MyListController controller;
-    public AddListController(MyListController controller){
+    private final MyListViewController controller;
+    public AddListController(MyListViewController controller){
         this.controller = controller;
     }
 
