@@ -39,6 +39,7 @@ public class ViewFactory {
     private AnchorPane listUserView;
 
     private AnchorPane accInfoView;
+    private AnchorPane cateUnitView;
 
     private final StringProperty homeSelectView;
 
@@ -226,7 +227,7 @@ public class ViewFactory {
         createStage(loader);
     }
     
-    public AnchorPane getgroupReportView () {
+    public AnchorPane getGroupReportView() {
         if (groupReportView == null) {
             try {
                 groupReportView = new FXMLLoader(getClass().getResource("fxml/group/groupReport.fxml")).load();
@@ -253,6 +254,17 @@ public class ViewFactory {
             }
         }
         return this.accInfoView;
+    }
+
+    public AnchorPane getCateUnitView(){
+        if (cateUnitView == null){
+            try{
+                cateUnitView = new FXMLLoader(getClass().getResource("fxml/admin/cateUnit.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return this.cateUnitView;
     }
 
     public void showHome() {

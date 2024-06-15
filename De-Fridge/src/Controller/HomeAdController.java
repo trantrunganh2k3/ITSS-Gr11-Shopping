@@ -15,7 +15,7 @@ public class HomeAdController implements Initializable {
         Model.getInstance().getViewFactory().getHomeSelectView().addListener((observableValue, oldVal, newVal) -> {
             switch (newVal){
                 case "AccInfo" -> homeAdView.setCenter(Model.getInstance().getViewFactory().getAccInfoView());
-                case "CateList" -> homeAdView.setCenter(Model.getInstance().getViewFactory().getAccInfoView());
+                case "CateList" -> homeAdView.setCenter(Model.getInstance().getViewFactory().getCateUnitView());
                 default -> homeAdView.setCenter(Model.getInstance().getViewFactory().getListUserView());
             }
         });

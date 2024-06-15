@@ -25,6 +25,6 @@ public class GroupController implements Initializable {
         groupView.setCenter(Model.getInstance().getViewFactory().getGroupMemberView());
     }
     private void onGroupReport () {
-        groupView.setCenter(Model.getInstance().getViewFactory().getgroupReportView());
+        groupView.setCenter(Model.getInstance().getViewFactory().getGroupReportView());
     }
 }
