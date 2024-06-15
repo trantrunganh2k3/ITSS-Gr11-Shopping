@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="474.0" prefWidth="600.0" styleClass="container" stylesheets="@../../../resource/styles/recipeDetail.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox layoutX="23.0" layoutY="26.0" prefHeight="394.0" prefWidth="560.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+        <Label styleClass="input-title" text="Name" />
+        <TextField fx:id="lblName" styleClass="input" />
+        <HBox alignment="BOTTOM_LEFT" fillHeight="false" prefHeight="26.0" prefWidth="560.0" spacing="445.0">
+            <VBox.margin>
+                <Insets bottom="5.0" top="10.0" />
+            </VBox.margin>
+            <Label styleClass="input-title" text="Units" />
+            <Button fx:id="btnAddUnit" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" styleClass="save-button">
+                <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../../resource/icons/add.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+        <ListView fx:id="lvUnits" prefHeight="235.0" prefWidth="560.0" styleClass="input" />
+      <Label fx:id="lblError" prefHeight="30.0" prefWidth="227.0" text="Error: Please fill all the fields." textFill="#e74848">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+    </VBox>
+    <Button fx:id="btnSave" layoutX="502.0" layoutY="414.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" styleClass="save-button" text="Save" AnchorPane.bottomAnchor="20.0" />
+    <Button fx:id="btnCancel" layoutX="408.0" layoutY="414.0" mnemonicParsing="false" prefWidth="78.0" styleClass="cancel-button" text="Cancel" AnchorPane.bottomAnchor="20.0" />
+</AnchorPane>

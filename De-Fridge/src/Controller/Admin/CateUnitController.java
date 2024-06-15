@@ -41,12 +41,20 @@ public class CateUnitController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        addCateBtn.setOnAction(event -> {
+            try {
+                onAddCategory();
+            } catch (SQLException | IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     public void displayCate () throws IOException {
+        cateVbox.getChildren().clear();
         for (Category category: Model.getInstance().getCategories()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/admin/cate.fxml"));
-            //UserItemController controller = new UserItemController(user);
-            //loader.setController(controller);
+            CateController controller = new CateController(category, this);
+            loader.setController(controller);
             cateVbox.getChildren().add(loader.load());
         }
     }
@@ -67,5 +75,13 @@ public class CateUnitController implements Initializable {
         dbController.UnitController.addUnit(newUnit);
         Model.getInstance().setUnits();
         displayUnit();
+    }
+
+    public void onAddCategory () throws SQLException, ClassNotFoundException, IOException {
+        Category newCategory = new Category();
+        newCategory.setCategory("New category");
+        dbController.CategoryController.addCate(newCategory);
+        Model.getInstance().setCategories();
+        displayCate();
     }
 }

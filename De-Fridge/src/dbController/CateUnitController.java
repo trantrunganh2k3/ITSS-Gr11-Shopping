@@ -14,8 +14,8 @@ import java.sql.SQLException;
 public class CateUnitController {
     public static ObservableList<Unit> listUnitForCate(Category cate){
         ObservableList<Unit> unitList = FXCollections.observableArrayList();
-        String sql = "SELECT id, unit FROM public.\"Unit\" JOIN public.\"uOWNc\" " +
-                "WHERE public.\"Unit\".id = public.\"uOWNc\".\"unitID\" AND public.\"uOWNc\".\"CateID\" = ?";
+        String sql = "SELECT id, unit FROM public.\"Unit\", public.\"uOWNc\" " +
+                "WHERE public.\"Unit\".id = public.\"uOWNc\".\"unitID\" AND public.\"uOWNc\".\"cateID\" = ?";
         try {
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
