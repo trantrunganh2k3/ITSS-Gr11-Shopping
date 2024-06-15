@@ -28,7 +28,7 @@ public class ShoppingListController {
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, pList.getListID());
         stm.setString(2, pList.getListName());
-        stm.setDate(3, pList.setDate());
+        stm.setDate(3, pList.getDate());
 
         return stm.executeUpdate() == 1;
     }

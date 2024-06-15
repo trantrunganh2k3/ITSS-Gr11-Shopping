@@ -35,15 +35,6 @@
             <Label layoutX="617.0" layoutY="13.0" styleClass="acc-title" text="Status" AnchorPane.leftAnchor="616.8000000000001" />
          </children>
       </AnchorPane>
-      <Button fx:id="addUserBtn" layoutX="803.0" layoutY="25.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="68.0" styleClass="add-button">
-         <graphic>
-            <ImageView fitHeight="28.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resource/icons/add.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
    </children>
    <stylesheets>
       <URL value="@../../../resource/styles/favoriteRecipe/favoriteRecipe.css" />

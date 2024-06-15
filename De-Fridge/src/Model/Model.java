@@ -14,6 +14,7 @@ public class Model {
     private final ViewFactory viewFactory;
     private static Model model;
 
+    private User user;
     private ObservableList<Ingredient> ingredients;
     private ObservableList<Dish> dishes;
     private ObservableList<User> Member;
@@ -42,6 +43,12 @@ public class Model {
     public ViewFactory getViewFactory() {
         return viewFactory;
     }
+
+    public void setUser(User user){
+        this.user = user;
+    }
+
+    public User getUser() {return this.user;}
 
 
     public void setCategories() {

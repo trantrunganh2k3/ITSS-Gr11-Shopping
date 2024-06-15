@@ -20,7 +20,10 @@ public class UserItemController implements Initializable {
     public Label statusLbl;
     public Button viewBtn;
 
-    public UserItemController(User user){
+    private UserAccountController controller;
+
+    public UserItemController(User user, UserAccountController controller){
+        this.controller = controller;
         this.user = user;
     }
 
@@ -37,7 +40,8 @@ public class UserItemController implements Initializable {
     }
 
     private void onDetail(){
-        UserDetailController controller = new UserDetailController();
+        UserDetailController controller = new UserDetailController(this.user, this.controller);
         Model.getInstance().getViewFactory().showUserAccDetail(controller);
     }
+
 }

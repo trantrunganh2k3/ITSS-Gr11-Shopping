@@ -84,14 +84,16 @@ public class LoginController implements Initializable {
         String password = tfPassword.getText();
 
         if (username.isEmpty() || password.isEmpty()){
-            errorLbl.setText("Error: Missing text field(s).");
+            errorLbl.setText("Error: Missing text field (s).");
             errorLbl.setVisible(true);
         }else{
             User user = dbController.UserController.findUserForLogin(username, password);
             if(user != null){
                 if(username.equals("admin")){
                     toAdminHome();
-                }else toHome();
+                }else {
+                    Model.getInstance().setUser(user);
+                    toHome();}
             }else {
                 errorLbl.setText("Login Failed!");
                 errorLbl.setVisible(true);
