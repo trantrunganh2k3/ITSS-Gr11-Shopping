@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -12,99 +13,87 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="635.0" prefWidth="928.0" style="-fx-background-color: white;" styleClass="container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <AnchorPane layoutX="481.0" layoutY="20.0" prefHeight="542.0" prefWidth="404.0" styleClass="info-container" AnchorPane.topAnchor="35.0">
-      <children>
-         <VBox layoutX="48.0" layoutY="42.0" prefHeight="463.0" prefWidth="298.0" spacing="5.0" AnchorPane.rightAnchor="48.80000000000001" AnchorPane.topAnchor="32.0">
-            <children>
-                 <Label styleClass="another-title" text="Change password">
-                     <VBox.margin>
-                         <Insets bottom="15.0" />
-                     </VBox.margin>
-                 </Label>
-                 <Label styleClass="input-title" text="Old password" />
-                 <PasswordField fx:id="tfOldPassword" styleClass="input">
-                     <VBox.margin>
-                         <Insets />
-                     </VBox.margin>
-                 </PasswordField>
-                 <Label styleClass="input-title" text="New password" />
-                 <PasswordField fx:id="tfNewPassword" styleClass="input">
-                     <VBox.margin>
-                         <Insets />
-                     </VBox.margin>
-                 </PasswordField>
-                 <Label styleClass="input-title" text="Confirm new password" />
-                 <PasswordField fx:id="tfConfirmNewPassword" styleClass="input">
-                     <VBox.margin>
-                         <Insets />
-                     </VBox.margin>
-                 </PasswordField>
-                 <Label fx:id="lblPassError" prefHeight="26.0" prefWidth="316.0" styleClass="error-label" text="Error:" />
-                 <Button fx:id="btnChangePassword" mnemonicParsing="false" styleClass="another-button" text="Change password">
-                     <VBox.margin>
-                         <Insets top="10.0" />
-                     </VBox.margin>
-                 </Button>
-                <Pane prefHeight="89.0" prefWidth="278.0" />
-            </children>
+<AnchorPane prefHeight="635.0" prefWidth="928.0" style="-fx-background-color: white;" styleClass="container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AccInfoController">
+    <AnchorPane layoutX="481.0" layoutY="20.0" prefHeight="542.0" prefWidth="404.0" styleClass="info-container" AnchorPane.topAnchor="35.0">
+        <VBox layoutX="48.0" layoutY="42.0" prefHeight="463.0" prefWidth="298.0" spacing="5.0" AnchorPane.rightAnchor="48.80000000000001" AnchorPane.topAnchor="32.0">
             <padding>
-               <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
             </padding>
-         </VBox>
-      </children>
-   </AnchorPane>
-   <AnchorPane layoutX="50.0" layoutY="20.0" prefHeight="542.0" prefWidth="474.0" styleClass="info-container" AnchorPane.topAnchor="35.0">
-      <children>
-          <VBox layoutX="48.0" layoutY="32.0" prefHeight="509.0" prefWidth="298.0" spacing="5.0" AnchorPane.topAnchor="32.0">
-              <padding>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
-              </padding>
-              <Label styleClass="another-title" text="Account information">
-                  <VBox.margin>
-                      <Insets bottom="15.0" />
-                  </VBox.margin>
-              </Label>
+            <Label styleClass="another-title" text="Change password">
+                <VBox.margin>
+                    <Insets bottom="15.0" />
+                </VBox.margin>
+            </Label>
+            <Label styleClass="input-title" text="Old password" />
+            <PasswordField fx:id="tfOldPassword" styleClass="input">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </PasswordField>
+            <Label styleClass="input-title" text="New password" />
+            <PasswordField fx:id="tfNewPassword" styleClass="input">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </PasswordField>
+            <Label styleClass="input-title" text="Confirm new password" />
+            <PasswordField fx:id="tfConfirmNewPassword" styleClass="input">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </PasswordField>
+            <Label fx:id="lblPassError" prefHeight="26.0" prefWidth="316.0" styleClass="error-label" text="Error:" />
+            <Button fx:id="btnChangePassword" mnemonicParsing="false" styleClass="another-button" text="Change password">
+                <VBox.margin>
+                    <Insets top="10.0" />
+                </VBox.margin>
+            </Button>
+            <Pane prefHeight="89.0" prefWidth="278.0" />
+        </VBox>
+    </AnchorPane>
+    <AnchorPane layoutX="50.0" layoutY="20.0" prefHeight="542.0" prefWidth="474.0" styleClass="info-container" AnchorPane.topAnchor="35.0">
+        <VBox layoutX="48.0" layoutY="32.0" prefHeight="509.0" prefWidth="298.0" spacing="5.0" AnchorPane.topAnchor="32.0">
+            <padding>
+                <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+            </padding>
+            <Label styleClass="another-title" text="Account information">
+                <VBox.margin>
+                    <Insets bottom="15.0" />
+                </VBox.margin>
+            </Label>
             <HBox prefHeight="53.0" prefWidth="299.0" spacing="10.0">
-               <children>
-                  <VBox prefHeight="54.0" prefWidth="183.0">
-                     <children>
-                        <Label styleClass="input-title" text="Username" />
-                        <TextField fx:id="tfUsername" prefHeight="26.0" prefWidth="187.0" styleClass="input-with-border" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label styleClass="input-title" text="Gender" />
-                        <TextField fx:id="tfGender" editable="false" prefHeight="26.0" prefWidth="150.0" styleClass="input-with-border" />
-                     </children>
-                  </VBox>
-               </children>
+                <VBox prefHeight="54.0" prefWidth="183.0">
+                    <Label styleClass="input-title" text="Username" />
+                    <TextField fx:id="tfUsername" prefHeight="26.0" prefWidth="187.0" styleClass="input-with-border" />
+                </VBox>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <Label styleClass="input-title" text="Gender" />
+               <ChoiceBox fx:id="cbGender" prefWidth="150.0" styleClass="input" />
+                </VBox>
             </HBox>
-              <Label styleClass="input-title" text="Name" />
-              <TextField fx:id="tfName" editable="false" prefHeight="26.0" prefWidth="341.0" styleClass="input-with-border">
-                  <VBox.margin>
-                      <Insets />
-                  </VBox.margin>
-              </TextField>
-              <Label styleClass="input-title" text="Email" />
-              <TextField fx:id="tfEmail" editable="false" styleClass="input-with-border" />
-              <Label styleClass="input-title" text="Address" />
-              <TextField fx:id="tfAddress" editable="false" styleClass="input-with-border">
-                  <VBox.margin>
-                      <Insets />
-                  </VBox.margin>
-              </TextField>
-              <Label styleClass="error-label" text="Error:" />
-              <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                  <Button fx:id="btnEdit" mnemonicParsing="false" styleClass="another-button" text="Edit" />
-                  <Button fx:id="btnSave" mnemonicParsing="false" styleClass="order-button" text="Save" visible="false" />
-                  <Button fx:id="btnCancel" mnemonicParsing="false" styleClass="cancel-button" text="Cancel" visible="false" />
-              </HBox>
-          </VBox>
-         <Line endX="33.4000244140625" endY="331.20001220703125" layoutX="399.0" layoutY="160.0" startX="33.4000244140625" startY="-120.0" stroke="#7d684d7e" style="-fx-stroke-width: 5px;" />
-      </children>
-   </AnchorPane>
+            <Label styleClass="input-title" text="Name" />
+            <TextField fx:id="tfName" editable="false" prefHeight="26.0" prefWidth="341.0" styleClass="input-with-border">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </TextField>
+            <Label styleClass="input-title" text="Email" />
+            <TextField fx:id="tfEmail" editable="false" styleClass="input-with-border" />
+            <Label styleClass="input-title" text="Address" />
+            <TextField fx:id="tfAddress" editable="false" styleClass="input-with-border">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </TextField>
+            <Label styleClass="error-label" text="Error:" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <Button fx:id="btnSave" mnemonicParsing="false" styleClass="another-button" text="Save" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <Button fx:id="btnEdit" mnemonicParsing="false" prefHeight="37.0" prefWidth="54.0" styleClass="another-button" text="Edit" />
+                <Button fx:id="btnCancel" layoutX="71.0" mnemonicParsing="false" styleClass="red-button" text="Cancel" AnchorPane.topAnchor="0.0" />
+            </AnchorPane>
+        </VBox>
+        <Line endX="33.4000244140625" endY="331.20001220703125" layoutX="399.0" layoutY="160.0" startX="33.4000244140625" startY="-120.0" stroke="#7d684d7e" style="-fx-stroke-width: 5px;" />
+    </AnchorPane>
    <stylesheets>
       <URL value="@../../resource/styles/loginSignupContainer.css" />
       <URL value="@../../resource/styles/login.css" />

@@ -103,6 +103,7 @@ public class UserController {
         stm.setObject(3, user.getEmail());
         stm.setObject(4, user.getAddress());
         stm.setObject(5, user.getPassword());
+        stm.setString(6, user.getUsername());
 
         return stm.executeUpdate() == 1;
     }
@@ -129,7 +130,7 @@ public class UserController {
         try {
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setObject(1, "%" + username);
+            stm.setObject(1, "%" + username + "%");
             ResultSet result = stm.executeQuery();
 
             while (result.next()){
