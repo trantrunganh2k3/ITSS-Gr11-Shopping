@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="50.0" prefWidth="402.0" style="-fx-background-color: F8EDDD; -fx-background-radius: 10px;"
+            stylesheets="@../../../resource/styles/login.css" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Admin.CateController">
+   <Label fx:id="cateLbl" layoutX="14.0" layoutY="9.0" prefHeight="32.0" prefWidth="250.0" styleClass="another-title"
+          text="Label"/>
+   <Button fx:id="editBtn" layoutX="335.0" layoutY="10.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="43.0"
+           styleClass="another-button" AnchorPane.rightAnchor="79.4" AnchorPane.topAnchor="5.0">
+      <graphic>
+         <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../resource/icons/edit.png"/>
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button fx:id="deleteBtn" layoutX="277.0" layoutY="8.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="43.0"
+           styleClass="red-button" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="5.0">
+      <graphic>
+         <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../resource/icons/bin.png"/>
+         </ImageView>
+      </graphic>
+   </Button>
+</AnchorPane>

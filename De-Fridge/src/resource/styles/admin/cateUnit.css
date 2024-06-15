@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../../fonts/Merriweather-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../../fonts/Merriweather-Bold.ttf');
+}
+
+
+.title {
+     -fx-text-fill: #7D694D;
+     -fx-font-family: "Merriweather";
+     -fx-font-size: 24px;
+     -fx-font-style: normal;
+     -fx-font-weight: 400;
+     -fx-line-height: normal;
+ }
+
+ .scroll-pane {
+     -fx-background-color: white;
+     -fx-background-radius: 0 0 15px 15px;
+     -fx-border-radius:  0 0 15px 15px;
+ }
+
+ .scroll-pane .viewport {
+     -fx-background-color: white;
+ }
+
+
+ .scroll-bar:vertical {
+     -fx-background-color: transparent;
+ }
+
+ .scroll-bar:vertical .thumb {
+     -fx-background-color: #38686A;
+     -fx-background-insets: 2px;
+ }
+
+ .red-button {
+     -fx-border-radius: 5px;
+     -fx-background-color: #D25E5E;
+     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+     -fx-text-fill: #F3F3F3;
+     -fx-font-family: Inter;
+     -fx-font-size: 16px;
+     -fx-font-style: normal;
+     -fx-font-weight: 400;
+     -fx-line-height: normal;
+ }
+
+ .another-button {
+     -fx-border-radius: 5px;
+     -fx-background-color: #38686A;
+     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+     -fx-text-fill: #F3F3F3;
+     -fx-font-family: Inter;
+     -fx-font-size: 16px;
+     -fx-font-style: normal;
+     -fx-font-weight: 400;
+     -fx-line-height: normal;
+ }

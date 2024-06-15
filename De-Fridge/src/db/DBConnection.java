@@ -9,7 +9,7 @@ public class DBConnection {
     private static DBConnection dbConnection;
     private static final String URL = "jdbc:postgresql://localhost:5432/defridge";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "admin";
     private DBConnection()throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
         connection= DriverManager.getConnection(URL, USER, PASSWORD);
