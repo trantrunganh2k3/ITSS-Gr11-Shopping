@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="300.0" prefWidth="350.0" styleClass="container" stylesheets="@../styles/CustomerAccInfo.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-    <VBox layoutX="26.0" layoutY="14.0" prefHeight="500.0" prefWidth="297.0" spacing="5.0">
+<AnchorPane prefHeight="552.0" prefWidth="350.0" style="-fx-background-color: #F8EDDD;" stylesheets="@../../../resource/styles/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox layoutX="26.0" layoutY="14.0" prefHeight="397.0" prefWidth="298.0" spacing="5.0">
         <padding>
             <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
         </padding>
-        <Label styleClass="title-label" text="Account information">
+        <Label styleClass="another-title" text="Account information">
             <VBox.margin>
                 <Insets bottom="15.0" />
             </VBox.margin>
@@ -23,39 +23,40 @@
          <children>
             <VBox prefHeight="54.0" prefWidth="183.0">
                <children>
-                  <Label text="Username" />
-                  <TextField fx:id="tfUsername" prefHeight="26.0" prefWidth="187.0" />
+                  <Label styleClass="input-title" text="Username" />
+                  <TextField fx:id="tfUsername" prefHeight="26.0" prefWidth="187.0" styleClass="input" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                    <Label text="Gender" />
-                    <TextField fx:id="tfGender" editable="false" prefHeight="26.0" prefWidth="150.0" />
+                    <Label styleClass="input-title" text="Gender" />
+                    <TextField fx:id="tfGender" editable="false" prefHeight="26.0" prefWidth="150.0" styleClass="input" />
                </children>
             </VBox>
          </children>
       </HBox>
-        <Label text="Name" />
-        <TextField fx:id="tfName" editable="false" />
-        <Label text="Email" />
-        <TextField fx:id="tfEmail" editable="false">
+        <Label styleClass="input-title" text="Name" />
+        <TextField fx:id="tfName" editable="false" styleClass="input" />
+        <Label styleClass="input-title" text="Email" />
+        <TextField fx:id="tfEmail" editable="false" styleClass="input">
             <VBox.margin>
                 <Insets />
             </VBox.margin>
         </TextField>
-        <Label text="Address" />
-        <TextField fx:id="tfAddress" editable="false" prefHeight="26.0" prefWidth="412.0">
+        <Label styleClass="input-title" text="Address" />
+        <TextField fx:id="tfAddress" editable="false" prefHeight="26.0" prefWidth="412.0" styleClass="input">
             <VBox.margin>
                 <Insets />
             </VBox.margin>
         </TextField>
-      <Label text="Status" />
-      <ChoiceBox prefWidth="150.0" />
+      <Label styleClass="input-title" text="Status" />
+      <ChoiceBox prefWidth="150.0" styleClass="input" />
         <Label styleClass="error-label" text="Error:" />
         <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-            <Button fx:id="btnEdit" mnemonicParsing="false" styleClass="order-button" text="Edit" />
-            <Button fx:id="btnSave" mnemonicParsing="false" styleClass="order-button" text="Save" visible="false" />
-            <Button fx:id="btnCancel" mnemonicParsing="false" styleClass="cancel-button" text="Cancel" visible="false" />
+            <Button fx:id="btnEdit" mnemonicParsing="false" styleClass="another-button" text="Edit" />
+            <Button fx:id="btnSave" mnemonicParsing="false" styleClass="another-button" text="Save" />
+            <Button fx:id="btnCancel" mnemonicParsing="false" styleClass="red-button" text="Cancel" />
+         <Button mnemonicParsing="false" styleClass="red-button" text="Close" />
         </HBox>
     </VBox>
 </AnchorPane>

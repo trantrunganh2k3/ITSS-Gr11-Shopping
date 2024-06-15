@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../../fonts/Merriweather-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../../fonts/Merriweather-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../fonts/Roboto-Regular.ttf');
+}
+
+
+.acc-container {
+    -fx-background-color: #EFDBBD;
+    -fx-background-radius: 5px;
+}
+
+.acc-title {
+    -fx-font-size: 18px;
+    -fx-font-family: 'Merriweather';
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-line-height: normal;
+
+}
+
+.item-title {
+    -fx-font-size: 16px;
+    -fx-font-family: 'Roboto';
+}
+
+.view-button {
+    -fx-background-color: #38686A;
+    -fx-text-fill: white;
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 16px;
+}

@@ -4,14 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="50.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="50.0" prefWidth="826.0" styleClass="acc-container" stylesheets="@../../../resource/styles/admin/userItem.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
 
 
         <children>
-            <Label fx:id="usernameLbl" layoutX="26.0" layoutY="17.0" styleClass="title" text="Username" AnchorPane.leftAnchor="26.0" />
-            <Label fx:id="emailLbl" layoutX="193.0" layoutY="17.0" styleClass="title" text="Email" />
-            <Label fx:id="nameLbl" layoutX="465.0" layoutY="17.0" styleClass="title" text="Name" />
-            <Label fx:id="statusLbl" layoutX="594.0" layoutY="17.0" styleClass="title" text="Status" />
-      <Button fx:id="viewBtn" layoutX="760.0" layoutY="13.0" mnemonicParsing="false" text="View " />
+            <Label fx:id="usernameLbl" layoutX="26.0" layoutY="17.0" styleClass="item-title" text="Username" AnchorPane.leftAnchor="26.0" />
+            <Label fx:id="emailLbl" layoutX="193.0" layoutY="17.0" styleClass="item-title" text="Email" />
+            <Label fx:id="nameLbl" layoutX="465.0" layoutY="17.0" styleClass="item-title" text="Name" />
+            <Label fx:id="statusLbl" layoutX="594.0" layoutY="17.0" styleClass="item-title" text="Status" AnchorPane.leftAnchor="616.8000000000001" />
+      <Button fx:id="viewBtn" layoutX="758.0" layoutY="11.0" mnemonicParsing="false" styleClass="view-button" text="View " />
         </children>
 </AnchorPane>
