@@ -2,7 +2,6 @@ package dbController;
 
 import Model.Category;
 import Model.Unit;
-import Model.User;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,14 +11,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UnitController {
-
-    public static ObservableList<Unit> listUnit(){
+public class CateUnitController {
+    public static ObservableList<Unit> listUnitForCate(Category cate){
         ObservableList<Unit> unitList = FXCollections.observableArrayList();
-        String sql = "SELECT id, unit FROM public.\"Unit\"";
-        try{
+        String sql = "SELECT id, unit FROM public.\"Unit\" JOIN public.\"uOWNc\" " +
+                "WHERE public.\"Unit\".id = public.\"uOWNc\".\"unitID\" AND public.\"uOWNc\".\"CateID\" = ?";
+        try {
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1, cate.getId());
             ResultSet result = stm.executeQuery();
 
             while (result.next()){
@@ -28,39 +28,34 @@ public class UnitController {
         }catch (SQLException | ClassNotFoundException e){
             throw new RuntimeException(e);
         }
-
-        return unitList;
+        return  unitList;
     }
 
-    public static boolean addUnit(Unit unit) throws ClassNotFoundException, SQLException{
-        String sql = "INSERT INTO public.\"Unit\" (id, unit) VALUES(?,?)";
+    public static boolean deleteCateUnit(Category cate) throws ClassNotFoundException, SQLException{
+        String sql = "DELETE FROM public.\"oOWNc\" WHERE \"cateID\" = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
-
-        stm.setInt(1, unit.getId());
-        stm.setString(2, unit.getUnit());
+        stm.setInt(1, cate.getId());
 
         return stm.executeUpdate() == 1;
     }
 
-    public static boolean updateUnit(Unit unit) throws ClassNotFoundException, SQLException{
-        String sql = "UPDATE public.\"Unit\" SET name = ? WHERE id = ?";
+    public static boolean deleteCateUnit(Unit unit) throws ClassNotFoundException, SQLException{
+        String sql = "DELETE FROM public.\"oOWNc\" WHERE \"unitID\" = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, unit.getId());
 
+        return stm.executeUpdate() == 1;
+    }
+
+    public static boolean addCateUnit(Category cate, Unit unit) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO public.\"oOWNc\" (\"cateID\", \"unitID\") VALUES(?, ?)";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, cate.getId());
         stm.setInt(2, unit.getId());
-        stm.setString(1, unit.getUnit());
 
         return stm.executeUpdate() == 1;
     }
-
-    public static boolean deleteUnit(Unit unit) throws ClassNotFoundException, SQLException{
-        String sql = "DELETE FROM public.\"Unit\" WHERE id = ?";
-        Connection conn = DBConnection.getDBConnection().getConnection();
-        PreparedStatement stm = conn.prepareStatement(sql);
-        stm.setInt(1, unit.getId());
-
-        return stm.executeUpdate() == 1;
-    }
-
 }
