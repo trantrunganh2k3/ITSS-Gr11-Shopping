@@ -46,7 +46,11 @@ public class UserController {
                 cus.setGender(result.getString(4));
                 cus.setEmail(result.getString(5));
                 cus.setAddress(result.getString(6));
-                cus.setGroupID(result.getInt(7));
+                if (result.getObject(7) != null) {
+                    cus.setGroupID(result.getInt(7));
+                } else {
+                    cus.setGroupID(-1); // Or any other default value for an empty groupID
+                }
                 return cus;
             }
         }

@@ -2,10 +2,12 @@ package Model;
 
 import Controller.FavoriteRecipe.FavoriteRecipeController;
 import View.ViewFactory;
+import dbController.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +28,8 @@ public class Model {
     private ObservableList<ShoppingList> sharedShoppingLists;
 
     private ObservableList<Category> categories;
+    private ObservableList<Unit> units;
+    private Fridge fridge;
 
 
     public Model() {
@@ -47,40 +51,34 @@ public class Model {
     public void setUser(User user){
         this.user = user;
     }
+    public void setFridge() throws SQLException, ClassNotFoundException {this.fridge = FridgeController.getFridge(this.user);}
+    public Fridge getFridge () throws SQLException, ClassNotFoundException {
+        if (this.fridge == null) {
+            setFridge();
+        }
+        return fridge;
+    }
 
     public User getUser() {return this.user;}
 
 
     public void setCategories() {
-        Category category1 = new Category();
-        Category category2 = new Category();
-        Category category3 = new Category();
-
-        Unit unit1 = new Unit();
-        Unit unit2 = new Unit();
-        Unit unit3 = new Unit();
-
-        unit1.setUnit("Kg");
-        unit2.setUnit("Gram");
-        unit3.setUnit("Litter");
-
-        category1.setCategory("Veggies");
-        category1.setUnits(Arrays.asList(unit1, unit2));
-
-        category2.setCategory("Meat");
-        category2.setUnits(List.of(unit2));
-
-        category3.setCategory("Liquid");
-        category3.setUnits(Arrays.asList(unit1,unit2,unit3));
-
-        categories = FXCollections.observableArrayList(category1,category2,category3);
-
+        categories = CategoryController.listCate();
     }
     public ObservableList<Category> getCategories(){
         if (categories ==null) {
             setCategories();
         }
         return this.categories;
+    }
+    public void setUnits() {
+        units = UnitController.listUnit();
+    }
+    public ObservableList<Unit> getUnits(){
+        if (units ==null) {
+            setUnits();
+        }
+        return this.units;
     }
 
     public ObservableList<ShoppingList> getShoppingLists() {
@@ -209,28 +207,7 @@ public class Model {
     }
 
     public void setIngredients() {
-        Ingredient ingredient1 = new Ingredient();
-        Ingredient ingredient2 = new Ingredient();
-
-        ingredient1.setIngredientID(1);
-        ingredient1.setName("Banana");
-        ingredient1.setQuantity(2);
-        ingredient1.setExpiryDay(Date.valueOf("2024-06-15"));
-        ingredient1.setUnit("kg");
-        ingredient1.setCategory("Fruit");
-
-        ingredient2.setIngredientID(2);
-        ingredient2.setName("Lettuce");
-        ingredient2.setQuantity(1);
-        ingredient2.setExpiryDay(Date.valueOf("2024-06-15"));
-        ingredient2.setUnit("kg");
-        ingredient2.setCategory("Vegetable");
-
-        ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();;
-        ingredients.add(ingredient1);
-        ingredients.add(ingredient2);
-
-        this.ingredients = ingredients;
+        this.ingredients = IngredientController.listIngre();
     }
 
     public ObservableList<Ingredient> getIngredients() {

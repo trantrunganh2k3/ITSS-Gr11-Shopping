@@ -21,7 +21,7 @@ public class CategoryController {
             ResultSet result = stm.executeQuery();
 
             while (result.next()){
-                cateList.add(new Category(result.getInt(1), result.getString(2)));
+                cateList.add(new Category(result.getInt(1), result.getString(2),UnitController.listUnit()));
             }
         }catch (SQLException | ClassNotFoundException e){
             throw new RuntimeException(e);

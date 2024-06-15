@@ -33,18 +33,17 @@ public class UnitController {
     }
 
     public static boolean addUnit(Unit unit) throws ClassNotFoundException, SQLException{
-        String sql = "INSERT INTO public.\"Unit\" (id, unit) VALUES(?,?)";
+        String sql = "INSERT INTO public.\"Unit\" (unit) VALUES(?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
 
-        stm.setInt(1, unit.getId());
-        stm.setString(2, unit.getUnit());
+        stm.setString(1, unit.getUnit());
 
         return stm.executeUpdate() == 1;
     }
 
     public static boolean updateUnit(Unit unit) throws ClassNotFoundException, SQLException{
-        String sql = "UPDATE public.\"Unit\" SET name = ? WHERE id = ?";
+        String sql = "UPDATE public.\"Unit\" SET unit = ? WHERE id = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
 
@@ -55,11 +54,11 @@ public class UnitController {
     }
 
     public static boolean deleteUnit(Unit unit) throws ClassNotFoundException, SQLException{
+        CateUnitController.deleteCateUnit(unit);
         String sql = "DELETE FROM public.\"Unit\" WHERE id = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, unit.getId());
-
         return stm.executeUpdate() == 1;
     }
 

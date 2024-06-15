@@ -32,7 +32,7 @@ public class CateUnitController {
     }
 
     public static boolean deleteCateUnit(Category cate) throws ClassNotFoundException, SQLException{
-        String sql = "DELETE FROM public.\"oOWNc\" WHERE \"cateID\" = ?";
+        String sql = "DELETE FROM public.\"uOWNc\" WHERE \"cateID\" = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, cate.getId());
@@ -41,7 +41,7 @@ public class CateUnitController {
     }
 
     public static boolean deleteCateUnit(Unit unit) throws ClassNotFoundException, SQLException{
-        String sql = "DELETE FROM public.\"oOWNc\" WHERE \"unitID\" = ?";
+        String sql = "DELETE FROM public.\"uOWNc\" WHERE \"unitID\" = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, unit.getId());
@@ -50,7 +50,7 @@ public class CateUnitController {
     }
 
     public static boolean addCateUnit(Category cate, Unit unit) throws SQLException, ClassNotFoundException {
-        String sql = "INSERT INTO public.\"oOWNc\" (\"cateID\", \"unitID\") VALUES(?, ?)";
+        String sql = "INSERT INTO public.\"uOWNc\" (\"cateID\", \"unitID\") VALUES(?, ?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, cate.getId());
