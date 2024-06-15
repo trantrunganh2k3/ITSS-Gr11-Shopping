@@ -16,16 +16,17 @@ public class UserAccountController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
-            test();
+            displayAcc();
         } catch (IOException e){
             throw new RuntimeException(e);
         }
     }
 
-    private void test() throws IOException{
+    public void displayAcc() throws IOException{
+        userAccVbox.getChildren().clear();
         for (User user: Model.getInstance().getUsers()){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/admin/userItem.fxml"));
-            UserItemController controller = new UserItemController(user);
+            UserItemController controller = new UserItemController(user, this);
             loader.setController(controller);
             userAccVbox.getChildren().add(loader.load());
         }
