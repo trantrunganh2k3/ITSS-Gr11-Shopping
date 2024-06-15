@@ -38,7 +38,7 @@ public class FridgeItem implements Initializable {
             loader.setController(controller);
             itemsVbox.getChildren().add(loader.load());
         }
-
     }
+
 
 }

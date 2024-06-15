@@ -35,8 +35,4 @@
          </graphic>
       </Button>
    </AnchorPane>
-   <Button layoutX="394.0" layoutY="550.0" mnemonicParsing="false" styleClass="another-button" text="Save" />
-   <Button layoutX="308.0" layoutY="550.0" mnemonicParsing="false" styleClass="red-button" text="Cancel" />
-   <Button layoutX="789.0" layoutY="550.0" mnemonicParsing="false" styleClass="another-button" text="Edit" />
-   <Button layoutX="709.0" layoutY="550.0" mnemonicParsing="false" styleClass="red-button" text="Cencel" />
 </AnchorPane>

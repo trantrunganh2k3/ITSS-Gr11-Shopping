@@ -15,6 +15,12 @@ public class Category {
         this.category = category;
     }
 
+    public Category(int id, String category, List<Unit> units){
+        this.id = id;
+        this.category = category;
+        this.units = units;
+    }
+
     public void setUnits(List<Unit> units) {
         this.units = units;
     }

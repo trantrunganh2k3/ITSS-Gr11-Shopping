@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CateUnitController implements Initializable {
@@ -24,25 +25,63 @@ public class CateUnitController implements Initializable {
         try {
             displayCate();
             displayUnit();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        addListener();
+
+    }
+
+    private void addListener () {
+        addUnitBtn.setOnAction(event -> {
+            try {
+                onAddUnit();
+            } catch (SQLException | ClassNotFoundException | IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        addCateBtn.setOnAction(event -> {
+            try {
+                onAddCategory();
+            } catch (SQLException | IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     public void displayCate () throws IOException {
+        cateVbox.getChildren().clear();
         for (Category category: Model.getInstance().getCategories()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/admin/cate.fxml"));
-            //UserItemController controller = new UserItemController(user);
-            //loader.setController(controller);
+            CateController controller = new CateController(category, this);
+            loader.setController(controller);
             cateVbox.getChildren().add(loader.load());
         }
     }
 
     public void displayUnit () throws IOException {
-        for (Category unit: Model.getInstance().getCategories()) {
+        unitVbox.getChildren().clear();
+        for (Unit unit: Model.getInstance().getUnits()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/admin/unit.fxml"));
-            //UserItemController controller = new UserItemController(user);
-            //loader.setController(controller);
+            Controller.Admin.UnitController controller = new UnitController(unit,this);
+            loader.setController(controller);
             unitVbox.getChildren().add(loader.load());
         }
+    }
+
+    public void onAddUnit() throws SQLException, ClassNotFoundException, IOException {
+        Unit newUnit = new Unit();
+        newUnit.setUnit("New");
+        dbController.UnitController.addUnit(newUnit);
+        Model.getInstance().setUnits();
+        displayUnit();
+    }
+
+    public void onAddCategory () throws SQLException, ClassNotFoundException, IOException {
+        Category newCategory = new Category();
+        newCategory.setCategory("New category");
+        dbController.CategoryController.addCate(newCategory);
+        Model.getInstance().setCategories();
+        displayCate();
     }
 }

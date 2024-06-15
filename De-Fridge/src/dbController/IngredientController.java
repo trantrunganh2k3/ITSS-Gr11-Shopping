@@ -1,14 +1,13 @@
 package dbController;
 
 import Model.Ingredient;
+import Model.Model;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class IngredientController {
@@ -16,13 +15,14 @@ public class IngredientController {
     public static ObservableList<Ingredient> listIngre(){
         ObservableList<Ingredient> ingreList = FXCollections.observableArrayList();
         String sql = "SELECT \"ingredientID\", name, category, quantity, unit," +
-                "\"purchaseDay\", \"expiryDay\", \"fridgeID\" FROM public.\"Ingredient\"" +
-                "WHERE \"purchaserDay\" < ? AND quantity > 0";
+                "\"purchaseDay\", \"expiryDay\", \"fridgeID\" FROM public.\"Ingredient\" " +
+                "WHERE \"purchaseDay\" < ? AND quantity > 0 AND \"fridgeID\" = ? ";
 
         try{
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setString(1, String.valueOf(LocalDateTime.now()));
+            stm.setObject(1, Date.valueOf(LocalDate.now()));
+            stm.setInt(2, Model.getInstance().getFridge().getFridgeID());
             ResultSet result = stm.executeQuery();
 
             while (result.next()){

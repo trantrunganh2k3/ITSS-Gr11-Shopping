@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Admin.CateDetailController;
 import Controller.Admin.UserDetailController;
 import Controller.FavoriteRecipe.RecipeDetailController;
 import Controller.Fridge.AddDishController;
@@ -254,6 +255,12 @@ public class ViewFactory {
             }
         }
         return this.accInfoView;
+    }
+
+    public void showCateDetail (CateDetailController controller){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/admin/cateDetail.fxml"));
+        loader.setController(controller);
+        createStage(loader);
     }
 
     public AnchorPane getCateUnitView(){

@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="50.0" prefWidth="402.0" style="-fx-background-color: F8EDDD; -fx-background-radius: 10px;"
             stylesheets="@../../../resource/styles/login.css" xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Admin.CateController">
+            xmlns:fx="http://javafx.com/fxml/1" >
    <Label fx:id="cateLbl" layoutX="14.0" layoutY="9.0" prefHeight="32.0" prefWidth="250.0" styleClass="another-title"
           text="Label"/>
    <Button fx:id="editBtn" layoutX="335.0" layoutY="10.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="43.0"
