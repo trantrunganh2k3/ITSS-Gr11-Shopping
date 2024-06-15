@@ -34,5 +34,17 @@ public class DishIngredientController {
         return dishIngreList;
     }
 
+    public static boolean deleteDishIngre(int dishID) throws SQLException, ClassNotFoundException {
+        String sql = "DELETE FROM public.\"DishIngredient\" WHERE \"dishID\" = ?";
 
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, dishID);
+
+        return stm.executeUpdate() == 1;
+    }
+
+    public static boolean updateDishIngre(ObservableList<DishIngredient> dishIngreList){
+
+    }
 }
