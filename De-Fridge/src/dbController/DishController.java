@@ -58,4 +58,25 @@ public class DishController {
 
         return stm.executeUpdate() == 1;
     }
+
+    public static boolean updateDish(Dish dish) throws ClassNotFoundException, SQLException{
+        String sql = "UPDATE public.\"Dish\" SET name = ?, meal = ? WHERE \"dishID\" = ?";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, dish.getName());
+        stm.setString(2, dish.getMeal());
+        stm.setInt(3, dish.getDishID());
+
+        return stm.executeUpdate() == 1;
+    }
+
+    public static boolean deleteDish(int dishID) throws ClassNotFoundException, SQLException{
+        String sql = "DELETE FROM public.\"Dish\" WHERE \"dishID\" = ?";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1, dishID);
+
+        return stm.executeUpdate() == 1;
+    }
+
 }
