@@ -39,15 +39,6 @@ public class FridgeItem implements Initializable {
             itemsVbox.getChildren().add(loader.load());
         }
 
-       /* Ingredient ingredient1 = new Ingredient();
-        ingredient1.setName("Do an");
-        ingredient1.setCategory("Food");
-        ingredient1.setQuantity(500);
-        ingredient1.setExpiryDay("2024-06-15");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/fridge/fridgeIngredient.fxml"));
-        FridgeIngredient controller = new FridgeIngredient(ingredient1);
-        loader.setController(controller);
-        itemsVbox.getChildren().add(loader.load());*/
     }
 
 }
