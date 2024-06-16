@@ -120,11 +120,12 @@ public class ShoppingListController {
    }
 
    public static void checkItem (ShoppingItems item) throws SQLException, ClassNotFoundException {
-       String sql = "UPDATE public.\"ShoppingItems\" SET \"boughtBy\" = ? " +
+       String sql = "UPDATE public.\"ShoppingItems\" SET \"boughtBy\" = ? , \"purchaseDay\" = ? " +
                "WHERE \"itemID\" = ? ";
        Connection conn = DBConnection.getDBConnection().getConnection();
        PreparedStatement stm = conn.prepareStatement(sql);
-       stm.setInt(2, item.getItemID());
+       stm.setInt(3, item.getItemID());
+       stm.setDate(2, item.getPurchaseDay());
        stm.setString(1,item.getBoughtBy());
        stm.executeUpdate();
    }

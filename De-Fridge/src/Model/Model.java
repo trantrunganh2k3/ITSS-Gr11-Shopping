@@ -100,7 +100,6 @@ public class Model {
 
     public void setShoppingLists(Date date) throws SQLException, ClassNotFoundException {
         shoppingLists = ShoppingListController.getShoppingList(user.getUsername(),date,true);
-
     }
 
     public ObservableList<FavoriteRecipe> getRecipes() {
@@ -115,11 +114,11 @@ public class Model {
         recipes = FavoriteRecipeController.listRecipe(this.user.getUsername());
     }
 
-    public void setIngredients() {
-        this.ingredients = IngredientController.listIngre();
+    public void setIngredients() throws SQLException, ClassNotFoundException {
+        this.ingredients = IngredientController.listIngre(getFridge().getFridgeID());
     }
 
-    public ObservableList<Ingredient> getIngredients() {
+    public ObservableList<Ingredient> getIngredients() throws SQLException, ClassNotFoundException {
         if (ingredients == null) {
             setIngredients();
         }
@@ -162,41 +161,10 @@ public class Model {
     }
 
     public ObservableList<Dish> getDishes() {
-        if (this.dishes == null) {
-            setDishes();
-        }
         return this.dishes;
     }
-    public void setDishes() {
-        dishes = FXCollections.observableArrayList();
-        Dish dish1 = new Dish();
-        Dish dish3 = new Dish();
-        Dish dish2 = new Dish();
-
-        DishIngredient ingredient = new DishIngredient();
-        ingredient.setUnit("kg");
-        ingredient.setIngredientId(1);
-        ingredient.setIngredientName("Banana");
-        ingredient.setQuantity(1);
-        List<DishIngredient> list = new ArrayList<>();
-        list.add(ingredient);
-
-        dish1.setMeal("Breakfast");
-        dish1.setName("Cereal");
-        dish1.setForDate(Date.valueOf("2024-06-12"));
-        dish1.setIngredients(list);
-
-        /*dish2.setMeal("Lunch");
-        dish2.setName("Pho");
-        dish2.setForDate("2024-06-12");
-
-        dish3.setMeal("Dinner");
-        dish3.setName("Pizza");
-        dish3.setForDate("2024-06-12");*/
-
-        this.dishes.add(dish1);
-        //this.dishes.add(dish2);
-        //this.dishes.add(dish3);
+    public void setDishes(Date date) {
+        this.dishes = DishController.listDish(fridge.getFridgeID(),date);
     }
 
     public void setUser(){

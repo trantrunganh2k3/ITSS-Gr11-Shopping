@@ -16,7 +16,7 @@ public class DishIngredientController {
 
     public static ObservableList<DishIngredient> listDishIngre(int dishID){
         ObservableList<DishIngredient> dishIngreList = FXCollections.observableArrayList();
-        String sql = "SELECT \"dishID\", \"ingredientName\", quantity, unit, \"ingredientID\" FROM public.\"Dish\"" +
+        String sql = "SELECT * FROM public.\"DishIngredient\"" +
                 "WHERE \"dishID\" = ?";
 
         try {
@@ -45,14 +45,14 @@ public class DishIngredientController {
         return stm.executeUpdate() == 1;
     }
 
-    public static boolean updateDishIngre(List<DishIngredient> dishIngreList) throws SQLException, ClassNotFoundException {
+    public static boolean updateDishIngre(List<DishIngredient> dishIngreList, int dishId) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO public.\"DishIngredient\" (\"dishID\", \"ingredientName\", quantity, unit, \"ingredientID\")" +
                 "VALUES(?,?,?,?,?)";
 
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         for(DishIngredient dishIgre:dishIngreList){
-            stm.setInt(1, dishIgre.getDishID());
+            stm.setInt(1, dishId);
             stm.setString(2, dishIgre.getIngredientName());
             stm.setDouble(3, dishIgre.getQuantity());
             stm.setString(4, dishIgre.getUnit());
@@ -63,4 +63,5 @@ public class DishIngredientController {
 
         return true;
     }
+
 }

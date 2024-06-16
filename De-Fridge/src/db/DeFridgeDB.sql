@@ -41,7 +41,8 @@ CREATE TABLE "ShoppingItems" (
   "boughtBy" varchar(15),
   "listID" int,
   "category" varchar(15),
-  "unit" varchar(5)
+  "unit" varchar(5),
+  "purchaseDay" date
 );
 
 CREATE TABLE "FavoriteRecipe" (
@@ -82,7 +83,7 @@ CREATE TABLE "DishIngredient" (
   "dishID" BIGSERIAL,
   "ingredientName" varchar(15),
   "quantity" decimal,
-  "unit" varchar(5),
+  "unit" varchar(10),
   "ingredientID" int
 );
 
@@ -178,10 +179,10 @@ VALUES
 (1, 'Salad', 'Lunch', '2024-06-03', 'john_doe', 1),
 (2, 'Smoothie', 'Breakfast', '2024-06-04', 'jane_smith', 2);
 
-INSERT INTO public."DishIngredient" ("dishID", "ingredientName", quantity, unit)
+INSERT INTO public."DishIngredient" ("dishID", "ingredientName", quantity, unit, "ingredientID")
 VALUES
-(1, 'Lettuce', 0.5, 'kg'),
-(2, 'Banana', 1.0, 'kg');
+(1, 'Lettuce', 0.5, 'kg', 1),
+(2, 'Banana', 1.0, 'kg', 2);
 
 INSERT INTO public."Category" (category)
 VALUES

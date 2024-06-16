@@ -3,6 +3,7 @@ package Controller.Fridge;
 import Model.Dish;
 import Model.DishIngredient;
 import Model.Model;
+import dbController.IngredientController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DishDetailController implements Initializable {
@@ -46,7 +48,13 @@ public class DishDetailController implements Initializable {
         cancelBtn.setOnAction(event -> init());
         editBtn.setOnAction(event -> edit());
         addIngredientBtn.setOnAction(event -> onAddIngredient());
-        saveBtn.setOnAction(event -> onSubmit());
+        saveBtn.setOnAction(event -> {
+            try {
+                onSubmit();
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     private void onAddIngredient(){
         ingredients.add(new DishIngredient());
@@ -131,7 +139,7 @@ public class DishDetailController implements Initializable {
         editBtn.setVisible(false);
     }
 
-    private void onSubmit () {
+    private void onSubmit () throws SQLException, ClassNotFoundException {
         if (nameLbl.getText() == null || sectionCB.getValue() ==null) {
 
         } else {
@@ -142,12 +150,12 @@ public class DishDetailController implements Initializable {
                 }
             }
             //TODO: Add the quantity of ingredient, and substract it to
-            Dish dish = new Dish();
+            deleteDish();
             dish.setIngredients(ingredients);
             dish.setName(nameLbl.getText());
             dish.setMeal((String) sectionCB.getValue());
-            Model.getInstance().getDishes().remove(this.dish);
-            Model.getInstance().getDishes().add(dish);
+            addDish();
+            dbController.DishController.updateDish(dish);
             controller.displayDish();
             closeStage();
         }
@@ -155,6 +163,19 @@ public class DishDetailController implements Initializable {
     private void closeStage () {
         Stage stage = (Stage) saveBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
+    }
+
+    private void deleteDish () throws SQLException, ClassNotFoundException {
+        for (DishIngredient dishIngredient: dish.getIngredients()) {
+            IngredientController.updateQuan(dishIngredient.getQuantity(),dishIngredient.getIngredientId(),"+");
+        }
+        Model.getInstance().setIngredients();
+    }
+    private void addDish () throws SQLException, ClassNotFoundException {
+        for (DishIngredient dishIngredient: dish.getIngredients()) {
+            IngredientController.updateQuan(dishIngredient.getQuantity(),dishIngredient.getIngredientId(),"-");
+        }
+        Model.getInstance().setIngredients();
     }
 
 }

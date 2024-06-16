@@ -2,6 +2,7 @@ package Controller.ShoppingList;
 
 import Model.*;
 import Model.ShoppingItems;
+import dbController.IngredientController;
 import dbController.ShoppingListController;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -12,6 +13,7 @@ import javafx.util.converter.DoubleStringConverter;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
@@ -156,13 +158,18 @@ public class MyListItemController implements Initializable {
         //TODO: Add to fridge
         Ingredient newIngredient = new Ingredient();
         item.setBoughtBy(Model.getInstance().getUser().getUsername());
+        item.setPurchaseDay(Date.valueOf(LocalDate.now()));
         ShoppingListController.checkItem(item);
+
         newIngredient.setExpiryDay(Date.valueOf(expireDatePicker.getValue()));
         newIngredient.setName(item.getItemName());
         newIngredient.setCategory(item.getCategory());
         newIngredient.setUnit(item.getUnit());
         newIngredient.setQuantity(item.getQuantity());
-        Model.getInstance().getIngredients().add(newIngredient);
+        newIngredient.setPurchaseDay(Date.valueOf(LocalDate.now()));
+        IngredientController.addIngredient(Model.getInstance().getFridge().getFridgeID(),newIngredient);
+        Model.getInstance().setIngredients();
+        //Model.getInstance().getIngredients().add(newIngredient);
         line.setVisible(true);
         listItem.setDisable(true);
     }

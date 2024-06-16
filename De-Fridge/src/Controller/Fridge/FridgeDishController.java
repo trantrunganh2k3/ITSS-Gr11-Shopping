@@ -12,6 +12,8 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -46,6 +48,9 @@ public class FridgeDishController implements Initializable {
 
     private void addListener () {
         addDishBtn.setOnAction(event -> onAddDish());
+        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+            displayDish();
+        });
     }
 
     private void onAddDish () {
@@ -59,6 +64,7 @@ public class FridgeDishController implements Initializable {
     }
 
     public void displayDish () {
+        Model.getInstance().setDishes(Date.valueOf(datePicker.getValue()));
         clear();
         for (Dish dish: Model.getInstance().getDishes()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/fridge/dish.fxml"));
