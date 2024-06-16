@@ -5,7 +5,7 @@ import Controller.Admin.UserDetailController;
 import Controller.FavoriteRecipe.RecipeDetailController;
 import Controller.Fridge.AddDishController;
 import Controller.Fridge.DishDetailController;
-import Controller.Group.AddMemberController;
+import Controller.Group.*;
 import Controller.ShoppingList.AddListController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -238,13 +238,18 @@ public class ViewFactory {
         }
         return this.groupReportView;
     }
-
+    
+    public void showNewGroupView(NewGroupController controller){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/group/groupNew.fxml"));
+        loader.setController(controller);
+        createStage(loader);
+    }
+    
     public void showAddList(AddListController controller) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/shoppingList/addList.fxml"));
         loader.setController(controller);
         createStage(loader);
     }
-
 
     public AnchorPane getAccInfoView(){
         if (accInfoView == null){
