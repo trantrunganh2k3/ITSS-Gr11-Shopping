@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="50.0" prefWidth="727.0" styleClass="small-container"
+            stylesheets="@../../../resource/styles/recipeDetail.css" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1" >
+    <Label fx:id="lblName" layoutX="14.0" layoutY="17.0" styleClass="input-title" text="Name"
+           AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0"/>
+    <Label fx:id="lblDate" layoutX="212.0" layoutY="10.0" styleClass="input-title" text="Date"
+           AnchorPane.leftAnchor="212.0" AnchorPane.topAnchor="10.0"/>
+    <Label fx:id="lblSection" layoutX="433.0" layoutY="10.0" styleClass="input-title" text="Section"
+           AnchorPane.rightAnchor="235.00000000000006" AnchorPane.topAnchor="10.0"/>
+    <Label fx:id="lblMakeBy" layoutX="578.0" layoutY="10.0" styleClass="input-title" text="Make by"
+           AnchorPane.rightAnchor="81.20000000000005" AnchorPane.topAnchor="10.0"/>
+</AnchorPane>

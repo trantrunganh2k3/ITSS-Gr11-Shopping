@@ -7,6 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DishController {
 
@@ -83,6 +85,21 @@ public class DishController {
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, dishID);
         return stm.executeUpdate() == 1;
+    }
+
+    public static List<Dish> getReportDish (int fridgeID) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM \"Dish\" WHERE \"fridgeID\" = ? " +
+                "AND \"forDate\" >= CURRENT_DATE - INTERVAL '7 days' ";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setInt(1,fridgeID);
+        ResultSet resultSet = stm.executeQuery();
+        List<Dish> dishes = new ArrayList<>();
+        while (resultSet.next()) {
+            dishes.add(new Dish(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                    resultSet.getDate(4),resultSet.getString(5), fridgeID));
+        }
+        return dishes;
     }
 
 }

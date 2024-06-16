@@ -7,87 +7,11 @@
     -fx-background-color: #ffffff;
 }
 
-/*.tab-pane {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #ffffff;
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
-}
-
-.tab {
-    -fx-background-color: #F8EDDD;
-    -fx-tab-min-width: 150px;
-    -fx-tab-min-height: 40px;
-    -fx-padding: 20px;
-    -fx-background-radius: 15px 15px 15px 15px;
-}
-.tab-header-area {
-    -fx-background-color: #ffffff;
-    -fx-padding: 10px;
-}
-
-.tab-label {
-    -fx-text-fill: #7D694D;
-    -fx-font-size: 20px;
-}
-
-.tab:selected {
-    -fx-background-color: #EFDBBD;
-    -fx-text-fill: #ffffff;
+.scroll-pane {
+    -fx-background-color: transparent;
 
 }
 
-.tab-header-background {
-    -fx-background-color: #ffffff;
-}
-
-.tab-header-area {
-    -fx-margin: 10px;
-}*/
-
-
-.date-picker > .arrow-button {
-
-    -fx-padding: 5px;     /* Add padding for visual width increase */
-    -fx-background-color: #38686A; /* Maintain transparency for default look */
-    -fx-text-fill: white;
-    -fx-font-size: 40px;
-}
-
-.date-picker {
-    -fx-background-color: white;
-    -fx-border-radius: 10px;
-    -fx-font-size: 18px;
-}
-
-.date-picker:selected {
-    -fx-background-color: white;
-    -fx-border-radius: 0;}
-
-.date-picker .arrow {
-    -fx-background-color: white;
-}
-
-.date-picker-popup {
-    -fx-background-color: #ffffff;
-}
-
-.month-year-pane .label {
-    -fx-text-fill: white;
-}
-
-.month-year-pane {
-    -fx-background-color: #38686A;
-    -fx-text-fill: white;
-}
-
-
-.date-picker-popup  .calendar-view  .day-cell:selected {
-    -fx-background-color: #38686A;
-}
-
-.list-view {
-    -fx-background-color: #F8EDDD; /* Make the ListView background transparent */
-    -fx-border-width: 0 0 0 0;
-    -fx-background-radius:  10px 10px 10px 10px;
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
 }

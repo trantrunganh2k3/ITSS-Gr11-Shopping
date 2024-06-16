@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="50.0" prefWidth="727.0" styleClass="small-container"
+            stylesheets="@../../../resource/styles/recipeDetail.css" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="lblName" layoutX="24.0" layoutY="11.2" prefHeight="27.0" prefWidth="134.0" styleClass="input-title"
+          text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="11.0"/>
+   <Label fx:id="lblCate" layoutX="123.0" layoutY="11.2" prefHeight="27.0" prefWidth="98.0" styleClass="input-title"
+          text="Label" AnchorPane.leftAnchor="167.0" AnchorPane.topAnchor="11.0"/>
+   <Label fx:id="lblQuantity" alignment="CENTER_RIGHT" layoutX="274.4" layoutY="11.2" prefHeight="27.0" prefWidth="64.0"
+          styleClass="input-title" text="Label" AnchorPane.leftAnchor="274.0" AnchorPane.topAnchor="11.0"/>
+   <Label fx:id="lblUnit" layoutX="382.0" layoutY="11.2" prefHeight="27.0" prefWidth="64.0" styleClass="input-title"
+          text="Label" AnchorPane.rightAnchor="302.0" AnchorPane.topAnchor="11.0"/>
+   <Label fx:id="lblBoughtBy" layoutX="500.0" layoutY="11.2" prefHeight="27.0" prefWidth="98.0" styleClass="input-title"
+          text="Label" AnchorPane.leftAnchor="444.80000000000007" AnchorPane.topAnchor="11.0"/>
+   <Label fx:id="lblDay" layoutX="575.2" layoutY="11.2" prefHeight="27.0" prefWidth="134.0" styleClass="input-title"
+          text="Label" AnchorPane.leftAnchor="575.0" AnchorPane.topAnchor="11.0"/>
+</AnchorPane>

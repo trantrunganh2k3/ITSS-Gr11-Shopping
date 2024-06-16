@@ -25,6 +25,8 @@ public class Model {
     private ObservableList<Category> categories;
     private ObservableList<Unit> units;
     private Fridge fridge;
+    private List<ShoppingItems> reportShoppingItems;
+    private List<Dish> reportDish;
 
 
     public Model() {
@@ -56,6 +58,24 @@ public class Model {
 
     public User getUser() {return this.user;}
 
+    public void setReportShoppingItems () throws SQLException, ClassNotFoundException {
+        this.reportShoppingItems = ShoppingListController.getReportItem(getFridge().getFridgeID());
+    }
+
+    public List<Dish> getReportDish () throws SQLException, ClassNotFoundException {
+        setReportDish();
+        return this.reportDish;
+    }
+
+    public void setReportDish () throws SQLException, ClassNotFoundException {
+        this.reportDish = DishController.getReportDish(getFridge().getFridgeID());
+    }
+
+    public List<ShoppingItems> getReportShoppingItems () throws SQLException, ClassNotFoundException {
+        setReportShoppingItems();
+        return this.reportShoppingItems;
+    }
+
 
     public void setCategories() {
         categories = CategoryController.listCate();
@@ -65,9 +85,6 @@ public class Model {
             setCategories();
         }
         return this.categories;
-    }
-    public void setUnits() {
-        units = UnitController.listUnit();
     }
     public void setUnits() {
         units = UnitController.listUnit();

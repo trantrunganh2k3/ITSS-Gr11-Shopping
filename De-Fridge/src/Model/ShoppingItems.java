@@ -27,7 +27,7 @@ public class ShoppingItems {
         this.unit = unit;
     }
 
-    public ShoppingItems(int itemID, String itemName, double quantity, String boughtBy, int listID, String category, String unit){
+    public ShoppingItems(int itemID, String itemName, double quantity, String boughtBy, int listID, String category, String unit, Date date){
         this.itemID = itemID;
         this.itemName = itemName;
         this.quantity = quantity;
@@ -35,6 +35,7 @@ public class ShoppingItems {
         this.listID = listID;
         this.category = category;
         this.unit = unit;
+        this.purchaseDay = date;
     }
 
     public void setPurchaseDay(Date date) {
