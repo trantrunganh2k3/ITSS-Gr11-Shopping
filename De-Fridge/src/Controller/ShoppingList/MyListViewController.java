@@ -11,7 +11,10 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class MyListViewController implements Initializable {
@@ -23,15 +26,17 @@ public class MyListViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            addListener();
+            datePicker.setValue(LocalDate.now());
             displayList();
-        } catch (IOException e) {
+        } catch (IOException | SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        datePicker.setValue(LocalDate.now());
-        addListener();
+
     }
 
-    public void displayList() throws IOException {
+    public void displayList() throws IOException, SQLException, ClassNotFoundException {
+        Model.getInstance().setShoppingLists(Date.valueOf(datePicker.getValue()));
         listContainerVbox.getChildren().clear();
         for (ShoppingList shoppingList: Model.getInstance().getShoppingLists()){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/shoppingList/list.fxml"));
@@ -44,6 +49,15 @@ public class MyListViewController implements Initializable {
     }
 
     private void addListener () {
+        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                displayList();
+                System.out.println(newValue.toString());
+            } catch (SQLException | ClassNotFoundException | IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
         addListBtn.setOnAction(event -> addList());
     }
     private void addList () {

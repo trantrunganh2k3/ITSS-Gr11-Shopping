@@ -29,7 +29,6 @@ public class SharedListController implements Initializable {
     private final SharedListViewController controller;
 
     public Button shareBtn;
-    public Label shareStatusLbl;
 
     public SharedListController(ShoppingList list, SharedListViewController controller1) {
         this.list = list;
@@ -41,7 +40,6 @@ public class SharedListController implements Initializable {
         addItemsBtn.setVisible(false);
         listTitleLbl.setText(list.getListName());
         shareBtn.setVisible(false);
-        shareStatusLbl.setVisible(false);
         deleteBtn.setVisible(false);
         saveBtn.setVisible(false);
         cancelBtn.setVisible(false);

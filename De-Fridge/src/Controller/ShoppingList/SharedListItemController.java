@@ -3,6 +3,7 @@ package Controller.ShoppingList;
 import Model.Ingredient;
 import Model.Model;
 import Model.ShoppingItems;
+import dbController.ShoppingListController;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -11,6 +12,7 @@ import javafx.util.converter.DoubleStringConverter;
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
@@ -25,7 +27,7 @@ public class SharedListItemController implements Initializable {
     public Button deleteBtn;
 
     public Line line;
-    private ShoppingItems item;
+    private final ShoppingItems item;
     public TextField quantityTf;
 
     public SharedListItemController(ShoppingItems item) {
@@ -43,23 +45,22 @@ public class SharedListItemController implements Initializable {
 
         } else {
             line.setVisible(true);
-            listItem.setDisable(true);
         }
     }
     private void init() {
         editBtn.setVisible(false);
         deleteBtn.setVisible(false);
         if (item.getBoughtBy() == null) {
-            nameTf.setText(item.getItemName());
             checkBtn.setVisible(false);
-            categoryCB.setValue(item.getCategory());
-            quantityTf.setText(String.valueOf(item.getQuantity()));
-            unitCB.setValue(item.getUnit());
             addListener();
         } else {
             line.setVisible(true);
-            listItem.setDisable(true);
+            checkBtn.setVisible(false);
         }
+        nameTf.setText(item.getItemName());
+        categoryCB.setValue(item.getCategory());
+        quantityTf.setText(String.valueOf(item.getQuantity()));
+        unitCB.setValue(item.getUnit());
 
     }
     private void addListener() {
@@ -68,11 +69,23 @@ public class SharedListItemController implements Initializable {
                 checkBtn.setVisible(true);
             }
         });
-        checkBtn.setOnAction(event -> onCheck());
+        checkBtn.setOnAction(event -> {
+            try {
+                onCheck();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
-    private void onCheck () {
+    private void onCheck () throws SQLException, ClassNotFoundException {
         //TODO: Add to fridge in Database
         Ingredient newIngredient = new Ingredient();
+        item.setBoughtBy(Model.getInstance().getUser().getUsername());
+        System.out.println(item.getBoughtBy());
+        System.out.println(item.getItemID());
+        ShoppingListController.checkItem(item);
         newIngredient.setExpiryDay(Date.valueOf(expireDatePicker.getValue()));
         newIngredient.setName(item.getItemName());
         newIngredient.setCategory(item.getCategory());
@@ -80,7 +93,6 @@ public class SharedListItemController implements Initializable {
         newIngredient.setQuantity(item.getQuantity());
         Model.getInstance().getIngredients().add(newIngredient);
         line.setVisible(true);
-        listItem.setDisable(true);
     }
 
 }

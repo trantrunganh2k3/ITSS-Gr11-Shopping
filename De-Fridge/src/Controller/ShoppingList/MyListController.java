@@ -3,6 +3,7 @@ package Controller.ShoppingList;
 import Model.Model;
 import Model.ShoppingItems;
 import Model.ShoppingList;
+import dbController.ShoppingListController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,8 @@ import javafx.scene.control.ListView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -32,7 +35,6 @@ public class MyListController implements Initializable {
 
     private final MyListViewController controller;
     public Button shareBtn;
-    public Label shareStatusLbl;
 
     public MyListController(ShoppingList list, MyListViewController controller) {
         this.list = list;
@@ -51,15 +53,27 @@ public class MyListController implements Initializable {
             reset();
             endEdit();
         });
-        saveBtn.setOnAction(event -> onSave());
-        deleteBtn.setOnAction(event -> {
+        saveBtn.setOnAction(event -> {
             try {
-                onDelete();
-            } catch (IOException e) {
+                onSave();
+            } catch (SQLException | ClassNotFoundException | IOException e) {
                 throw new RuntimeException(e);
             }
         });
-        shareBtn.setOnAction(event -> onShare());
+        deleteBtn.setOnAction(event -> {
+            try {
+                onDelete();
+            } catch (IOException | SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        shareBtn.setOnAction(event -> {
+            try {
+                onShare();
+            } catch (SQLException | ClassNotFoundException | IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     private void addItem () {
@@ -77,16 +91,16 @@ public class MyListController implements Initializable {
         deleteBtn.setVisible(items.isEmpty());
         System.out.println(list.isShared());
         if (list.isShared()) {
-            shareStatusLbl.setVisible(true);
+
             shareBtn.setVisible(false);
         } else {
-            shareStatusLbl.setVisible(false);
+
             shareBtn.setVisible(true);
         }
     }
-    private void onShare (){
-        list.share();
-        shareStatusLbl.setVisible(list.isShared());
+    private void onShare () throws SQLException, ClassNotFoundException, IOException {
+        ShoppingListController.shareList(list);
+        controller.displayList();
         shareBtn.setVisible(!list.isShared());
     }
 
@@ -94,6 +108,7 @@ public class MyListController implements Initializable {
         items = FXCollections.observableArrayList();
         for (ShoppingItems shoppingItems: list.getShoppingItems()) {
             ShoppingItems item = new ShoppingItems();
+            item.setItemID(shoppingItems.getItemID());
             item.setItemName(shoppingItems.getItemName());
             item.setUnit(shoppingItems.getUnit());
             item.setQuantity(shoppingItems.getQuantity());
@@ -137,12 +152,13 @@ public class MyListController implements Initializable {
         deleteBtn.setVisible(items.isEmpty());
     }
 
-    private void onDelete () throws IOException {
+    private void onDelete () throws IOException, SQLException, ClassNotFoundException {
         Model.getInstance().getShoppingLists().remove(this.list);
+        ShoppingListController.deleteShoppingList(list);
         controller.displayList();
     }
 
-    public void onSave () {
+    public void onSave () throws SQLException, ClassNotFoundException, IOException {
         for (ShoppingItems item: items) {
             if (item.getItemName() ==null || item.getCategory() == null || item.getQuantity() == 0
             || item.getUnit() == null
@@ -151,14 +167,18 @@ public class MyListController implements Initializable {
         List<ShoppingItems> newList = new ArrayList<>();
         for (ShoppingItems shoppingItems: items) {
             ShoppingItems item = new ShoppingItems();
+            item.setItemID(shoppingItems.getItemID());
             item.setItemName(shoppingItems.getItemName());
             item.setUnit(shoppingItems.getUnit());
             item.setQuantity(shoppingItems.getQuantity());
             item.setCategory(shoppingItems.getCategory());
             item.setBoughtBy(shoppingItems.getBoughtBy());
+            item.setListID(shoppingItems.getListID());
             newList.add(item);
         }
         list.setShoppingItems(newList);
+        ShoppingListController.updateShoppingList(list);
+        controller.displayList();
         endEdit();
         init();
     }
