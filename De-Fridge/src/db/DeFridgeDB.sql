@@ -113,9 +113,9 @@ ALTER TABLE "FavoriteRecipe" ADD FOREIGN KEY ("username") REFERENCES "user" ("us
 
 ALTER TABLE "Fridge" ADD FOREIGN KEY ("username") REFERENCES "user" ("username");
 
-ALTER TABLE "Ingerdient" ADD FOREIGN KEY ("fridgeID") REFERENCES "Fridge" ("fridegID");
+ALTER TABLE "Ingredient" ADD FOREIGN KEY ("fridgeID") REFERENCES "Fridge" ("fridgeID");
 
-ALTER TABLE "Dish" ADD FOREIGN KEY ("fridgeID") REFERENCES "Fridge" ("fridegID");
+ALTER TABLE "Dish" ADD FOREIGN KEY ("fridgeID") REFERENCES "Fridge" ("fridgeID");
 
 ALTER TABLE "DishIngredient" ADD FOREIGN KEY ("dishID") REFERENCES "Dish" ("dishID");
 
@@ -163,7 +163,7 @@ VALUES
 ('Tasty Salad', 'Tasty Salad', 'Lettuce, Tomato, Cucumber', 'john_doe'),
 ('Fruit Smoothie', 'Fruit Smoothie', 'Banana, Strawberry, Milk', 'jane_smith');
 
-INSERT INTO public."Fridge" ("fridegID", "groupID", username)
+INSERT INTO public."Fridge" ("fridgeID", "groupID", username)
 VALUES
 (1, 1, 'john_doe'),
 (2, 2, 'jane_smith');
