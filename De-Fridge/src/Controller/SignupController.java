@@ -2,6 +2,7 @@ package Controller;
 
 import Model.*;
 import db.DBConnection;
+import dbController.FridgeController;
 import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -24,6 +25,9 @@ public class SignupController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorLbl.setVisible(false);
+        cboxGender.getItems().add("Male");
+        cboxGender.getItems().add("Female");
+        cboxGender.getItems().add("Sc");
         tfPassCf.setOnKeyPressed(keyEvent -> {
             if(keyEvent.getCode() == KeyCode.ENTER){
                 try{
@@ -56,7 +60,7 @@ public class SignupController implements Initializable {
         String email = tfEmail.getText();
         String pass = tfPassword.getText();
         String passCf = tfPassCf.getText();
-        String gender = cboxGender.toString();
+        String gender = cboxGender.getValue().toString();
 
         if(username.isEmpty() || pass.isEmpty() || passCf.isEmpty() || email.isEmpty() || gender.isEmpty()){
             errorLbl.setText("Error: Missing text field(s).");
@@ -66,13 +70,14 @@ public class SignupController implements Initializable {
             errorLbl.setVisible(true);
         }else {
             boolean userHad = dbController.UserController.searchUsernameForSignup(username);
-            if(userHad == true){
+            if(userHad){
                 errorLbl.setText("Error: Username had already exited.");
                 errorLbl.setVisible(true);
             }else {
-                User user = new User(username, pass, gender, email);
+                User user = new User(username, pass, gender, email );
                 boolean add = dbController.UserController.addUser(user);
-                if(add == false){
+                FridgeController.addFridge(user);
+                if(!add){
                     errorLbl.setText("Error: Cannot add user account!");
                     errorLbl.setVisible(true);
                 }else{

@@ -88,7 +88,7 @@ public class LoginController implements Initializable {
             errorLbl.setVisible(true);
         }else{
             User user = dbController.UserController.findUserForLogin(username, password);
-            if(user != null){
+            if(user != null && user.getStatus().equals("Active")){
                 Model.getInstance().setUser(user);
                 if(username.equals("admin")){
                     toAdminHome();

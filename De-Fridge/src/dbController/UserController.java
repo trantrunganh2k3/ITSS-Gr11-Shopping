@@ -29,7 +29,7 @@ public class UserController {
 
     //Find user for login
     public static User findUserForLogin(String username, String password) throws ClassNotFoundException, SQLException{
-        String sql = "SELECT username, password, name, gender, email, address, \"groupID\" FROM public.\"user\" WHERE username = ?";
+        String sql = "SELECT username, password, name, gender, email, address, \"groupID\", status FROM public.\"user\" WHERE username = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setObject(1, username);
@@ -46,10 +46,11 @@ public class UserController {
                 cus.setGender(result.getString(4));
                 cus.setEmail(result.getString(5));
                 cus.setAddress(result.getString(6));
+                cus.setStatus(result.getString(8));
                 if (result.getObject(7) != null) {
                     cus.setGroupID(result.getInt(7));
                 } else {
-                    cus.setGroupID(-1); // Or any other default value for an empty groupID
+                    cus.setGroupID(-1);
                 }
                 return cus;
             }
