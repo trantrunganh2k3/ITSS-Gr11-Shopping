@@ -69,6 +69,9 @@ public class Model {
     public void setUnits() {
         units = UnitController.listUnit();
     }
+    public void setUnits() {
+        units = UnitController.listUnit();
+    }
     public ObservableList<Unit> getUnits(){
         if (units ==null) {
             setUnits();
@@ -76,98 +79,27 @@ public class Model {
         return this.units;
     }
 
-    public ObservableList<ShoppingList> getShoppingLists() {
+    public ObservableList<ShoppingList> getShoppingLists() throws SQLException, ClassNotFoundException {
         if (this.shoppingLists == null ) {
-            setShoppingLists();
+            return null;
         }
         return this.shoppingLists;
     }
 
-    public void setSharedShoppingLists() {
-        ShoppingList shoppingList = new ShoppingList();
-
-        shoppingList.setListName("Today list");
-        shoppingList.setDate(Date.valueOf("2024-06-15"));
-
-        ShoppingItems item1 = new ShoppingItems();
-        ShoppingItems item2 = new ShoppingItems();
-        ShoppingItems item3 = new ShoppingItems();
-
-        item1.setItemName("Rau");
-        item1.setCategory("Veggies");
-        item1.setQuantity(1);
-        item1.setUnit("Kg");
-        item1.setBoughtBy("Me");
-
-        item2.setItemName("Dua hau");
-        item2.setCategory("Fruit");
-        item2.setQuantity(2);
-        item2.setUnit("Qua");
-
-
-        item3.setItemName("Thit bo");
-        item3.setCategory("Meat");
-        item3.setQuantity(500);
-        item3.setUnit("gram");
-
-        ObservableList<ShoppingItems> items = FXCollections.observableArrayList();
-        items.add(item1);
-        items.add(item2);
-        items.add(item3);
-
-        shoppingList.setShoppingItems(items);
-        for (ShoppingItems item: shoppingList.getShoppingItems()){
-            System.out.println(item.getBoughtBy());
-        }
-        sharedShoppingLists = FXCollections.observableArrayList();
-        sharedShoppingLists.add(shoppingList);
+    public void setSharedShoppingLists(Date date) throws SQLException, ClassNotFoundException {
+        sharedShoppingLists = ShoppingListController.getShoppingList(user.getUsername(), date, false);
 
     }
     public ObservableList<ShoppingList> getSharedShoppingLists() {
         if (this.sharedShoppingLists == null ) {
-            setSharedShoppingLists();
+            return FXCollections.observableArrayList();
         }
         return this.sharedShoppingLists;
     }
 
-    public void setShoppingLists() {
-        ShoppingList shoppingList = new ShoppingList();
+    public void setShoppingLists(Date date) throws SQLException, ClassNotFoundException {
+        shoppingLists = ShoppingListController.getShoppingList(user.getUsername(),date,true);
 
-        shoppingList.setListName("Today list");
-        //shoppingList.setDate();
-
-        ShoppingItems item1 = new ShoppingItems();
-        ShoppingItems item2 = new ShoppingItems();
-        ShoppingItems item3 = new ShoppingItems();
-
-        item1.setItemName("Rau");
-        item1.setCategory("Veggies");
-        item1.setQuantity(1);
-        item1.setUnit("Kg");
-        item1.setBoughtBy("Me");
-
-        item2.setItemName("Dua hau");
-        item2.setCategory("Fruit");
-        item2.setQuantity(2);
-        item2.setUnit("Qua");
-
-
-        item3.setItemName("Thit bo");
-        item3.setCategory("Meat");
-        item3.setQuantity(500);
-        item3.setUnit("gram");
-
-        ObservableList<ShoppingItems> items = FXCollections.observableArrayList();
-        items.add(item1);
-        items.add(item2);
-        items.add(item3);
-
-        shoppingList.setShoppingItems(items);
-        for (ShoppingItems item: shoppingList.getShoppingItems()){
-            System.out.println(item.getBoughtBy());
-        }
-        shoppingLists = FXCollections.observableArrayList();
-        shoppingLists.add(shoppingList);
     }
 
     public ObservableList<FavoriteRecipe> getRecipes() {

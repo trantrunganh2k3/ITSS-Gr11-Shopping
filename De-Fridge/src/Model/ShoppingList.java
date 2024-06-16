@@ -15,11 +15,11 @@ public class ShoppingList {
 
     public ShoppingList(){}
 
-    public ShoppingList(int listID, String listName, int totalCost, Date date){
+    public ShoppingList(int listID, String listName, Date date,  boolean isShared){
         this.listID = listID;
         this.listName = listName;
-        this.totalCost = totalCost;
         this.date = date;
+        this.shared = isShared;
     }
 
     public void setShoppingItems(List<ShoppingItems> list){
