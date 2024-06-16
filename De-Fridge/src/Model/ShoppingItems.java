@@ -22,6 +22,16 @@ public class ShoppingItems {
         this.category = category;
         this.unit = unit;
     }
+
+    public ShoppingItems(int itemID, String itemName, double quantity, String boughtBy, int listID, String category, String unit){
+        this.itemID = itemID;
+        this.itemName = itemName;
+        this.quantity = quantity;
+        this.boughtBy = boughtBy;
+        this.listID = listID;
+        this.category = category;
+        this.unit = unit;
+    }
     public int getItemID() {
         return itemID;
     }

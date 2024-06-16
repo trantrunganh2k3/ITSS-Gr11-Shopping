@@ -144,9 +144,9 @@ VALUES
 
 
 
-INSERT INTO public."ShoppingList" ("listID", "totalCost", date)
+INSERT INTO public."ShoppingList" ("listID","listName", "totalCost", date)
 VALUES
-(1, 100, '2024-06-01');
+(1, 'Hiii',100, '2024-06-01');
 
 INSERT INTO public."OwnerShip" ("listID", "username", "isOwner")
 VALUES
