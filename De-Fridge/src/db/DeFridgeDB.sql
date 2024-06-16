@@ -45,7 +45,7 @@ CREATE TABLE "ShoppingItems" (
 );
 
 CREATE TABLE "FavoriteRecipe" (
-  "recipeID" int PRIMARY KEY,
+  "recipeID" BIGSERIAL PRIMARY KEY,
   "recipeName" varchar(30),
   "description" text,
   "ingredient" text,
@@ -158,10 +158,10 @@ VALUES
 (1.0, 'Orange', 10, 'john_doe', 1, 'Fruits', 'kg'),
 (1.0, 'Chicken', 70, 'john_doe', 1, 'Meat', 'kg');
 
-INSERT INTO public."FavoriteRecipe" ("recipeID", "recipeName", description, ingredient, username)
+INSERT INTO public."FavoriteRecipe" ("recipeName", description, ingredient, username)
 VALUES
-(1, 'Tasty Salad', 'Tasty Salad', 'Lettuce, Tomato, Cucumber', 'john_doe'),
-(2, 'Fruit Smoothie', 'Fruit Smoothie', 'Banana, Strawberry, Milk', 'jane_smith');
+('Tasty Salad', 'Tasty Salad', 'Lettuce, Tomato, Cucumber', 'john_doe'),
+('Fruit Smoothie', 'Fruit Smoothie', 'Banana, Strawberry, Milk', 'jane_smith');
 
 INSERT INTO public."Fridge" ("fridegID", "groupID", username)
 VALUES

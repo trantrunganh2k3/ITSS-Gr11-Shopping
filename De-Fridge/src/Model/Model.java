@@ -1,6 +1,5 @@
 package Model;
 
-import Controller.FavoriteRecipe.FavoriteRecipeController;
 import View.ViewFactory;
 import dbController.*;
 import javafx.collections.FXCollections;
@@ -185,25 +184,22 @@ public class Model {
 
     public void setRecipes() {
         recipes = FXCollections.observableArrayList();
-        FavoriteRecipe recipe1 = new FavoriteRecipe();
-        FavoriteRecipe recipe2 = new FavoriteRecipe();
-        FavoriteRecipe recipe3 = new FavoriteRecipe();
-
-        recipe1.setName("Pho bo");
-        recipe1.setDescription("Cach lam");
-        recipe1.setIngredient("Beef: 2,5kg\nOnion");
-
-        recipe2.setName("Pizza");
-        recipe2.setIngredient("Bough: 500g\nCheese: ...\nTomato source: 2 can");
-        recipe2.setDescription("Step by step");
-
-        recipe3.setName("Omelette");
-        recipe3.setIngredient("Egg: 2 eggs\nOil: 500ml.");
-        recipe3.setDescription("Simple but nutrition.");
-
-        recipes.add(recipe1);
-        recipes.add(recipe2);
-        recipes.add(recipe3);
+//        FavoriteRecipe recipe1 = new FavoriteRecipe();
+//        FavoriteRecipe recipe2 = new FavoriteRecipe();
+//        FavoriteRecipe recipe3 = new FavoriteRecipe();
+//
+//        recipe1.setName("Pho bo");
+//        recipe1.setDescription("Cach lam");
+//        recipe1.setIngredient("Beef: 2,5kg\nOnion");
+//
+//        recipe2.setName("Pizza");
+//        recipe2.setIngredient("Bough: 500g\nCheese: ...\nTomato source: 2 can");
+//        recipe2.setDescription("Step by step");
+//
+//        recipe3.setName("Omelette");
+//        recipe3.setIngredient("Egg: 2 eggs\nOil: 500ml.");
+//        recipe3.setDescription("Simple but nutrition.");
+        recipes = FavoriteRecipeController.listRecipe(this.user.getUsername());
     }
 
     public void setIngredients() {

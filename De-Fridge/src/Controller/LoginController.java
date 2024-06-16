@@ -89,10 +89,10 @@ public class LoginController implements Initializable {
         }else{
             User user = dbController.UserController.findUserForLogin(username, password);
             if(user != null){
+                Model.getInstance().setUser(user);
                 if(username.equals("admin")){
                     toAdminHome();
                 }else {
-                    Model.getInstance().setUser(user);
                     toHome();}
             }else {
                 errorLbl.setText("Login Failed!");

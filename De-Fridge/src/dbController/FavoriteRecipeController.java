@@ -13,28 +13,27 @@ import java.time.LocalDateTime;
 
 public class FavoriteRecipeController {
     public static boolean addRecipe(FavoriteRecipe recipe) throws SQLException, ClassNotFoundException {
-        String sql = "INSERT INTO public.\"FavoriteRecipe\" (\"recipeID\", \"recipeName\", description, ingredient, username)" +
-                "VALUES(?,?,?,?,?)";
-        Connection conn = DBConnection.getDBConnection().getConnection();
-        PreparedStatement stm = conn.prepareStatement(sql);
-        stm.setInt(1, recipe.getRecipeID());
-        stm.setString(2, recipe.getName());
-        stm.setString(3, recipe.getDescription());
-        stm.setString(4, recipe.getIngredient());
-        stm.setString(5, recipe.getUsername());
-
-        return stm.executeUpdate() == 1;
-    }
-
-    public static boolean updateRecipe(FavoriteRecipe recipe) throws SQLException, ClassNotFoundException{
-        String sql = "UPDATE public.\"FavoriteRecipe\" SET \"recipeName\" = ?, description = ?, ingredient = ?" +
-                "WHERE username = ?";
+        String sql = "INSERT INTO public.\"FavoriteRecipe\" (\"recipeName\", description, ingredient, username)" +
+                "VALUES(?,?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setString(1, recipe.getName());
         stm.setString(2, recipe.getDescription());
         stm.setString(3, recipe.getIngredient());
         stm.setString(4, recipe.getUsername());
+
+        return stm.executeUpdate() == 1;
+    }
+
+    public static boolean updateRecipe(FavoriteRecipe recipe) throws SQLException, ClassNotFoundException{
+        String sql = "UPDATE public.\"FavoriteRecipe\" SET \"recipeName\" = ?, description = ?, ingredient = ? " +
+                "WHERE \"recipeID\" = ? ";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setString(1, recipe.getName());
+        stm.setString(2, recipe.getDescription());
+        stm.setString(3, recipe.getIngredient());
+        stm.setInt(4, recipe.getRecipeID());
 
         return stm.executeUpdate() == 1;
     }
@@ -47,7 +46,7 @@ public class FavoriteRecipeController {
         try{
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
-            stm.setString(1, String.valueOf(LocalDateTime.now()));
+            stm.setString(1, username);
             ResultSet result = stm.executeQuery();
 
             while (result.next()){
@@ -61,11 +60,11 @@ public class FavoriteRecipeController {
         return recipeList;
     }
 
-    public static boolean deleteRecipe(String username) throws ClassNotFoundException, SQLException{
-        String sql = "DELETE FROM public.\"FavoriteRecipe\" WHERE \"username\" = ?";
+    public static boolean deleteRecipe(int recipeID) throws ClassNotFoundException, SQLException{
+        String sql = "DELETE FROM public.\"FavoriteRecipe\" WHERE \"recipeID\" = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
-        stm.setString(1, username);
+        stm.setInt(1, recipeID);
 
         return stm.executeUpdate() == 1;
     }

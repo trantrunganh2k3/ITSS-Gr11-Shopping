@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class RecipeController implements Initializable {
@@ -20,7 +21,7 @@ public class RecipeController implements Initializable {
     public Label lblIngredient;
     public Button cancelBtn;
 
-    private FavoriteRecipe recipe;
+    private final FavoriteRecipe recipe;
 
     private final FavoriteRecipeController controller;
 
@@ -46,7 +47,12 @@ public class RecipeController implements Initializable {
             }
         });
         cancelBtn.setOnAction(event -> {
-            Model.getInstance().getRecipes().remove(this.recipe);
+            try {
+                dbController.FavoriteRecipeController.deleteRecipe(this.recipe.getRecipeID());
+            } catch (ClassNotFoundException | SQLException e) {
+                throw new RuntimeException(e);
+            }
+            Model.getInstance().setRecipes();
             displayRecipe();
         });
     }
