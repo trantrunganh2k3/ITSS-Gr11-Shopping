@@ -155,7 +155,6 @@ public class MyListItemController implements Initializable {
     }
 
     private void onCheck () throws SQLException, ClassNotFoundException {
-        //TODO: Add to fridge
         Ingredient newIngredient = new Ingredient();
         item.setBoughtBy(Model.getInstance().getUser().getUsername());
         item.setPurchaseDay(Date.valueOf(LocalDate.now()));
@@ -169,7 +168,6 @@ public class MyListItemController implements Initializable {
         newIngredient.setPurchaseDay(Date.valueOf(LocalDate.now()));
         IngredientController.addIngredient(Model.getInstance().getFridge().getFridgeID(),newIngredient);
         Model.getInstance().setIngredients();
-        //Model.getInstance().getIngredients().add(newIngredient);
         line.setVisible(true);
         listItem.setDisable(true);
     }

@@ -114,6 +114,7 @@ public class MyListController implements Initializable {
             item.setQuantity(shoppingItems.getQuantity());
             item.setCategory(shoppingItems.getCategory());
             item.setBoughtBy(shoppingItems.getBoughtBy());
+            item.setPurchaseDay(shoppingItems.getPurchaseDay());
             items.add(item);
         }
         itemsLV.setItems(items);
@@ -174,6 +175,7 @@ public class MyListController implements Initializable {
             item.setCategory(shoppingItems.getCategory());
             item.setBoughtBy(shoppingItems.getBoughtBy());
             item.setListID(shoppingItems.getListID());
+            item.setPurchaseDay(shoppingItems.getPurchaseDay());
             newList.add(item);
         }
         list.setShoppingItems(newList);
