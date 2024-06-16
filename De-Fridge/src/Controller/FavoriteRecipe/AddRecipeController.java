@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AddRecipeController implements Initializable {
@@ -32,14 +33,20 @@ public class AddRecipeController implements Initializable {
 
     private void addListener () {
         cancelBtn.setOnAction(event -> onCancel());
-        saveBtn.setOnAction(event -> onSave());
+        saveBtn.setOnAction(event -> {
+            try {
+                onSave();
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     private void onCancel () {
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
     }
-    private void onSave () {
+    private void onSave () throws SQLException, ClassNotFoundException {
         if (nameLbl.getText() == null || ingredientLbl.getText() == null || descriptionLbl.getText() == null) {
 
         } else {
@@ -47,7 +54,9 @@ public class AddRecipeController implements Initializable {
             recipe.setName(nameLbl.getText());
             recipe.setDescription(descriptionLbl.getText());
             recipe.setIngredient(ingredientLbl.getText());
-            Model.getInstance().getRecipes().add(recipe);
+            recipe.setUsername(Model.getInstance().getUser().getUsername());
+            dbController.FavoriteRecipeController.addRecipe(recipe);
+            Model.getInstance().setRecipes();
             controller.displayRecipes();
             onCancel();
         }

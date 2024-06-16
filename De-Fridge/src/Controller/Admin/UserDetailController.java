@@ -2,6 +2,7 @@ package Controller.Admin;
 
 import Model.Model;
 import Model.User;
+import dbController.UserController;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class UserDetailController implements Initializable {
@@ -40,7 +42,15 @@ public class UserDetailController implements Initializable {
     }
 
     private void addListener () {
-        btnSave.setOnAction(event -> save());
+        btnSave.setOnAction(event -> {
+            try {
+                save();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
         btnEdit.setOnAction(event -> startEdit());
         btnCancel.setOnAction(event -> init());
         btnClose.setOnAction(event -> {
@@ -86,8 +96,9 @@ public class UserDetailController implements Initializable {
         cbStatus.getItems().add("Blocked");
     }
 
-    private void save() {
+    private void save() throws SQLException, ClassNotFoundException {
         this.user.setStatus(cbStatus.getValue().toString());
+        UserController.setUserStatus(user);
         init();
     }
 

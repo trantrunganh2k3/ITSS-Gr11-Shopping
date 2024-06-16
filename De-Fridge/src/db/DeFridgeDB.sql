@@ -45,7 +45,7 @@ CREATE TABLE "ShoppingItems" (
 );
 
 CREATE TABLE "FavoriteRecipe" (
-  "recipeID" int PRIMARY KEY,
+  "recipeID" BIGSERIAL PRIMARY KEY,
   "recipeName" varchar(30),
   "description" text,
   "ingredient" text,
@@ -53,7 +53,7 @@ CREATE TABLE "FavoriteRecipe" (
 );
 
 CREATE TABLE "Fridge" (
-  "fridegID" int PRIMARY KEY,
+  "fridgeID" int PRIMARY KEY,
   "groupID" int,
   "username" varchar(15)
 );
@@ -131,16 +131,16 @@ VALUES
 
 INSERT INTO public."user" (username, password, name, gender, email, address, "groupID", status)
 VALUES
-('john_doe', 'password123', 'John Doe', 'M', 'john@example.com', '123 Main St', 1, 'active'),
-('jane_smith', 'password456', 'Jane Smith', 'F', 'jane@example.com', '456 Elm St', 2, 'active');
+('john_doe', 'password123', 'John Doe', 'M', 'john@example.com', '123 Main St', 1, 'Active'),
+('jane_smith', 'password456', 'Jane Smith', 'F', 'jane@example.com', '456 Elm St', 2, 'Active');
 
 INSERT INTO public."user" (username, password, name, gender, email, address, status)
 VALUES
-('trunganh', '123456', 'Trung Anh', 'Nam', 'trunganh@gmail.com', 'HBT, Ha Noi', 'active'),
-('duyvu', '654321', 'Duc Duy', 'Nam', 'ducduy@gmail.com', 'HBT, Ha Noi', 'active'),
-('dungnguyen', '654321', 'Thuy Dung', 'Nu', 'dungnguyen@gmail.com', 'HBT, Ha Noi', 'active'),
-('bobnguyen', '123456', 'Bob Nguyen', 'Nu', 'bobnguyen@gmail.com', 'HBT, Ha Noi', 'active'),
-('admin', 'admin', 'Admin', 'Nam', 'adFridge@gmail.com', 'HBT, Ha Noi', 'active');
+('trunganh', '123456', 'Trung Anh', 'Nam', 'trunganh@gmail.com', 'HBT, Ha Noi', 'Active'),
+('duyvu', '654321', 'Duc Duy', 'Nam', 'ducduy@gmail.com', 'HBT, Ha Noi', 'Active'),
+('dungnguyen', '654321', 'Thuy Dung', 'Nu', 'dungnguyen@gmail.com', 'HBT, Ha Noi', 'Active'),
+('bobnguyen', '123456', 'Bob Nguyen', 'Nu', 'bobnguyen@gmail.com', 'HBT, Ha Noi', 'Active'),
+('admin', 'admin', 'Admin', 'Nam', 'adFridge@gmail.com', 'HBT, Ha Noi', 'Active');
 
 
 
@@ -158,10 +158,10 @@ VALUES
 (1.0, 'Orange', 10, 'john_doe', 1, 'Fruits', 'kg'),
 (1.0, 'Chicken', 70, 'john_doe', 1, 'Meat', 'kg');
 
-INSERT INTO public."FavoriteRecipe" ("recipeID", "recipeName", description, ingredient, username)
+INSERT INTO public."FavoriteRecipe" ("recipeName", description, ingredient, username)
 VALUES
-(1, 'Tasty Salad', 'Tasty Salad', 'Lettuce, Tomato, Cucumber', 'john_doe'),
-(2, 'Fruit Smoothie', 'Fruit Smoothie', 'Banana, Strawberry, Milk', 'jane_smith');
+('Tasty Salad', 'Tasty Salad', 'Lettuce, Tomato, Cucumber', 'john_doe'),
+('Fruit Smoothie', 'Fruit Smoothie', 'Banana, Strawberry, Milk', 'jane_smith');
 
 INSERT INTO public."Fridge" ("fridegID", "groupID", username)
 VALUES
