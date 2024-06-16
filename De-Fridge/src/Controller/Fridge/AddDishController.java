@@ -3,6 +3,8 @@ package Controller.Fridge;
 import Model.Dish;
 import Model.DishIngredient;
 import Model.Model;
+import dbController.DishController;
+import dbController.IngredientController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AddDishController implements Initializable {
@@ -57,7 +61,15 @@ public class AddDishController implements Initializable {
 
     private void addListener () {
         addIngredientBtn.setOnAction(event -> onAddIngredient());
-        saveBtn.setOnAction(event -> onSubmit());
+        saveBtn.setOnAction(event -> {
+            try {
+                onSubmit();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
         cancelBtn.setOnAction(event -> closeStage());
     }
 
@@ -71,7 +83,7 @@ public class AddDishController implements Initializable {
 
 
 
-    private void onSubmit (){
+    private void onSubmit () throws SQLException, ClassNotFoundException {
         if (nameDishLbl.getText() == null || sectionChoiceBox.getValue() ==null) {
 
         } else {
@@ -82,11 +94,17 @@ public class AddDishController implements Initializable {
                 }
             }
             Dish dish = new Dish();
+            dish.setUsername(Model.getInstance().getUser().getUsername());
+            dish.setForDate(Date.valueOf(controller.datePicker.getValue()));
+            dish.setFridgeID(Model.getInstance().getFridge().getFridgeID());
             dish.setIngredients(ingredients);
             dish.setName(nameDishLbl.getText());
             dish.setMeal((String) sectionChoiceBox.getValue());
-
-            Model.getInstance().getDishes().add(dish);
+            for (DishIngredient dishIngredient: dish.getIngredients()) {
+                IngredientController.updateQuan(dishIngredient.getQuantity(),dishIngredient.getIngredientId(),"-");
+            }
+            Model.getInstance().setIngredients();
+            DishController.addDish(dish);
             controller.displayDish();
             closeStage();
         }

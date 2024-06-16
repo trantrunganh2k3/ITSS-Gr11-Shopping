@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class FridgeItem implements Initializable {
@@ -17,20 +18,24 @@ public class FridgeItem implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             displayIngredient();
-        } catch (IOException e) {
+        } catch (IOException | SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        Model.getInstance().getIngredients().addListener((ListChangeListener.Change<? extends Ingredient> c) -> {
-                    try {
-                        displayIngredient();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+        try {
+            Model.getInstance().getIngredients().addListener((ListChangeListener.Change<? extends Ingredient> c) -> {
+                        try {
+                            displayIngredient();
+                        } catch (IOException | SQLException | ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
-                }
-        );
+            );
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    private void displayIngredient() throws IOException {
+    private void displayIngredient() throws IOException, SQLException, ClassNotFoundException {
         itemsVbox.getChildren().clear();
         for (Ingredient ingredient: Model.getInstance().getIngredients()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/fridge/fridgeIngredient.fxml"));

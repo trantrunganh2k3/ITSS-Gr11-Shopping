@@ -18,14 +18,10 @@ public class Model {
     private User user;
     private ObservableList<Ingredient> ingredients;
     private ObservableList<Dish> dishes;
-    private ObservableList<User> Member;
-
     private ObservableList<User> users;
-
     private ObservableList<FavoriteRecipe> recipes;
     private ObservableList<ShoppingList> shoppingLists;
     private ObservableList<ShoppingList> sharedShoppingLists;
-
     private ObservableList<Category> categories;
     private ObservableList<Unit> units;
     private Fridge fridge;
@@ -73,6 +69,9 @@ public class Model {
     public void setUnits() {
         units = UnitController.listUnit();
     }
+    public void setUnits() {
+        units = UnitController.listUnit();
+    }
     public ObservableList<Unit> getUnits(){
         if (units ==null) {
             setUnits();
@@ -100,7 +99,6 @@ public class Model {
 
     public void setShoppingLists(Date date) throws SQLException, ClassNotFoundException {
         shoppingLists = ShoppingListController.getShoppingList(user.getUsername(),date,true);
-
     }
 
     public ObservableList<FavoriteRecipe> getRecipes() {
@@ -115,88 +113,22 @@ public class Model {
         recipes = FavoriteRecipeController.listRecipe(this.user.getUsername());
     }
 
-    public void setIngredients() {
-        this.ingredients = IngredientController.listIngre();
+    public void setIngredients() throws SQLException, ClassNotFoundException {
+        this.ingredients = IngredientController.listIngre(getFridge().getFridgeID());
     }
 
-    public ObservableList<Ingredient> getIngredients() {
+    public ObservableList<Ingredient> getIngredients() throws SQLException, ClassNotFoundException {
         if (ingredients == null) {
             setIngredients();
         }
         return this.ingredients;
-    }
-    
-    public void setMembers() {
-        User member1 = new User();
-        User member2 = new User();
-      /*  private String username;
-        private String password;
-        private String name;
-        private String gender;
-        private String email;
-        private String address;
-        private int groupID; */
-
-        member1.setName("Duy");
-        member1.setUsername("duyvu");
-        member1.setEmail("Duy@gmail.com");
-        member1.setGroupID(2003);
-        
-        member2.setName("Duy2");
-        member2.setUsername("duyvu2");
-        member2.setEmail("Du2y@gmail.com");
-        member2.setGroupID(2003);
-
-        ObservableList<User> Member = FXCollections.observableArrayList();;
-        Member.add(member1);
-        Member.add(member2);
-
-        this.Member = Member;
-    }
-
-    public ObservableList<User> getMember() {
-        if (Member == null) {
-            setMembers();
-        }
-        return this.Member;
-    }
+    } 
 
     public ObservableList<Dish> getDishes() {
-        if (this.dishes == null) {
-            setDishes();
-        }
         return this.dishes;
     }
-    public void setDishes() {
-        dishes = FXCollections.observableArrayList();
-        Dish dish1 = new Dish();
-        Dish dish3 = new Dish();
-        Dish dish2 = new Dish();
-
-        DishIngredient ingredient = new DishIngredient();
-        ingredient.setUnit("kg");
-        ingredient.setIngredientId(1);
-        ingredient.setIngredientName("Banana");
-        ingredient.setQuantity(1);
-        List<DishIngredient> list = new ArrayList<>();
-        list.add(ingredient);
-
-        dish1.setMeal("Breakfast");
-        dish1.setName("Cereal");
-        dish1.setForDate(Date.valueOf("2024-06-12"));
-        dish1.setIngredients(list);
-
-        /*dish2.setMeal("Lunch");
-        dish2.setName("Pho");
-        dish2.setForDate("2024-06-12");
-
-        dish3.setMeal("Dinner");
-        dish3.setName("Pizza");
-        dish3.setForDate("2024-06-12");*/
-
-        this.dishes.add(dish1);
-        //this.dishes.add(dish2);
-        //this.dishes.add(dish3);
+    public void setDishes(Date date) {
+        this.dishes = DishController.listDish(fridge.getFridgeID(),date);
     }
 
     public void setUser(){

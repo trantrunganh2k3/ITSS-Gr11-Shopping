@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="689.0" styleClass="container" stylesheets="@../../../resource/styles/fridgeIngredient.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="nameLbl" layoutX="21.0" layoutY="11.0" prefHeight="27.0" prefWidth="122.0" styleClass="name" text="Label" AnchorPane.leftAnchor="21.0" />
+   <Label fx:id="usernameLbl" alignment="CENTER_RIGHT" layoutX="161.0" layoutY="11.0" prefHeight="26.0" prefWidth="74.0" styleClass="quantity" text="Label" />
+   <Label fx:id="emailLbl" layoutX="362.0" layoutY="11.0" prefHeight="27.0" prefWidth="122.0" styleClass="category" text="Label" />
+   <Label fx:id="groupIDLbl" layoutX="558.0" layoutY="11.0" prefHeight="27.0" prefWidth="103.0" styleClass="expiry-date" text="Label" />
+   <CheckBox fx:id="selectUserCheckBox" layoutX="661.0" layoutY="16.0" textFill="#8d7c7c" />
+</AnchorPane>

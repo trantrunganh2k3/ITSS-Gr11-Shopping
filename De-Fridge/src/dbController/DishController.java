@@ -1,29 +1,31 @@
 package dbController;
 
 import Model.Dish;
+import Model.DishIngredient;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
+import java.sql.*;
 
 public class DishController {
 
-    public static ObservableList<Dish> listDish(){
+    public static ObservableList<Dish> listDish(int fridgeID, Date date){
         ObservableList<Dish> dishList = FXCollections.observableArrayList();
-        String sql = "SELECT \"dishID\", name, meal, username, \"fridgeID\" FROM public.\"Dish\"";
-
+        String sql = "SELECT \"dishID\", name, meal, username, \"fridgeID\" FROM public.\"Dish\" WHERE \"fridgeID\" = ? AND" +
+                "\"forDate\" = ?";
         try {
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1,fridgeID);
+            stm.setDate(2,date);
             ResultSet result = stm.executeQuery();
 
             while (result.next()){
-                dishList.add(new Dish(result.getInt(1), result.getString(2), result.getString(3), result.getString(4), result.getInt(5)));
+                Dish dish = new Dish(result.getInt(1), result.getString(2), result.getString(3), result.getString(4), result.getInt(5));
+                dish.setIngredients(DishIngredientController.listDishIngre(dish.getDishID()));
+                dishList.add(dish);
+
             }
         }catch (SQLException | ClassNotFoundException e){
             throw new RuntimeException(e);
@@ -45,37 +47,41 @@ public class DishController {
         return res;
     }
 
-    public static boolean addDish(Dish dish) throws ClassNotFoundException, SQLException{
-        String sql = "INSERT INTO public.\"Dish\" (\"dishID\", name, meal, username, \"fridgeID\") " +
-                "VALUES(?,?,?,?,?)";
+    public static void addDish(Dish dish) throws ClassNotFoundException, SQLException{
+        String sql = "INSERT INTO public.\"Dish\" (\"dishID\", name, meal, username, \"forDate\", \"fridgeID\") " +
+                "VALUES(?,?,?,?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
+        dish.setDishID(countDish()+1);
         stm.setInt(1, dish.getDishID());
         stm.setString(2, dish.getName());
         stm.setString(3, dish.getMeal());
         stm.setString(4, dish.getUsername());
-        stm.setInt(5, dish.getFridgeID());
+        stm.setDate(5,dish.getForDate());
+        stm.setInt(6, dish.getFridgeID());
+        stm.executeUpdate();
+        DishIngredientController.updateDishIngre(dish.getIngredients(), dish.getDishID());
 
-        return stm.executeUpdate() == 1;
     }
 
-    public static boolean updateDish(Dish dish) throws ClassNotFoundException, SQLException{
+    public static void updateDish(Dish dish) throws ClassNotFoundException, SQLException{
         String sql = "UPDATE public.\"Dish\" SET name = ?, meal = ? WHERE \"dishID\" = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setString(1, dish.getName());
         stm.setString(2, dish.getMeal());
         stm.setInt(3, dish.getDishID());
-
-        return stm.executeUpdate() == 1;
+        stm.executeUpdate();
+        DishIngredientController.deleteDishIngre(dish.getDishID());
+        DishIngredientController.updateDishIngre(dish.getIngredients(),dish.getDishID());
     }
 
     public static boolean deleteDish(int dishID) throws ClassNotFoundException, SQLException{
+        DishIngredientController.deleteDishIngre(dishID);
         String sql = "DELETE FROM public.\"Dish\" WHERE \"dishID\" = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, dishID);
-
         return stm.executeUpdate() == 1;
     }
 
