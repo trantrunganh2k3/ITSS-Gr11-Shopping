@@ -41,7 +41,7 @@ CREATE TABLE "ShoppingItems" (
   "boughtBy" varchar(15),
   "listID" int,
   "category" varchar(15),
-  "unit" varchar(5),
+  "unit" varchar(10),
   "purchaseDay" date
 );
 
@@ -64,7 +64,7 @@ CREATE TABLE "Ingredient" (
   "name" varchar(15),
   "category" varchar(10),
   "quantity" decimal,
-  "unit" varchar(5),
+  "unit" varchar(10),
   "purchaseDay" date,
   "expiryDay" date,
   "fridgeID" int
@@ -80,7 +80,7 @@ CREATE TABLE "Dish" (
 );
 
 CREATE TABLE "DishIngredient" (
-  "dishID" BIGSERIAL,
+  "dishID" int,
   "ingredientName" varchar(15),
   "quantity" decimal,
   "unit" varchar(10),
@@ -135,13 +135,13 @@ VALUES
 ('john_doe', 'password123', 'John Doe', 'M', 'john@example.com', '123 Main St', 1, 'Active'),
 ('jane_smith', 'password456', 'Jane Smith', 'F', 'jane@example.com', '456 Elm St', 2, 'Active');
 
-INSERT INTO public."user" (username, password, name, gender, email, address, status)
+INSERT INTO public."user" (username, password, name, gender, email,"groupID", address, status)
 VALUES
-('trunganh', '123456', 'Trung Anh', 'Nam', 'trunganh@gmail.com', 'HBT, Ha Noi', 'Active'),
-('duyvu', '654321', 'Duc Duy', 'Nam', 'ducduy@gmail.com', 'HBT, Ha Noi', 'Active'),
-('dungnguyen', '654321', 'Thuy Dung', 'Nu', 'dungnguyen@gmail.com', 'HBT, Ha Noi', 'Active'),
-('bobnguyen', '123456', 'Bob Nguyen', 'Nu', 'bobnguyen@gmail.com', 'HBT, Ha Noi', 'Active'),
-('admin', 'admin', 'Admin', 'Nam', 'adFridge@gmail.com', 'HBT, Ha Noi', 'Active');
+('trunganh', '123456', 'Trung Anh', 'Nam', 'trunganh@gmail.com',1, 'HBT, Ha Noi', 'Active'),
+('duyvu', '654321', 'Duc Duy', 'Nam', 'ducduy@gmail.com', 1, 'HBT, Ha Noi', 'Active'),
+('dungnguyen', '654321', 'Thuy Dung', 'Nu', 'dungnguyen@gmail.com',2, 'HBT, Ha Noi', 'Active'),
+('bobnguyen', '123456', 'Bob Nguyen', 'Nu', 'bobnguyen@gmail.com',2, 'HBT, Ha Noi', 'Active'),
+('admin', 'admin', 'Admin', 'Nam', 'adFridge@gmail.com',null ,'HBT, Ha Noi', 'Active');
 
 
 

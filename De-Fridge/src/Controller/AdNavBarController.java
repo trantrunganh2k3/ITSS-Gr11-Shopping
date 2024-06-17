@@ -63,6 +63,7 @@ public class AdNavBarController implements Initializable {
 
     private void onLogout(){
         Stage stage = (Stage) navOut.getScene().getWindow();
+        Model.getInstance().deleteAll();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginSignup();
     }

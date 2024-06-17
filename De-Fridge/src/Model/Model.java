@@ -174,4 +174,21 @@ public class Model {
     public List<FavoriteRecipe> getSearchRecipes() {
         return searchRecipes;
     }
+
+    public void deleteAll (){
+        user = null;
+        ingredients = null;
+        dishes = null;
+        users = null;
+        recipes = null;
+        shoppingLists = null;
+        sharedShoppingLists = null;
+        categories = null;
+        units = null;
+        fridge = null;
+        reportShoppingItems = null;
+        reportDish = null;
+        searchUsers = null;
+        searchRecipes = null;
+    }
 }

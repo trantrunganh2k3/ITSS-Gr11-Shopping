@@ -42,7 +42,7 @@
                     <Insets />
                 </VBox.margin>
             </PasswordField>
-            <Label fx:id="lblPassError" prefHeight="26.0" prefWidth="316.0" styleClass="error-label" text="Error:" />
+            <Label fx:id="lblPassError" prefHeight="26.0" prefWidth="316.0" styleClass="error-label" />
             <Button fx:id="btnChangePassword" mnemonicParsing="false" styleClass="another-button" text="Change password">
                 <VBox.margin>
                     <Insets top="10.0" />
@@ -85,11 +85,10 @@
                     <Insets />
                 </VBox.margin>
             </TextField>
-            <Label styleClass="error-label" text="Error:" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                <Button fx:id="btnSave" mnemonicParsing="false" styleClass="another-button" text="Save" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                <Button fx:id="btnEdit" mnemonicParsing="false" prefHeight="37.0" prefWidth="54.0" styleClass="another-button" text="Edit" />
-                <Button fx:id="btnCancel" layoutX="71.0" mnemonicParsing="false" styleClass="red-button" text="Cancel" AnchorPane.topAnchor="0.0" />
+                <Button fx:id="btnSave" mnemonicParsing="false" styleClass="another-button" text="Save" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                <Button fx:id="btnEdit" mnemonicParsing="false" prefHeight="37.0" prefWidth="54.0" styleClass="another-button" text="Edit" AnchorPane.topAnchor="20.0" />
+                <Button fx:id="btnCancel" layoutX="71.0" mnemonicParsing="false" styleClass="red-button" text="Cancel" AnchorPane.topAnchor="20.0" />
             </AnchorPane>
         </VBox>
         <Line endX="33.4000244140625" endY="331.20001220703125" layoutX="399.0" layoutY="160.0" startX="33.4000244140625" startY="-120.0" stroke="#7d684d7e" style="-fx-stroke-width: 5px;" />

@@ -99,7 +99,7 @@ public class NavBarController implements Initializable {
     }
 
     private void onLogout(){
-        //Model.getInstance().getViewFactory().getHomeSelectView().set("Logout");
+        Model.getInstance().deleteAll();
         Stage stage = (Stage) navLogout.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginSignup();

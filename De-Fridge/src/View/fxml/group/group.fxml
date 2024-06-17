@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="groupView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="928.0" styleClass="container" stylesheets="@../../../resource/styles/fridge.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Group.GroupController">
+<BorderPane fx:id="groupView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="928.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Group.GroupController">
    <top>
       <AnchorPane prefHeight="67.0" prefWidth="928.0" BorderPane.alignment="CENTER">
-         <Button fx:id="groupMemberBtn" layoutX="22.0" layoutY="22.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="81.0">
+         <Button fx:id="groupMemberBtn" layoutX="22.0" layoutY="22.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="81.0" styleClass="save-button">
             <graphic>
                <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../../resource/icons/group.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button fx:id="groupReportBtn" layoutX="123.0" layoutY="23.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0">
-            <graphic>
-               <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../../resource/icons/group.png" />
-               </ImageView>
-            </graphic>
-         </Button>
-         <Button fx:id="groupNewBtn" layoutX="692.0" layoutY="44.0" mnemonicParsing="false" text="New Group" />
-         <Button fx:id="groupDeleteBtn" layoutX="784.0" layoutY="44.0" mnemonicParsing="false" text="Delete Group" />
+         <Button fx:id="groupNewBtn" layoutX="655.0" layoutY="42.0" mnemonicParsing="false" styleClass="save-button" text="New Group" AnchorPane.topAnchor="38.0" />
+         <Button fx:id="groupDeleteBtn" layoutX="783.0" layoutY="30.0" mnemonicParsing="false" styleClass="cancel-button" text="Delete Group" AnchorPane.topAnchor="38.0" />
       </AnchorPane>
    </top>
    <center>
       <fx:include source="groupMember.fxml" />
    </center>
+   <stylesheets>
+      <URL value="@../../../resource/styles/fridge.css" />
+      <URL value="@../../../resource/styles/recipeDetail.css" />
+   </stylesheets>
 </BorderPane>
