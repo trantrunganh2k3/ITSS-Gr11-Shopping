@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 public class GroupMemberController implements Initializable {
     public Button addMemberBtn;
     public VBox MemberVbox;
-    public VBox UserVbox;
     public AddMemberController addMemberController;
 
     @Override
@@ -60,17 +59,6 @@ public class GroupMemberController implements Initializable {
             MemberListController controller = new MemberListController(Model.getInstance().getUser());
             loader.setController(controller);
             MemberVbox.getChildren().add(loader.load());
-        }
-    }
-    
-    public void addNewMember(User newMember) {
-        int myGroupID = Model.getInstance().getUser().getGroupID();
-        newMember.setGroupID(myGroupID);
-        Model.getInstance().getUsers().add(newMember);
-        try {
-            updateMemberList();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }

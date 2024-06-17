@@ -11,33 +11,34 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="635.0" prefWidth="928.0" styleClass="container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Admin.UserAccountController">
-   <children>
-      <TextField fx:id="searchTf" layoutX="45.0" layoutY="26.0" prefHeight="48.0" prefWidth="510.0" styleClass="search-input" />
-      <Button fx:id="searchBtn" layoutX="571.0" layoutY="25.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="68.0" styleClass="search-button">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resource/icons/search.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <ScrollPane layoutX="45.0" layoutY="169.0" prefHeight="427.0" prefWidth="846.0">
-         <content>
-            <VBox fx:id="userAccVbox" prefHeight="422.0" prefWidth="826.0" spacing="10.0" />
-         </content>
-      </ScrollPane>
-      <AnchorPane layoutX="45.0" layoutY="104.0" prefHeight="50.0" prefWidth="826.0" styleClass="acc-container">
-         <children>
-            <Label layoutX="26.0" layoutY="13.0" styleClass="acc-title" text="Username" AnchorPane.leftAnchor="26.0" />
-            <Label layoutX="191.0" layoutY="13.0" styleClass="acc-title" text="Email" />
-            <Label layoutX="466.0" layoutY="13.0" styleClass="acc-title" text="Name" />
-            <Label layoutX="617.0" layoutY="13.0" styleClass="acc-title" text="Status" AnchorPane.leftAnchor="616.8000000000001" />
-         </children>
-      </AnchorPane>
-   </children>
    <stylesheets>
       <URL value="@../../../resource/styles/favoriteRecipe/favoriteRecipe.css" />
       <URL value="@../../../resource/styles/admin/userItem.css" />
    </stylesheets>
+   <TextField fx:id="searchTf" layoutX="45.0" layoutY="26.0" prefHeight="48.0" prefWidth="510.0" styleClass="search-input" />
+   <Button fx:id="searchBtn" layoutX="571.0" layoutY="25.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="68.0" styleClass="search-button">
+      <graphic>
+         <ImageView fitHeight="40.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../resource/icons/search.png" />
+         </ImageView>
+      </graphic>
+   </Button>
+   <ScrollPane layoutX="45.0" layoutY="169.0" prefHeight="427.0" prefWidth="846.0">
+      <VBox fx:id="userAccVbox" prefHeight="422.0" prefWidth="826.0" spacing="10.0">
+         <Label fx:id="errorLbl" prefHeight="24.0" prefWidth="795.0" styleClass="acc-title" text="Can't find any " />
+      </VBox>
+   </ScrollPane>
+   <AnchorPane layoutX="45.0" layoutY="104.0" prefHeight="50.0" prefWidth="826.0" styleClass="acc-container">
+      <Label layoutX="26.0" layoutY="13.0" styleClass="acc-title" text="Username" AnchorPane.leftAnchor="26.0" />
+      <Label layoutX="191.0" layoutY="13.0" styleClass="acc-title" text="Email" />
+      <Label layoutX="466.0" layoutY="13.0" styleClass="acc-title" text="Name" />
+      <Label layoutX="617.0" layoutY="13.0" styleClass="acc-title" text="Status" AnchorPane.leftAnchor="616.8000000000001" />
+   </AnchorPane>
+   <Button fx:id="unSearchBtn" layoutX="502.0" layoutY="33.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: transparent;">
+      <graphic>
+         <ImageView fitHeight="23.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../resource/icons/X.png" />
+         </ImageView>
+      </graphic>
+   </Button>
 </AnchorPane>

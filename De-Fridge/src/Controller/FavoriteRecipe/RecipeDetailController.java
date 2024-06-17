@@ -22,10 +22,12 @@ public class RecipeDetailController implements Initializable {
     public Button cancelBtn;
 
     public final FavoriteRecipe recipe;
+    private final RecipeController controller;
     public Button closeBtn;
 
-    public RecipeDetailController(FavoriteRecipe recipe) {
+    public RecipeDetailController(FavoriteRecipe recipe, RecipeController controller) {
         this.recipe = recipe;
+        this.controller = controller;
     }
 
     @Override
@@ -78,6 +80,7 @@ public class RecipeDetailController implements Initializable {
         FavoriteRecipeController.updateRecipe(recipe);
         Model.getInstance().setRecipes();
         close();
+        controller.controller.returnHome();
     }
 
     private void close () {

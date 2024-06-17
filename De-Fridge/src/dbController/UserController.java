@@ -98,7 +98,7 @@ public class UserController {
 
     //Update user info
 
-    public static boolean updateUserInfo(User user) throws ClassNotFoundException, SQLException{
+    public static void updateUserInfo(User user) throws ClassNotFoundException, SQLException{
         String sql = "UPDATE public.\"user\" SET name = ?, gender = ?, email = ?, address = ?, password = ? WHERE username = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
@@ -110,7 +110,7 @@ public class UserController {
         stm.setObject(5, user.getPassword());
         stm.setString(6, user.getUsername());
 
-        return stm.executeUpdate() == 1;
+        stm.executeUpdate();
     }
 
     //Change groupID
@@ -130,7 +130,7 @@ public class UserController {
 
     public static ObservableList<User> findUserByUsername(String username){
         ObservableList<User> userFind = FXCollections.observableArrayList();
-        String sql = "SELECT username, name, gender, email, address, status FROM public.\"user\" WHERE username LIKE ?";
+        String sql = "SELECT username, name, gender, email, address, status FROM public.\"user\" WHERE username ILIKE ?";
 
         try {
             Connection conn = DBConnection.getDBConnection().getConnection();
@@ -149,13 +149,12 @@ public class UserController {
     }
 
     //Change user status
-    public static boolean setUserStatus(User user) throws ClassNotFoundException, SQLException{
+    public static void setUserStatus(User user) throws ClassNotFoundException, SQLException{
         String sql = "UPDATE public.\"user\" SET status = ? WHERE username = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, user.getStatus());
         stm.setObject(2, user.getUsername());
-
-        return stm.executeUpdate() == 1;
+        stm.executeUpdate();
     }
 }

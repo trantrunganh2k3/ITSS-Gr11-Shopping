@@ -1,6 +1,7 @@
 package dbController;
 
 import Model.FavoriteRecipe;
+import Model.User;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,10 +10,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FavoriteRecipeController {
-    public static boolean addRecipe(FavoriteRecipe recipe) throws SQLException, ClassNotFoundException {
+    public static void addRecipe(FavoriteRecipe recipe) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO public.\"FavoriteRecipe\" (\"recipeName\", description, ingredient, username)" +
                 "VALUES(?,?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
@@ -22,10 +24,10 @@ public class FavoriteRecipeController {
         stm.setString(3, recipe.getIngredient());
         stm.setString(4, recipe.getUsername());
 
-        return stm.executeUpdate() == 1;
+        stm.executeUpdate();
     }
 
-    public static boolean updateRecipe(FavoriteRecipe recipe) throws SQLException, ClassNotFoundException{
+    public static void updateRecipe(FavoriteRecipe recipe) throws SQLException, ClassNotFoundException{
         String sql = "UPDATE public.\"FavoriteRecipe\" SET \"recipeName\" = ?, description = ?, ingredient = ? " +
                 "WHERE \"recipeID\" = ? ";
         Connection conn = DBConnection.getDBConnection().getConnection();
@@ -35,7 +37,7 @@ public class FavoriteRecipeController {
         stm.setString(3, recipe.getIngredient());
         stm.setInt(4, recipe.getRecipeID());
 
-        return stm.executeUpdate() == 1;
+        stm.executeUpdate();
     }
 
     public static ObservableList<FavoriteRecipe> listRecipe(String username){
@@ -60,12 +62,31 @@ public class FavoriteRecipeController {
         return recipeList;
     }
 
-    public static boolean deleteRecipe(int recipeID) throws ClassNotFoundException, SQLException{
+    public static void deleteRecipe(int recipeID) throws ClassNotFoundException, SQLException{
         String sql = "DELETE FROM public.\"FavoriteRecipe\" WHERE \"recipeID\" = ?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setInt(1, recipeID);
 
-        return stm.executeUpdate() == 1;
+        stm.executeUpdate();
+    }
+
+    public static List<FavoriteRecipe> searchRecipe (String searchInput) {
+        String sql = "SELECT \"recipeID\", \"recipeName\", description, ingredient, username FROM public.\"FavoriteRecipe\" WHERE \"recipeName\" ILIKE ?";
+        List<FavoriteRecipe> output = new ArrayList<>();
+        try {
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setObject(1, "%" + searchInput + "%");
+            ResultSet result = stm.executeQuery();
+
+            while (result.next()){
+                output.add(new FavoriteRecipe(result.getInt(1),result.getString(2), result.getString(3),
+                        result.getString(4),result.getString(5)));
+            }
+        }catch (SQLException | ClassNotFoundException e){
+            throw new RuntimeException(e);
+        }
+        return output;
     }
 }

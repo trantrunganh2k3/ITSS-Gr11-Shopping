@@ -1,7 +1,6 @@
 package Controller.Group;
 
 import Model.User;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
