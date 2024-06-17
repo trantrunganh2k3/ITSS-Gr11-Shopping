@@ -2,6 +2,8 @@ package Controller.Group;
 
 import Model.Model;
 import Model.User;
+import dbController.GroupControllerDB;
+import dbController.UserController;
 import Controller.Group.GroupMemberController;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 
 public class AddMemberController implements Initializable {
     public TextField searchField;
@@ -23,6 +30,7 @@ public class AddMemberController implements Initializable {
     public VBox UserVbox;
    
     private GroupMemberController groupMemberController;
+
     public AddMemberController(GroupMemberController groupMemberController) {
         this.groupMemberController = groupMemberController;
     }
@@ -62,6 +70,7 @@ public class AddMemberController implements Initializable {
 
     private void populateUserList(String searchText) throws IOException {
         UserVbox.getChildren().clear();
+        Integer myGroupID = Model.getInstance().getUser().getGroupID();
         for (User member : Model.getInstance().getUsers()) {
             if (member.getGroupID() == 0 && (searchText.isEmpty() || member.getUsername().toLowerCase().contains(searchText.toLowerCase()))) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../../View/fxml/group/userList.fxml"));
@@ -73,12 +82,17 @@ public class AddMemberController implements Initializable {
     }
 
     private void onSave() {
-//doan nay toi chua code dc BE
-        Stage stage = (Stage) saveBtn.getScene().getWindow();
+    	try {
+    		groupMemberController.updateMemberList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    	Stage stage = (Stage) cancelBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
     }
 
-    private void onCancel () {
+
+    private void onCancel() {
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
     }

@@ -1,7 +1,6 @@
 package Controller.Group;
 
 import Model.Model;
-import Model.User;
 import Controller.Group.NewGroupController;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -38,30 +37,5 @@ public class GroupController implements Initializable {
         Model.getInstance().getViewFactory().showNewGroupView(newGroupController);
     }
     private void onGroupDelete() {
-        int myGroupID = Model.getInstance().getUser().getGroupID();
-        updateUsersInGroup(myGroupID, 0);
     }
-
-    private void updateUsersInGroup(int groupID, int newGroupID) {
-    	for (User member : Model.getInstance().getUsers()) {
-            if (member.getGroupID() == groupID) {
-                member.setGroupID(newGroupID);
-            }
-        }
-    }
-
-    /*private void updateUserInDatabase(User user) {
-        // Viết logic để cập nhật thông tin user vào cơ sở dữ liệu
-        userService.updateUser(user);
-    }
-
-    private void deleteGroup(int groupID) {
-        // Xóa nhóm khỏi cơ sở dữ liệu
-        deleteGroupFromDatabase(groupID);
-    }
-
-    private void deleteGroupFromDatabase(int groupID) {
-        // Viết logic để xóa nhóm khỏi cơ sở dữ liệu
-        groupService.deleteGroup(groupID);
-    }*/
 }
