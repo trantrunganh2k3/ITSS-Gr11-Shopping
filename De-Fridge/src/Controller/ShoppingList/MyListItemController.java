@@ -2,7 +2,6 @@ package Controller.ShoppingList;
 
 import Model.*;
 import Model.ShoppingItems;
-import dbController.ShoppingListController;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -11,7 +10,6 @@ import javafx.util.converter.DoubleStringConverter;
 
 import java.net.URL;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
@@ -38,6 +36,16 @@ public class MyListItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         init();
+        if (item.getBoughtBy() == null) {
+            nameTf.setEditable(false);
+            quantityTf.setEditable(false);
+            line.setVisible(false);
+            addListener();
+
+        } else {
+            line.setVisible(true);
+            listItem.setDisable(true);
+        }
     }
 
     private void init() {
@@ -57,26 +65,15 @@ public class MyListItemController implements Initializable {
             };
             TextFormatter<Double> textFormatter = new TextFormatter<>(new DoubleStringConverter(),0.0, filter);
             quantityTf.setTextFormatter(textFormatter);
-            checkBtn.setVisible(false);
-            line.setVisible(false);
             nameTf.setText(item.getItemName());
+            checkBtn.setVisible(false);
             categoryCB.setValue(item.getCategory());
             quantityTf.setText(String.valueOf(item.getQuantity()));
-            unitCB.getItems().clear();
             unitCB.setValue(item.getUnit());
-            nameTf.setEditable(false);
-            quantityTf.setEditable(false);
             addListener();
         } else {
             line.setVisible(true);
-            expireDatePicker.setEditable(false);
-            nameTf.setText(item.getItemName());
-            categoryCB.setValue(item.getCategory());
-            quantityTf.setText(String.valueOf(item.getQuantity()));
-            unitCB.getItems().clear();
-            unitCB.setValue(item.getUnit());
-            nameTf.setEditable(false);
-            quantityTf.setEditable(false);
+            listItem.setDisable(true);
         }
 
     }
@@ -113,13 +110,7 @@ public class MyListItemController implements Initializable {
                 checkBtn.setVisible(true);
             }
         });
-        checkBtn.setOnAction(event -> {
-            try {
-                onCheck();
-            } catch (SQLException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        checkBtn.setOnAction(event -> onCheck());
 
     }
     private void onEdit() {
@@ -152,11 +143,9 @@ public class MyListItemController implements Initializable {
         }
     }
 
-    private void onCheck () throws SQLException, ClassNotFoundException {
+    private void onCheck () {
         //TODO: Add to fridge
         Ingredient newIngredient = new Ingredient();
-        item.setBoughtBy(Model.getInstance().getUser().getUsername());
-        ShoppingListController.checkItem(item);
         newIngredient.setExpiryDay(Date.valueOf(expireDatePicker.getValue()));
         newIngredient.setName(item.getItemName());
         newIngredient.setCategory(item.getCategory());
