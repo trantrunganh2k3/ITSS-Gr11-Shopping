@@ -104,7 +104,11 @@ public class UserDetailController implements Initializable {
 
     private void close() throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
-        controller.displayAcc();
+        if (controller.searchTf.getText().isEmpty()) {
+            controller.displayAcc();
+        } else {
+            controller.searchAcc();
+        }
         Model.getInstance().getViewFactory().closeStage(stage);
     }
 }

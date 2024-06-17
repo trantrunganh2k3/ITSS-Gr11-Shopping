@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Model {
     private final ViewFactory viewFactory;
@@ -27,6 +28,9 @@ public class Model {
     private Fridge fridge;
     private List<ShoppingItems> reportShoppingItems;
     private List<Dish> reportDish;
+    private ObservableList<User> searchUsers;
+
+    private List<FavoriteRecipe> searchRecipes;
 
 
     public Model() {
@@ -108,10 +112,7 @@ public class Model {
 
     }
     public ObservableList<ShoppingList> getSharedShoppingLists() {
-        if (this.sharedShoppingLists == null ) {
-            return FXCollections.observableArrayList();
-        }
-        return this.sharedShoppingLists;
+        return Objects.requireNonNullElseGet(this.sharedShoppingLists, () -> FXCollections.observableArrayList());
     }
 
     public void setShoppingLists(Date date) throws SQLException, ClassNotFoundException {
@@ -153,8 +154,24 @@ public class Model {
         users = UserController.listUser();
     }
 
+    public void searchUser (String searchInput) {
+        searchUsers = UserController.findUserByUsername(searchInput);
+    }
+
+    public ObservableList<User> getSearchUsers() {
+        return searchUsers;
+    }
+
     public ObservableList<User> getUsers(){
         if (users == null) setUser();
         return this.users;
+    }
+
+    public void setSearchRecipes (String searchInput) {
+        searchRecipes = FavoriteRecipeController.searchRecipe(searchInput);
+    }
+
+    public List<FavoriteRecipe> getSearchRecipes() {
+        return searchRecipes;
     }
 }

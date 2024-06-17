@@ -23,7 +23,7 @@ public class RecipeController implements Initializable {
 
     private final FavoriteRecipe recipe;
 
-    private final FavoriteRecipeController controller;
+    public final FavoriteRecipeController controller;
 
     public RecipeController(FavoriteRecipe recipe, FavoriteRecipeController controller) {
         this.recipe = recipe;
@@ -57,11 +57,11 @@ public class RecipeController implements Initializable {
         });
     }
     private void onDetail () throws IOException {
-        RecipeDetailController controller = new RecipeDetailController(this.recipe);
+        RecipeDetailController controller = new RecipeDetailController(this.recipe,this);
         Model.getInstance().getViewFactory().showRecipeDetail(controller);
     }
 
     public void displayRecipe (){
-        controller.displayRecipes();
+        controller.returnHome();
     }
 }
