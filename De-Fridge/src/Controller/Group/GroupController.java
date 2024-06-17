@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 
 public class GroupController implements Initializable {
     public Button groupMemberBtn;
-    public Button groupReportBtn;
     public Button groupNewBtn;
     public Button groupDeleteBtn;
     public BorderPane groupView;
@@ -21,7 +20,6 @@ public class GroupController implements Initializable {
         addListener();
     }
     private void addListener () {
-        groupReportBtn.setOnAction(event -> onGroupReport());
         groupMemberBtn.setOnAction(event -> onGroupMember());
         groupNewBtn.setOnAction(event -> onGroupNew());
         groupDeleteBtn.setOnAction(event -> onGroupDelete());
