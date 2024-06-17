@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.Date;
+
 public class ShoppingItems {
     private int itemID;
     private String itemName;
@@ -9,6 +11,8 @@ public class ShoppingItems {
     private int listID;
     private String category;
     private String unit;
+
+    private Date purchaseDay;
 
     public ShoppingItems(){}
 
@@ -23,7 +27,7 @@ public class ShoppingItems {
         this.unit = unit;
     }
 
-    public ShoppingItems(int itemID, String itemName, double quantity, String boughtBy, int listID, String category, String unit){
+    public ShoppingItems(int itemID, String itemName, double quantity, String boughtBy, int listID, String category, String unit, Date date){
         this.itemID = itemID;
         this.itemName = itemName;
         this.quantity = quantity;
@@ -31,6 +35,15 @@ public class ShoppingItems {
         this.listID = listID;
         this.category = category;
         this.unit = unit;
+        this.purchaseDay = date;
+    }
+
+    public void setPurchaseDay(Date date) {
+        this.purchaseDay = date;
+    }
+
+    public Date getPurchaseDay () {
+        return this.purchaseDay;
     }
     public int getItemID() {
         return itemID;

@@ -21,6 +21,15 @@ public class Dish {
         this.fridgeID = fridgeID;
     }
 
+    public Dish(int dishID, String name, String meal,Date date, String username, int fridgeID){
+        this.dishID = dishID;
+        this.name = name;
+        this.meal = meal;
+        this.forDate = date;
+        this.username = username;
+        this.fridgeID = fridgeID;
+    }
+
     private List<DishIngredient> ingredients;
 
     public List<DishIngredient> getIngredients() {

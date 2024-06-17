@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.util.converter.DoubleStringConverter;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
@@ -37,7 +38,13 @@ public class DishIngredientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addListener();
-        init();
+        try {
+            init();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void addListener (){
@@ -45,13 +52,19 @@ public class DishIngredientController implements Initializable {
 
         nameChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                for (Ingredient ingredient: Model.getInstance().getIngredients()) {
-                    if (ingredient.getName().equals(newValue)) {
-                        this.ingredient.setIngredientId(ingredient.getIngredientID());
-                        this.ingredient.setIngredientName(ingredient.getName());
-                        this.ingredient.setUnit(ingredient.getUnit());
-                        this.maxQuantity = ingredient.getQuantity() + this.ingredient.getQuantity();
+                try {
+                    for (Ingredient ingredient: Model.getInstance().getIngredients()) {
+                        if (ingredient.getName().equals(newValue)) {
+                            this.ingredient.setIngredientId(ingredient.getIngredientID());
+                            this.ingredient.setIngredientName(ingredient.getName());
+                            this.ingredient.setUnit(ingredient.getUnit());
+                            this.maxQuantity = ingredient.getQuantity() + this.ingredient.getQuantity();
+                        }
                     }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
                 }
                 if (this.ingredient != null) {
                     unitLbl.setText(this.ingredient.getUnit());
@@ -80,7 +93,7 @@ public class DishIngredientController implements Initializable {
 
     }
 
-    private void init() {
+    private void init() throws SQLException, ClassNotFoundException {
             ObservableList<String> options = FXCollections.observableArrayList();
             for (Ingredient ingredient: Model.getInstance().getIngredients()) {
                 options.add(ingredient.getName());

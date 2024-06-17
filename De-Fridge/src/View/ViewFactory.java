@@ -68,13 +68,11 @@ public class ViewFactory {
     }
 
     public AnchorPane  getFridgeItemsView() {
-        if (fridgeItemsView == null) {
             try {
                 fridgeItemsView = new FXMLLoader(getClass().getResource("fxml/fridge/fridgeItem.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
         return fridgeItemsView;
     }
 

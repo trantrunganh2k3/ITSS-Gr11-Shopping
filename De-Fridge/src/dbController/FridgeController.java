@@ -33,7 +33,7 @@ public class FridgeController {
         return null;
     }
 
-    public static int addFridge (User user) throws SQLException, ClassNotFoundException {
+    public static void addFridge (User user) throws SQLException, ClassNotFoundException {
         String countSql = "SELECT COUNT(\"fridgeID\") FROM public.\"Fridge\"";
         String sql = "INSERT into public.\"Fridge\" (\"fridgeID\", username) values(?,?)  ";
         Connection conn = DBConnection.getDBConnection().getConnection();
@@ -48,6 +48,5 @@ public class FridgeController {
         insertStmt.setInt(1,res +1);
         insertStmt.setString(2,user.getUsername());
         insertStmt.executeUpdate();
-        return res + 1;
     }
 }

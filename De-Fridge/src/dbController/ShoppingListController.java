@@ -71,7 +71,7 @@ public class ShoppingListController {
         ResultSet result = stm.executeQuery();
         while (result.next()){
             items.add(new ShoppingItems(result.getInt(1), result.getString(2), result.getDouble(3), result.getString(5),
-            result.getInt(6), result.getString(7), result.getString(8)));
+            result.getInt(6), result.getString(7), result.getString(8),result.getDate(9)));
         }
         return items;
     }
@@ -87,8 +87,8 @@ public class ShoppingListController {
    public static void updateShoppingList (ShoppingList list) throws SQLException, ClassNotFoundException {
         deleteShoppingItems(list);
         for (ShoppingItems item: list.getShoppingItems()){
-            String sql = "INSERT INTO public.\"ShoppingItems\" (quantity, \"itemName\", \"boughtBy\", \"listID\", category, unit)" +
-                    " VALUES(?,?,?,?,?,?)";
+            String sql = "INSERT INTO public.\"ShoppingItems\" (quantity, \"itemName\", \"boughtBy\", \"listID\", category, unit, \"purchaseDay\")" +
+                    " VALUES(?,?,?,?,?,?,?)";
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setDouble(1,item.getQuantity());
@@ -97,6 +97,7 @@ public class ShoppingListController {
             stm.setInt(4,list.getListID());
             stm.setString(5,item.getCategory());
             stm.setString(6,item.getUnit());
+            stm.setDate(7,item.getPurchaseDay());
             stm.executeUpdate();
         }
    }
@@ -120,11 +121,12 @@ public class ShoppingListController {
    }
 
    public static void checkItem (ShoppingItems item) throws SQLException, ClassNotFoundException {
-       String sql = "UPDATE public.\"ShoppingItems\" SET \"boughtBy\" = ? " +
+       String sql = "UPDATE public.\"ShoppingItems\" SET \"boughtBy\" = ? , \"purchaseDay\" = ? " +
                "WHERE \"itemID\" = ? ";
        Connection conn = DBConnection.getDBConnection().getConnection();
        PreparedStatement stm = conn.prepareStatement(sql);
-       stm.setInt(2, item.getItemID());
+       stm.setInt(3, item.getItemID());
+       stm.setDate(2, item.getPurchaseDay());
        stm.setString(1,item.getBoughtBy());
        stm.executeUpdate();
    }
@@ -168,6 +170,29 @@ public class ShoppingListController {
        for (String username : listUsername) {
            addOwner(username, list.getListID(), false);
        }
+   }
+
+   public static List<ShoppingItems> getReportItem (int fridgeID) throws SQLException, ClassNotFoundException {
+        String sql = "Select \"ShoppingItems\".* FROM public.user, \"ShoppingList\", \"ShoppingItems\"," +
+                " \"Fridge\", \"Group\", \"OwnerShip\" " +
+                "  WHERE   public.user.username =  \"OwnerShip\".username " +
+                "  AND public.user.\"groupID\" = \"Group\".\"groupID\" " +
+                "  AND \"OwnerShip\".\"listID\" =   \"ShoppingList\".\"listID\" " +
+                "  AND \"ShoppingList\".\"listID\" = \"ShoppingItems\".\"listID\" " +
+                "  AND \"Group\".\"groupID\" = \"Fridge\".\"groupID\" " +
+                "  AND \"ShoppingItems\".\"purchaseDay\" >= CURRENT_DATE - INTERVAL '7 days' " +
+                "  And \"Fridge\".\"fridgeID\" = ?";
+       Connection conn = DBConnection.getDBConnection().getConnection();
+       PreparedStatement stm = conn.prepareStatement(sql);
+       stm.setInt(1,fridgeID);
+
+       ResultSet resultSet = stm.executeQuery();
+       List<ShoppingItems> items = new ArrayList<>();
+       while (resultSet.next()) {
+           items.add(new ShoppingItems(resultSet.getInt(1),resultSet.getString(2),resultSet.getDouble(3),
+                   resultSet.getString(5),resultSet.getInt(6),resultSet.getString(7),resultSet.getString(8),resultSet.getDate(9)));
+       }
+       return items;
    }
 
 }

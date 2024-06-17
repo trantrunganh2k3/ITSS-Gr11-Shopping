@@ -2,11 +2,16 @@ package Controller.Fridge;
 
 import Model.Dish;
 import Model.Model;
+import Model.DishIngredient;
+import dbController.DishIngredientController;
+import dbController.IngredientController;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DishController implements Initializable {
@@ -14,7 +19,7 @@ public class DishController implements Initializable {
     private final Dish dish;
     public Button deleteBtn;
     public Button seeDetailBtn;
-    private FridgeDishController controller;
+    private final FridgeDishController controller;
 
     public DishController(Dish dish, FridgeDishController controller){
         this.dish = dish;
@@ -28,7 +33,13 @@ public class DishController implements Initializable {
 
     private void addListener () {
         seeDetailBtn.setOnAction(event -> onDetail());
-        deleteBtn.setOnAction(event -> onDelete());
+        deleteBtn.setOnAction(event -> {
+            try {
+                onDelete();
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     private void onDetail () {
@@ -36,9 +47,14 @@ public class DishController implements Initializable {
         Model.getInstance().getViewFactory().showDishDetailView(controller);
     }
 
-    private void onDelete () {
+    private void onDelete () throws SQLException, ClassNotFoundException {
         deleteQuantity();
-        Model.getInstance().getDishes().remove(this.dish);
+        for (DishIngredient dishIngredient: dish.getIngredients()) {
+            IngredientController.updateQuan(dishIngredient.getQuantity(),dishIngredient.getIngredientId(),"+");
+        }
+        Model.getInstance().setIngredients();
+        dbController.DishController.deleteDish(this.dish.getDishID());
+        Model.getInstance().setDishes(Date.valueOf(controller.datePicker.getValue()));
         displayDish();
     }
 
