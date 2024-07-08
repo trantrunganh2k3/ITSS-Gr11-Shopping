@@ -173,7 +173,7 @@ public class ShoppingListController {
    }
 
    public static List<ShoppingItems> getReportItem (int fridgeID) throws SQLException, ClassNotFoundException {
-        String sql = "Select \"ShoppingItems\".* FROM public.user, \"ShoppingList\", \"ShoppingItems\"," +
+        String sql = "Select DISTINCT \"ShoppingItems\".* FROM public.user, \"ShoppingList\", \"ShoppingItems\"," +
                 " \"Fridge\", \"Group\", \"OwnerShip\" " +
                 "  WHERE   public.user.username =  \"OwnerShip\".username " +
                 "  AND public.user.\"groupID\" = \"Group\".\"groupID\" " +

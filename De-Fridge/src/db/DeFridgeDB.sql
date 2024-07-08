@@ -184,17 +184,58 @@ VALUES
 (1, 'Lettuce', 0.5, 'kg', 1),
 (2, 'Banana', 1.0, 'kg', 2);
 
-INSERT INTO public."Category" (category)
-VALUES
+INSERT INTO "Category" ("category") VALUES
 ('Vegetables'),
-('Fruits');
+('Fruits'),
+('Dairy'),
+('Meat'),
+('Grains'),
+('Seafood'),
+('Beverages'),
+('Spices'),
+('Oils'),
+('Sweets');
 
-INSERT INTO public."Unit" (unit)
-VALUES
-('kg'),
-('g');
+INSERT INTO "Unit" ("unit") VALUES
+('grams'),
+('kilograms'),
+('liters'),
+('mlliters'),
+('cups'),
+('teaspoons'),
+('tblspoons'),
+('pieces'),
+('ounces'),
+('pounds');
 
-INSERT INTO public."uOWNc" ("cateID", "unitID")
-VALUES
+INSERT INTO "uOWNc" ("cateID", "unitID") VALUES
 (1, 1),
-(2, 1);
+(1, 2),
+(2, 1),
+(2, 8),
+(3, 1),
+(3, 2),
+(3, 3),
+(3, 4),
+(4, 1),
+(4, 2),
+(4, 9),
+(4, 10),
+(5, 1),
+(5, 2),
+(5, 5),
+(6, 1),
+(6, 2),
+(6, 9),
+(6, 10),
+(7, 3),
+(7, 4),
+(7, 5),
+(7, 6),
+(7, 7),
+(8, 6),
+(8, 7),
+(9, 3),
+(9, 4),
+(10, 6),
+(10, 7);
