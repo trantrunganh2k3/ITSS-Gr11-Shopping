@@ -13,6 +13,7 @@ import javafx.util.converter.DoubleStringConverter;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
@@ -83,14 +84,15 @@ public class SharedListItemController implements Initializable {
         //TODO: Add to fridge in Database
         Ingredient newIngredient = new Ingredient();
         item.setBoughtBy(Model.getInstance().getUser().getUsername());
-        System.out.println(item.getBoughtBy());
-        System.out.println(item.getItemID());
+        item.setPurchaseDay(Date.valueOf(LocalDate.now()));
         ShoppingListController.checkItem(item);
+
         newIngredient.setExpiryDay(Date.valueOf(expireDatePicker.getValue()));
         newIngredient.setName(item.getItemName());
         newIngredient.setCategory(item.getCategory());
         newIngredient.setUnit(item.getUnit());
         newIngredient.setQuantity(item.getQuantity());
+        newIngredient.setPurchaseDay(Date.valueOf(LocalDate.now()));
         Model.getInstance().getIngredients().add(newIngredient);
         line.setVisible(true);
     }
